@@ -36,6 +36,12 @@ void p12::Init()
 void p12::Update()
 {
 
+	update_Pos();
+
+
+
+
+
 }
 
 void p12::Render()
@@ -70,6 +76,196 @@ void p12::Render()
 		if (v_shape[i]->Type == Type::okak)
 		{
 			glDrawArrays(GL_TRIANGLE_FAN, 0, 7);
+		}
+	}
+
+}
+
+void p12::update_Pos()
+{
+
+	Pos mouse_pos = MouseManager::GetInstance()->GetMousePos();
+	static bool find = false;
+	bool click = MouseManager::GetInstance()->Getboolclick();
+
+
+
+	if (click)
+	{
+		for (int i = 0; i < v_shape.size(); ++i)
+		{
+			if (v_shape[i]->Type == Type::dot)
+			{
+				float size = 0.04f;
+
+				float Top = { v_shape[i]->Position[1] + size };
+				float Left = { v_shape[i]->Position[0] - size };
+				float RIGHT = { v_shape[i]->Position[0] + size };
+				float Bottom = { v_shape[i]->Position[1] - size };
+
+				if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
+				{
+					v_shape[i]->Position[0] = mouse_pos.x;
+					v_shape[i]->Position[1] = mouse_pos.y;
+
+					v_shape[i]->vao.Bind();
+					v_shape[i]->vbo.Gen(v_shape[i]->Position, 3 * sizeof(float));
+					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+					glEnableVertexAttribArray(0);
+				}
+			}
+
+			else if (v_shape[i]->Type == Type::line)
+			{
+				float size = 0.04f;
+
+				float Top = { v_shape[i]->Position[1] + size };
+				float Left = { v_shape[i]->Position[0] - size };
+				float RIGHT = { v_shape[i]->Position[3] + size };
+				float Bottom = { v_shape[i]->Position[4] - size };
+
+				if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
+				{
+					v_shape[i]->Position[0] = mouse_pos.x - v_shape[i]->Size;
+					v_shape[i]->Position[1] = mouse_pos.y;
+
+					v_shape[i]->Position[3] = mouse_pos.x + v_shape[i]->Size;
+					v_shape[i]->Position[4] = mouse_pos.y;
+
+					v_shape[i]->vao.Bind();
+					v_shape[i]->vbo.Gen(v_shape[i]->Position, 6 * sizeof(float));
+					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+					glEnableVertexAttribArray(0);
+			
+				}
+			}
+
+			else if (v_shape[i]->Type == Type::triangle)
+			{
+				float size = 0.04f;
+
+				float Top = { v_shape[i]->Position[1] };
+				float Left = { v_shape[i]->Position[3] };
+				float RIGHT = { v_shape[i]->Position[6] };
+				float Bottom = { v_shape[i]->Position[4] };
+
+				if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
+				{
+					v_shape[i]->Center.x = mouse_pos.x;
+					v_shape[i]->Center.y = mouse_pos.y;
+
+					v_shape[i]->Position[0] = v_shape[i]->Center.x;
+					v_shape[i]->Position[1] = v_shape[i]->Center.y + v_shape[i]->Size;
+					v_shape[i]->Position[2] = 0;
+
+					v_shape[i]->Position[3] = v_shape[i]->Center.x - v_shape[i]->Size;
+					v_shape[i]->Position[4] = v_shape[i]->Center.y - v_shape[i]->Size;
+					v_shape[i]->Position[5] = 0;
+
+					v_shape[i]->Position[6] = v_shape[i]->Center.x + v_shape[i]->Size;
+					v_shape[i]->Position[7] = v_shape[i]->Center.y - v_shape[i]->Size;
+					v_shape[i]->Position[8] = 0;
+
+					v_shape[i]->vao.Bind();
+					v_shape[i]->vbo.Gen(v_shape[i]->Position, 9 * sizeof(float));
+					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+					glEnableVertexAttribArray(0);
+			
+				}
+			}
+
+			else if (v_shape[i]->Type == Type::rectangle)
+			{
+				float size = 0.04f;
+
+				float Top = { v_shape[i]->Position[1] };
+				float Left = { v_shape[i]->Position[0] };
+				float RIGHT = { v_shape[i]->Position[6] };
+				float Bottom = { v_shape[i]->Position[7] };
+
+				if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
+				{
+					v_shape[i]->Center.x = mouse_pos.x;
+					v_shape[i]->Center.y = mouse_pos.y;
+
+					v_shape[i]->Position[0] = v_shape[i]->Center.x - v_shape[i]->Size;
+					v_shape[i]->Position[1] = v_shape[i]->Center.y + v_shape[i]->Size;
+					v_shape[i]->Position[2] = 0;
+
+					v_shape[i]->Position[3] = v_shape[i]->Center.x - v_shape[i]->Size;
+					v_shape[i]->Position[4] = v_shape[i]->Center.y - v_shape[i]->Size;
+					v_shape[i]->Position[5] = 0;
+
+					v_shape[i]->Position[6] = v_shape[i]->Center.x + v_shape[i]->Size;
+					v_shape[i]->Position[7] = v_shape[i]->Center.y - v_shape[i]->Size;
+					v_shape[i]->Position[8] = 0;
+
+					v_shape[i]->Position[9] = v_shape[i]->Center.x + v_shape[i]->Size;
+					v_shape[i]->Position[10] = v_shape[i]->Center.y + v_shape[i]->Size;
+					v_shape[i]->Position[11] = 0;
+
+					v_shape[i]->vao.Bind();
+					v_shape[i]->vbo.Gen(v_shape[i]->Position, 12 * sizeof(float));
+					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+					glEnableVertexAttribArray(0);
+			
+				}
+			}
+
+			else if (v_shape[i]->Type == Type::okak)
+			{
+
+				float Top = { v_shape[i]->Position[4] };
+				float Left = { v_shape[i]->Position[6] };
+				float RIGHT = { v_shape[i]->Position[15] };
+				float Bottom = { v_shape[i]->Position[10] };
+
+				if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
+				{
+					v_shape[i]->Center.x = mouse_pos.x;
+					v_shape[i]->Center.y = mouse_pos.y;
+
+					v_shape[i]->Position[0] = v_shape[i]->Center.x;
+					v_shape[i]->Position[1] = v_shape[i]->Center.y;
+					v_shape[i]->Position[2] = 0;
+
+					//1
+					v_shape[i]->Position[3] = v_shape[i]->Center.x;
+					v_shape[i]->Position[4] = v_shape[i]->Center.y + v_shape[i]->Size;
+					v_shape[i]->Position[5] = 0;
+
+					//2
+					v_shape[i]->Position[6] = v_shape[i]->Center.x - v_shape[i]->Size;
+					v_shape[i]->Position[7] = v_shape[i]->Center.y;
+					v_shape[i]->Position[8] = 0;
+
+					//3
+					v_shape[i]->Position[9] = v_shape[i]->Center.x - v_shape[i]->Size / 2;
+					v_shape[i]->Position[10] = v_shape[i]->Center.y - v_shape[i]->Size;
+					v_shape[i]->Position[11] = 0;
+
+					//4
+					v_shape[i]->Position[12] = v_shape[i]->Center.x + v_shape[i]->Size / 2;
+					v_shape[i]->Position[13] = v_shape[i]->Center.y - v_shape[i]->Size;
+					v_shape[i]->Position[14] = 0;
+
+					//5
+					v_shape[i]->Position[15] = v_shape[i]->Center.x + v_shape[i]->Size;
+					v_shape[i]->Position[16] = v_shape[i]->Center.y;
+					v_shape[i]->Position[17] = 0;
+
+					//1
+					v_shape[i]->Position[18] = v_shape[i]->Center.x;
+					v_shape[i]->Position[19] = v_shape[i]->Center.y + v_shape[i]->Size;
+					v_shape[i]->Position[20] = 0;
+
+					v_shape[i]->vao.Bind();
+					v_shape[i]->vbo.Gen(v_shape[i]->Position, 21 * sizeof(float));
+					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+					glEnableVertexAttribArray(0);
+				
+				}
+			}
 		}
 	}
 
@@ -133,12 +329,12 @@ void p12::make_line()
 		line->Type = Type::line;
 
 		line->Position = new float[6];
-		line->Position[0] = line->Center.x- line->Size;
-		line->Position[1] = line->Center.y- line->Size;
+		line->Position[0] = line->Center.x - line->Size;
+		line->Position[1] = line->Center.y ;
 		line->Position[2] = 0;
 
-		line->Position[3] = line->Center.x+ line->Size;
-		line->Position[4] = line->Center.y+ line->Size;
+		line->Position[3] = line->Center.x + line->Size;
+		line->Position[4] = line->Center.y ;
 		line->Position[5] = 0;
 
 		line->Color = new float[9];
@@ -189,11 +385,11 @@ void p12::make_triangle()
 		tri->Position[1] = tri->Center.y + tri->Size;
 		tri->Position[2] = 0;
 
-		tri->Position[3] = tri->Center.x + tri->Size;
+		tri->Position[3] = tri->Center.x - tri->Size;
 		tri->Position[4] = tri->Center.y - tri->Size;
 		tri->Position[5] = 0;
 
-		tri->Position[6] = tri->Center.x - tri->Size;
+		tri->Position[6] = tri->Center.x + tri->Size;
 		tri->Position[7] = tri->Center.y - tri->Size;
 		tri->Position[8] = 0;
 

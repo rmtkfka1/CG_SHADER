@@ -36,6 +36,12 @@ public:
 	
 private:
 
+
+	void update_Pos();
+
+
+
+
 	void make_dot();
 	void make_line();
 	void make_triangle();
