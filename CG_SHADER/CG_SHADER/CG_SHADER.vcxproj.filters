@@ -11,17 +11,11 @@
     <Filter Include="100.memo">
       <UniqueIdentifier>{46d95fe6-38be-45a7-9705-4dd88cf51db1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="06.Object">
-      <UniqueIdentifier>{2bf560c8-d426-4a7c-8bbe-47d741c06895}</UniqueIdentifier>
-    </Filter>
     <Filter Include="00.res">
       <UniqueIdentifier>{1a2b234b-e3b4-49fc-843d-85e4fb6d890b}</UniqueIdentifier>
     </Filter>
     <Filter Include="00.res\shader">
       <UniqueIdentifier>{eee5382c-1aa5-445e-8767-1dc758473f44}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="07,Manager">
-      <UniqueIdentifier>{85a7d254-0cbc-4d21-ae3e-a8673cebff75}</UniqueIdentifier>
     </Filter>
     <Filter Include="01.OPENGL">
       <UniqueIdentifier>{9a73e75c-3ba7-4ca6-b17b-db9c059c41ac}</UniqueIdentifier>
@@ -40,6 +34,12 @@
     </Filter>
     <Filter Include="01.OPENGL\05.Shader">
       <UniqueIdentifier>{af4b0a1e-e670-4d5f-b500-a474c476771a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object">
+      <UniqueIdentifier>{2bf560c8-d426-4a7c-8bbe-47d741c06895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03,Manager">
+      <UniqueIdentifier>{85a7d254-0cbc-4d21-ae3e-a8673cebff75}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,12 +66,15 @@
       <Filter>01.OPENGL\05.Shader</Filter>
     </ClCompile>
     <ClCompile Include="src\Object.cpp">
-      <Filter>06.Object</Filter>
+      <Filter>02.Object</Filter>
     </ClCompile>
     <ClCompile Include="src\KeyManager.cpp">
-      <Filter>07,Manager</Filter>
+      <Filter>03,Manager</Filter>
     </ClCompile>
     <ClCompile Include="src\연습장.cpp" />
+    <ClCompile Include="src\MouseManager.cpp">
+      <Filter>03,Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -99,13 +102,16 @@
       <Filter>99.defines</Filter>
     </ClInclude>
     <ClInclude Include="src\Object.h">
-      <Filter>06.Object</Filter>
+      <Filter>02.Object</Filter>
     </ClInclude>
     <ClInclude Include="src\KeyManager.h">
-      <Filter>07,Manager</Filter>
+      <Filter>03,Manager</Filter>
     </ClInclude>
     <ClInclude Include="src\enum.h">
       <Filter>99.defines</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MouseManager.h">
+      <Filter>03,Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

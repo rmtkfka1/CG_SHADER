@@ -5,7 +5,6 @@
 KeyState KeyManager::_states[256];
 
 
-
 void KeyManager::Update()
 {
     glutKeyboardFunc(KeyboardCallback);
@@ -20,6 +19,8 @@ KeyManager::KeyManager()
 	}
 	
 }
+
+
 
 void KeyManager::KeyboardCallback(unsigned char key, int x, int y)
 {

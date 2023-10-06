@@ -11,16 +11,21 @@ public:
 	void Update();
 	void Render();
 
+	bool click[4];
+
+	
 
 private:
 
 	Pos m_pos[3]{};
 	Pos m_center{};
-	float m_size{};
+	Pos m_size{};
 	VAO m_vao;
 	VBO m_vbo; //정점값
-	VBO m_vbo2;  // 색상값
+	VBO m_vbo2; // 색상값
 
+
+	int checkbox();
 	float* m_position;
 	float m_color[9];
 

@@ -28,7 +28,7 @@ public:
 
     //¸ÇÃ³À½ ´­·¶´Ù°¡ ¶ª´ë
     bool GetbuttonUp(unsigned char key) { return _states[static_cast<unsigned char>(key)] == KeyState::UP; }
-
+    
 
     static void KeyboardCallback(unsigned char key, int x, int y);
     static void KeyboardUpCallback(unsigned char key, int x, int y);

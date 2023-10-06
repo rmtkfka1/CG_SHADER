@@ -22,11 +22,12 @@ using namespace std;
 #include <fstream>
 #include <cstring>
 
+#include "Types.h"
 #include "Core.h"
 #include "Utility.h"
 #include "VAO.h"
 #include "VBO.h"
 #include "IBO.h"
-#include "Types.h"
 #include "Shader.h"
 #include "KeyManager.h"
+#include "MouseManager.h"

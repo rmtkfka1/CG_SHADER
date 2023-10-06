@@ -60,4 +60,19 @@ void Core::mouse_move(void(*funcptr)(int x, int y))
 	glutMotionFunc(funcptr);
 }
 
+Pos Core::convert(int x, int y, int WINDOW_WIDTH, int WINDOW_HEIGHT)
+{
+	int w = WINDOW_WIDTH;
+	int h = WINDOW_HEIGHT;
+
+	float ox = (float)(x - (float)w / 2.0) * (float)(1.0 / (float)(w / 2.0));
+	float oy = -((float)(y - (float)h / 2.0) * (float)(1.0 / (float)(h / 2.0)));
+
+	Pos pos = { ox,oy };
+
+	return pos;
+}
+
+
+
 
