@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\p13.cpp" />
     <ClCompile Include="src\MouseManager.cpp" />
     <ClCompile Include="src\KeyManager.cpp" />
     <ClCompile Include="src\Core.cpp" />
@@ -158,6 +159,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\p13.h" />
     <ClInclude Include="src\MouseManager.h" />
     <ClInclude Include="src\enum.h" />
     <ClInclude Include="src\KeyManager.h" />

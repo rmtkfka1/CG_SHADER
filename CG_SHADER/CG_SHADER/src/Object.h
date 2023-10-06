@@ -5,30 +5,23 @@ class Object
 public:
 
 	Object();
-	~Object();
+	virtual ~Object();
 
-	void Init();
-	void Update();
-	void Render();
-
-	bool click[4];
-
+	virtual void Init()=0;
+	virtual void Update()=0;
+	virtual void Render()=0;
 	
 
-private:
+protected:
 
-	Pos m_pos[3]{};
-	Pos m_center{};
-	Pos m_size{};
-	VAO m_vao;
+	Pos m_center{}; // center pos 
+	Pos m_size{}; // 사이즈 값 
+	VAO m_vao;  
 	VBO m_vbo; //정점값
 	VBO m_vbo2; // 색상값
 
-
-	int checkbox();
 	float* m_position;
 	float m_color[9];
-
 
 
 };

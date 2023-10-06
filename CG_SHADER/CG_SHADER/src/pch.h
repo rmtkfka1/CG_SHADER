@@ -31,3 +31,4 @@ using namespace std;
 #include "Shader.h"
 #include "KeyManager.h"
 #include "MouseManager.h"
+#include "Object.h"
