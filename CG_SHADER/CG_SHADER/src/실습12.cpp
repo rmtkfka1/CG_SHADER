@@ -14,6 +14,7 @@ void DrawScene()
 
 int main(int argc, char** argv)
 {
+
 	Core::GetInstance()->Init(argc, argv, 800, 600);
 	Core::GetInstance()->Render(DrawScene);
 
@@ -23,7 +24,7 @@ int main(int argc, char** argv)
 	Shader* shader = new Shader("res/shader/Shader1.vs", "res/shader/Shader1.fs");
 	shader->Bind();
 	p.Init();
-
+	srand(time(NULL));
 
 	while (1)
 	{

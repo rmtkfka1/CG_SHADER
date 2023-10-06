@@ -37,6 +37,7 @@ void p12::Update()
 {
 
 	update_Pos();
+	play_animation();
 
 }
 
@@ -354,9 +355,9 @@ void p12::update_collusion(Shape* shape)
 			v_shape[i] = nullptr;
 			v_shape.erase(std::remove(v_shape.begin(), v_shape.end(), nullptr), v_shape.end());
 
+			shape->animation = true;
 			return;
 		}
-		
 	}
 }
 
@@ -372,6 +373,11 @@ void p12::update_Pos()
 	{
 		for (int i = 0; i < v_shape.size(); ++i)
 		{
+			/*if (v_shape[i]->animation)
+			{
+				continue;
+			}*/
+
 			if (v_shape[i]->Type == Type::dot)
 			{
 				float size = 0.04f;
@@ -554,6 +560,261 @@ void p12::update_Pos()
 	}
 
 }
+
+Pos p12::reflection_vector(Pos P, Pos N)
+{
+	// P + 2N ( -P ³»Àû N) 
+	Pos result;
+	result.x = P.x + 2 * N.x * ((-P.x * N.x + -P.y * N.y));
+	result.y = P.y + 2 * N.y * ((-P.x * N.x + -P.y * N.y));
+
+	return result;
+}
+
+
+
+
+void p12::play_animation()
+{
+
+	Pos Top = { 0,-1 };
+	Pos bottom = { 0,1 };
+	Pos left = { 1,0 };
+	Pos right = { -1, 0 };
+
+
+	for (int i = 0; i < v_shape.size(); ++i)
+	{
+		if (!v_shape[i]->animation)
+		{
+			continue;
+		}
+
+		if (v_shape[i]->Type == Type::dot)
+		{
+			v_shape[i]->Position[0] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[1] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[2] = 0;
+
+			if (v_shape[i]->Position[0] + v_shape[i]->going_vector.x > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, right);
+			}
+
+			else if (v_shape[i]->Position[0] + v_shape[i]->going_vector.x < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, left);
+			}
+
+			else if (v_shape[i]->Position[1] + v_shape[i]->going_vector.y > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, Top);
+			}
+
+			else if (v_shape[i]->Position[1] + v_shape[i]->going_vector.y < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, bottom);
+			}
+
+			v_shape[i]->vao.Bind();
+			v_shape[i]->vbo.Gen(v_shape[i]->Position, 3 * sizeof(float));
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+			glEnableVertexAttribArray(0);
+
+		}
+
+
+		else if (v_shape[i]->Type == Type::triangle)
+		{
+			v_shape[i]->Position[0] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[1] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[2] = 0;
+
+			v_shape[i]->Position[3] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[4] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[5] = 0;
+
+			v_shape[i]->Position[6] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[7] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[8] = 0;
+
+			if (v_shape[i]->Position[6] + v_shape[i]->going_vector.x > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, right);
+			}
+
+			else if (v_shape[i]->Position[3] + v_shape[i]->going_vector.x < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, left);
+			}
+
+			else if (v_shape[i]->Position[1] + v_shape[i]->going_vector.y > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, Top);
+			}
+
+			else if (v_shape[i]->Position[4] + v_shape[i]->going_vector.y < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, bottom);
+			}
+
+			v_shape[i]->vao.Bind();
+			v_shape[i]->vbo.Gen(v_shape[i]->Position, 9 * sizeof(float));
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+			glEnableVertexAttribArray(0);
+		}
+
+
+		else if (v_shape[i]->Type == Type::line)
+		{
+			v_shape[i]->Position[0] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[1] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[2] = 0;
+
+			v_shape[i]->Position[3] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[4] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[5] = 0;
+
+
+			if (v_shape[i]->Position[3] + v_shape[i]->going_vector.x > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, right);
+			}
+
+			else if (v_shape[i]->Position[0] + v_shape[i]->going_vector.x < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, left);
+			}
+
+			else if (v_shape[i]->Position[1] + v_shape[i]->going_vector.y > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, Top);
+			}
+
+			else if (v_shape[i]->Position[1] + v_shape[i]->going_vector.y < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, bottom);
+			}
+
+			v_shape[i]->vao.Bind();
+			v_shape[i]->vbo.Gen(v_shape[i]->Position, 6 * sizeof(float));
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+			glEnableVertexAttribArray(0);
+		}
+
+
+		else if (v_shape[i]->Type == Type::rectangle)
+		{
+			v_shape[i]->Position[0] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[1] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[2] = 0;
+
+			v_shape[i]->Position[3] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[4] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[5] = 0;
+
+			v_shape[i]->Position[6] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[7] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[8] = 0;
+
+			v_shape[i]->Position[9] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[10] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[11] = 0;
+
+
+			if (v_shape[i]->Position[6] + v_shape[i]->going_vector.x > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, right);
+			}
+
+			else if (v_shape[i]->Position[0] + v_shape[i]->going_vector.x < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, left);
+			}
+
+			else if (v_shape[i]->Position[1] + v_shape[i]->going_vector.y > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, Top);
+			}
+
+			else if (v_shape[i]->Position[7] + v_shape[i]->going_vector.y < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, bottom);
+			}
+
+			v_shape[i]->vao.Bind();
+			v_shape[i]->vbo.Gen(v_shape[i]->Position, 12 * sizeof(float));
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+			glEnableVertexAttribArray(0);
+		}
+
+
+		else if (v_shape[i]->Type == Type::okak)
+		{
+			//0
+			v_shape[i]->Position[0] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[1] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[2] = 0;
+			//1
+			v_shape[i]->Position[3] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[4] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[5] = 0;
+			//2
+			v_shape[i]->Position[6] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[7] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[8] = 0;
+			//3
+			v_shape[i]->Position[9] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[10] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[11] = 0;
+			//4
+			v_shape[i]->Position[12] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[13] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[14] = 0;
+			//5
+			v_shape[i]->Position[15] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[16] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[17] = 0;
+			//6
+			v_shape[i]->Position[18] += v_shape[i]->going_vector.x;
+			v_shape[i]->Position[19] += v_shape[i]->going_vector.y;
+			v_shape[i]->Position[20] = 0;
+
+
+			if (v_shape[i]->Position[15] + v_shape[i]->going_vector.x > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, right);
+			}
+
+			else if (v_shape[i]->Position[6] + v_shape[i]->going_vector.x < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, left);
+			}
+
+			else if (v_shape[i]->Position[4] + v_shape[i]->going_vector.y > 1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, Top);
+			}
+
+			else if (v_shape[i]->Position[13] + v_shape[i]->going_vector.y < -1.0f)
+			{
+				v_shape[i]->going_vector = reflection_vector(v_shape[i]->going_vector, bottom);
+			}
+
+			v_shape[i]->vao.Bind();
+			v_shape[i]->vbo.Gen(v_shape[i]->Position, 21 * sizeof(float));
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+			glEnableVertexAttribArray(0);
+		}
+
+
+	}
+
+
+}
+
+
+
 
 void p12::make_dot()
 {

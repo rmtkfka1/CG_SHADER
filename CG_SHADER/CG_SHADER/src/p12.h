@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 enum class Type
 {
 	dot,
@@ -11,6 +13,10 @@ enum class Type
 
 struct Shape
 {
+
+
+
+
 	Pos Center;
 	float Size;
 	float* Position; //포지션값
@@ -20,7 +26,8 @@ struct Shape
 	VBO vbo2; //색상 
 	Type Type; //모양 
 	int Count;  //정점개수 
-	bool choose = false;
+	bool animation = false;
+	Pos going_vector = { ((float)rand() / RAND_MAX) * (0.014f) - 0.005f,((float)rand() / RAND_MAX) * (0.014f) - 0.005f};
 };
 
 class p12 
@@ -41,9 +48,8 @@ private:
 	void update_collusion(Shape* shape);
 	void update_Pos();
 
-
-
-
+	Pos reflection_vector(Pos P, Pos N);
+	void play_animation();
 	void make_dot();
 	void make_line();
 	void make_triangle();

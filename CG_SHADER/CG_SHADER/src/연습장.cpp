@@ -1,6 +1,5 @@
 #include "pch.h"
-
-
+#include <memory>
 #include <iostream>
 #include <vector>
 
@@ -26,19 +25,18 @@ public:
     std::vector<int*> returnvec() { return vec; }
 };
 
+float* test()
+{
+    float a[2] = { 1.0f,2.0f };
+
+    return a;
+}
+
 int main() {
-    test a;
-    std::vector<int*> v = a.returnvec();
+    
+    unique_ptr<int> a(new int(5));
 
-    cout << "메인에서 v의주소" << endl;
-
-    for (int i = 0; i < v.size(); ++i)
-    {
-        cout << v[i] << endl;
-    }
-
-    a.print();
-
+    unique_ptr<int> b = move(a);
 
     return 0;
 }
