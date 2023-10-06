@@ -1,31 +1,43 @@
 #include "pch.h"
 
 
-vector<int> v;
-
-
 
 class test
 {
 
 public:
 
-	static test* GetInstance()
+
+	~test()
 	{
-		static test my;
-		return &my;
+		cout << "º´½Å»õ³¢" << endl;
 	}
 
+	int a[10] = 
+	{
+		1,2,3,4,5,6,7,8,9,0
+	};
 
-	void hello() { cout << "hello" << endl; }
 
 
 };
+
+vector<test> v;
+
+void func()
+{
+	test a;
+
+	cout << &a << endl;
+
+	v.push_back(a);
+}
 
 
 int main()
 {
 
-	test::GetInstance()->hello();
+	func();
 
+	cout << &v[0] << endl;
 }

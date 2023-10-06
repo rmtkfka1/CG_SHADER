@@ -44,8 +44,11 @@
     <Filter Include="02.Object\실습13">
       <UniqueIdentifier>{9c9529ef-a3d7-40c3-84bd-1f59520988ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object\01.Object">
+    <Filter Include="02.Object\00.Object">
       <UniqueIdentifier>{3c8f9fe8-8dad-4e39-bbef-a0e51e9b21f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\실습12">
+      <UniqueIdentifier>{65884de0-e858-4aba-9f03-bef770200dca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,7 +58,7 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>99.defines</Filter>
     </ClCompile>
-    <ClCompile Include="src\소스.cpp" />
+    <ClCompile Include="src\실습13.cpp" />
     <ClCompile Include="src\VAO.cpp">
       <Filter>01.OPENGL\02.VAO</Filter>
     </ClCompile>
@@ -79,11 +82,15 @@
       <Filter>03,Manager</Filter>
     </ClCompile>
     <ClCompile Include="src\Object.cpp">
-      <Filter>02.Object\01.Object</Filter>
+      <Filter>02.Object\00.Object</Filter>
     </ClCompile>
     <ClCompile Include="src\p13.cpp">
       <Filter>02.Object\실습13</Filter>
     </ClCompile>
+    <ClCompile Include="src\p12.cpp">
+      <Filter>02.Object\실습12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습12.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -120,10 +127,13 @@
       <Filter>03,Manager</Filter>
     </ClInclude>
     <ClInclude Include="src\Object.h">
-      <Filter>02.Object\01.Object</Filter>
+      <Filter>02.Object\00.Object</Filter>
     </ClInclude>
     <ClInclude Include="src\p13.h">
       <Filter>02.Object\실습13</Filter>
+    </ClInclude>
+    <ClInclude Include="src\p12.h">
+      <Filter>02.Object\실습12</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
