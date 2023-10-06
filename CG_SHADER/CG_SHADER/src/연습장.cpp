@@ -1,43 +1,44 @@
 #include "pch.h"
 
 
+#include <iostream>
+#include <vector>
 
-class test
-{
-
+class test {
 public:
+    test() {
+        for (int i = 0; i < 5; ++i) {
+            int* ptr = new int(i);
+            vec.push_back(ptr);
+        }
+    }
 
+    void print()
+    {
+        cout << "vec 의주소" << endl;
+        for (int i = 0; i < vec.size(); ++i)
+        {
+            cout << vec[i] << endl;
+        }
+    }
+    std::vector<int*> vec;
 
-	~test()
-	{
-		cout << "병신새끼" << endl;
-	}
-
-	int a[10] = 
-	{
-		1,2,3,4,5,6,7,8,9,0
-	};
-
-
-
+    std::vector<int*> returnvec() { return vec; }
 };
 
-vector<test> v;
+int main() {
+    test a;
+    std::vector<int*> v = a.returnvec();
 
-void func()
-{
-	test a;
+    cout << "메인에서 v의주소" << endl;
 
-	cout << &a << endl;
+    for (int i = 0; i < v.size(); ++i)
+    {
+        cout << v[i] << endl;
+    }
 
-	v.push_back(a);
-}
+    a.print();
 
 
-int main()
-{
-
-	func();
-
-	cout << &v[0] << endl;
+    return 0;
 }

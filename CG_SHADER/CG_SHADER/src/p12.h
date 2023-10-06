@@ -20,6 +20,7 @@ struct Shape
 	VBO vbo2; //색상 
 	Type Type; //모양 
 	int Count;  //정점개수 
+	bool choose = false;
 };
 
 class p12 
@@ -37,6 +38,7 @@ public:
 private:
 
 
+	void update_collusion(Shape* shape);
 	void update_Pos();
 
 

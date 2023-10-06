@@ -38,10 +38,6 @@ void p12::Update()
 
 	update_Pos();
 
-
-
-
-
 }
 
 void p12::Render()
@@ -81,13 +77,295 @@ void p12::Render()
 
 }
 
+void p12::update_collusion(Shape* shape)
+{
+	Pos mouse_pos = MouseManager::GetInstance()->GetMousePos();
+	float Top;
+	float Left;
+	float RIGHT;
+	float Bottom;
+
+	float Top2;
+	float Left2;
+	float RIGHT2;
+	float Bottom2;
+
+	if (shape->Type == Type::dot)
+	{
+		Top = { shape->Position[1] + 0.02f };
+		Left = { shape->Position[0] - 0.02f };
+		RIGHT = { shape->Position[0] + 0.02f };
+		Bottom = { shape->Position[1] - 0.02f };
+	}
+
+	else if (shape->Type == Type::line)
+	{
+		Top = { shape->Position[1] + 0.04f };
+		Left = { shape->Position[0] - 0.04f };
+		RIGHT = { shape->Position[3] + 0.04f };
+		Bottom = { shape->Position[4] - 0.04f };
+	}
+
+	else if (shape->Type == Type::triangle)
+	{
+		Top = { shape->Position[1]  };
+		Left = { shape->Position[3]  };
+		RIGHT = { shape->Position[6] };
+		Bottom = { shape->Position[4] };
+	}
+
+	else if (shape->Type == Type::rectangle)
+	{
+		Top = { shape->Position[1] };
+		Left = { shape->Position[0] };
+		RIGHT = { shape->Position[6] };
+		Bottom = { shape->Position[7] };
+	}
+
+
+	else if (shape->Type == Type::okak)
+	{
+		Top = { shape->Position[4] };
+		Left = { shape->Position[6] };
+		RIGHT = { shape->Position[15] };
+		Bottom = { shape->Position[10] };
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////
+	for (int i = 0; i < v_shape.size(); ++i)
+	{
+		if (shape == v_shape[i])
+		{
+			continue;
+		}
+
+		if (v_shape[i]->Type == Type::dot)
+		{
+			Top2 = v_shape[i]->Position[1] + 0.02f;
+			Left2 = v_shape[i]->Position[0] - 0.02f;
+			RIGHT2 = v_shape[i]->Position[0] + 0.02f;
+			Bottom2 = v_shape[i]->Position[1] - 0.02f;
+		}
+
+		else if (v_shape[i]->Type == Type::line)
+		{
+			Top2      =  v_shape[i]->Position[1] + 0.02f ;
+			Left2     =	  v_shape[i]->Position[0] - 0.02f ;
+			RIGHT2    =	  v_shape[i]->Position[3] + 0.02f;
+			Bottom2   =	  v_shape[i]->Position[4] - 0.02f;
+		}
+
+
+		else if (v_shape[i]->Type == Type::triangle)
+		{
+			Top2 = { v_shape[i]->Position[1] };
+			Left2 = { v_shape[i]->Position[3] };
+			RIGHT2 = { v_shape[i]->Position[6] };
+			Bottom2 = { v_shape[i]->Position[4] };
+
+		}
+
+		else if (v_shape[i]->Type == Type::rectangle)
+		{
+			Top2 = { v_shape[i]->Position[1] };
+			Left2 = { v_shape[i]->Position[0] };
+			RIGHT2 = { v_shape[i]->Position[6] };
+			Bottom2 = { v_shape[i]->Position[7] };
+
+		}
+		
+		else if (v_shape[i]->Type == Type::okak)
+		{
+			Top2 = { v_shape[i]->Position[4] };
+			Left2 = { v_shape[i]->Position[6] };
+			RIGHT2 = { v_shape[i]->Position[15] };
+			Bottom2 = { v_shape[i]->Position[10] };
+		}
+
+		if (Left < RIGHT2 && RIGHT > Left2 &&
+			Top > Bottom2 && Bottom < Top2)
+		{
+
+			int counting =(shape->Count + v_shape[i]->Count)% 6;
+
+			if (counting == 0)
+			{
+				counting = 1;
+			}
+			
+			if (counting == 1) //점다시 생성
+			{
+				delete[] shape->Position;
+				shape->Type = Type::dot;
+				shape->Count = 1;
+				shape->Position = new float[3];
+
+				shape->Position[0] = mouse_pos.x;
+				shape->Position[1] = mouse_pos.y;
+				shape->Position[2] = 0;
+				
+				shape->vao.Bind();
+				shape->vbo.Gen(shape->Position, 3 * sizeof(float));
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+				glEnableVertexAttribArray(0);
+
+			}
+
+			else if (counting == 2) //선 다시생성
+			{
+			
+				shape->Size = 0.1f;
+				delete[] shape->Position;
+				shape->Type = Type::line;
+				shape->Count = 2;
+				shape->Position = new float[6];
+
+				shape->Position[0] = mouse_pos.x - shape->Size;
+				shape->Position[1] = mouse_pos.y;
+				shape->Position[2] = 0;
+
+				shape->Position[3] = mouse_pos.x + shape->Size;
+				shape->Position[4] = mouse_pos.y;
+				shape->Position[5] = 0;
+
+				shape->vao.Bind();
+				shape->vbo.Gen(shape->Position, 6 * sizeof(float));
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+				glEnableVertexAttribArray(0);
+			}
+
+			else if (counting == 3) //삼각형 다시생성
+			{
+				shape->Size = 0.1f;
+				delete[] shape->Position;
+				shape->Type = Type::triangle;
+				shape->Count = 3;
+				shape->Position = new float[9];
+
+				shape->Center.x = mouse_pos.x;
+				shape->Center.y = mouse_pos.y;
+
+				shape->Position[0] = shape->Center.x;
+				shape->Position[1] = shape->Center.y + shape->Size;
+				shape->Position[2] = 0;
+
+				shape->Position[3] = shape->Center.x - shape->Size;
+				shape->Position[4] = shape->Center.y - shape->Size;
+				shape->Position[5] = 0;
+
+				shape->Position[6] = shape->Center.x + shape->Size;
+				shape->Position[7] = shape->Center.y - shape->Size;
+				shape->Position[8] = 0;
+
+				shape->vao.Bind();
+				shape->vbo.Gen(shape->Position, 9 * sizeof(float));
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+				glEnableVertexAttribArray(0);
+
+			}
+
+			else if (counting == 4) //사각형 다시생성
+			{
+				shape->Size = 0.1f;
+				delete[] shape->Position;
+				shape->Type = Type::rectangle;
+				shape->Count = 4;
+				shape->Position = new float[12];
+				shape->Center.x = mouse_pos.x;
+				shape->Center.y = mouse_pos.y;
+
+				shape->Position[0] = shape->Center.x - shape->Size;
+				shape->Position[1] = shape->Center.y + shape->Size;
+				shape->Position[2] = 0;
+
+				shape->Position[3] = shape->Center.x - shape->Size;
+				shape->Position[4] = shape->Center.y - shape->Size;
+				shape->Position[5] = 0;
+
+				shape->Position[6] = shape->Center.x + shape->Size;
+				shape->Position[7] = shape->Center.y - shape->Size;
+				shape->Position[8] = 0;
+
+				shape->Position[9] = shape->Center.x + shape->Size;
+				shape->Position[10] = shape->Center.y + shape->Size;
+				shape->Position[11] = 0;
+
+				shape->vao.Bind();
+				shape->vbo.Gen(shape->Position, 12 * sizeof(float));
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+				glEnableVertexAttribArray(0);
+			}
+
+			else if (counting == 5)
+			{
+				shape->Size = 0.1f;
+				delete[] shape->Position;
+				shape->Type = Type::okak;
+				shape->Count = 5;
+				shape->Position = new float[21];
+
+
+				shape->Center.x = mouse_pos.x;
+				shape->Center.y = mouse_pos.y;
+
+				shape->Position[0] = shape->Center.x;
+				shape->Position[1] = shape->Center.y;
+				shape->Position[2] = 0;
+
+				//1
+				shape->Position[3] = shape->Center.x;
+				shape->Position[4] = shape->Center.y + shape->Size;
+				shape->Position[5] = 0;
+
+				//2
+				shape->Position[6] = shape->Center.x - shape->Size;
+				shape->Position[7] = shape->Center.y;
+				shape->Position[8] = 0;
+
+				//3
+				shape->Position[9] = shape->Center.x - shape->Size / 2;
+				shape->Position[10] = shape->Center.y - shape->Size;
+				shape->Position[11] = 0;
+
+				//4
+				shape->Position[12] = shape->Center.x + shape->Size / 2;
+				shape->Position[13] = shape->Center.y - shape->Size;
+				shape->Position[14] = 0;
+
+				//5
+				shape->Position[15] = shape->Center.x + shape->Size;
+				shape->Position[16] = shape->Center.y;
+				shape->Position[17] = 0;
+
+				//1
+				shape->Position[18] = shape->Center.x;
+				shape->Position[19] = shape->Center.y + shape->Size;
+				shape->Position[20] = 0;
+
+				shape->vao.Bind();
+				shape->vbo.Gen(shape->Position, 21 * sizeof(float));
+				glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+				glEnableVertexAttribArray(0);
+			}
+			
+			delete v_shape[i]->Position;
+			delete v_shape[i]->Color;
+			delete v_shape[i];
+			v_shape[i] = nullptr;
+			v_shape.erase(std::remove(v_shape.begin(), v_shape.end(), nullptr), v_shape.end());
+
+			return;
+		}
+		
+	}
+}
+
+
 void p12::update_Pos()
 {
 
 	Pos mouse_pos = MouseManager::GetInstance()->GetMousePos();
-	static bool find = false;
 	bool click = MouseManager::GetInstance()->Getboolclick();
-
 
 
 	if (click)
@@ -112,6 +390,8 @@ void p12::update_Pos()
 					v_shape[i]->vbo.Gen(v_shape[i]->Position, 3 * sizeof(float));
 					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
 					glEnableVertexAttribArray(0);
+
+					update_collusion(v_shape[i]);
 				}
 			}
 
@@ -119,10 +399,10 @@ void p12::update_Pos()
 			{
 				float size = 0.04f;
 
-				float Top = { v_shape[i]->Position[1] + size };
-				float Left = { v_shape[i]->Position[0] - size };
-				float RIGHT = { v_shape[i]->Position[3] + size };
-				float Bottom = { v_shape[i]->Position[4] - size };
+				float Top =     { v_shape[i]->Position[1] + size };
+				float Left =    { v_shape[i]->Position[0] - size };
+				float RIGHT =   { v_shape[i]->Position[3] + size };
+				float Bottom =  { v_shape[i]->Position[4] - size };
 
 				if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
 				{
@@ -137,12 +417,13 @@ void p12::update_Pos()
 					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
 					glEnableVertexAttribArray(0);
 			
+					update_collusion(v_shape[i]);
 				}
 			}
 
 			else if (v_shape[i]->Type == Type::triangle)
 			{
-				float size = 0.04f;
+				
 
 				float Top = { v_shape[i]->Position[1] };
 				float Left = { v_shape[i]->Position[3] };
@@ -171,12 +452,13 @@ void p12::update_Pos()
 					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
 					glEnableVertexAttribArray(0);
 			
+					update_collusion(v_shape[i]);
 				}
 			}
 
 			else if (v_shape[i]->Type == Type::rectangle)
 			{
-				float size = 0.04f;
+				
 
 				float Top = { v_shape[i]->Position[1] };
 				float Left = { v_shape[i]->Position[0] };
@@ -209,6 +491,7 @@ void p12::update_Pos()
 					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
 					glEnableVertexAttribArray(0);
 			
+					update_collusion(v_shape[i]);
 				}
 			}
 
@@ -264,6 +547,7 @@ void p12::update_Pos()
 					glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
 					glEnableVertexAttribArray(0);
 				
+					update_collusion(v_shape[i]);
 				}
 			}
 		}
@@ -279,7 +563,7 @@ void p12::make_dot()
 		Shape* dot = new Shape;
 		dot->Center = { uid(dre),uid(dre) };
 		dot->Count = 1;
-		dot->Size = 0.0f;
+		dot->Size = 0.1f;
 		dot->Type = Type::dot;
 
 		dot->Position = new float[3];
@@ -497,7 +781,7 @@ void p12::make_okak()
 	{
 		Shape* okak = new Shape;
 		okak->Center = { uid(dre),uid(dre) };
-		okak->Count = 4;
+		okak->Count = 5;
 		okak->Size = 0.1f;
 		okak->Type = Type::okak;
 
