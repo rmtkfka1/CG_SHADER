@@ -29,6 +29,7 @@ public:
     //¸ÇÃ³À½ ´­·¶´Ù°¡ ¶ª´ë
     bool GetbuttonUp(unsigned char key) { return _states[static_cast<unsigned char>(key)] == KeyState::UP; }
     
+    bool Turnon(unsigned char key) { return turnandoff[key]; }
 
     static void KeyboardCallback(unsigned char key, int x, int y);
     static void KeyboardUpCallback(unsigned char key, int x, int y);
@@ -38,6 +39,8 @@ public:
 
 private:
    KeyManager();
+
+   static bool turnandoff[256];
    static KeyState _states[256];
 };
 

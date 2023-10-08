@@ -13,8 +13,10 @@ public:
 
 	void Update();
 
-	Pos GetMousePos() { return m_pos; }
-	bool Getboolclick() { return m_click; }
+
+	Pos Getdiff() const { return m_diff; }
+	Pos& GetMousePos() const { return m_pos; }
+	bool& Getboolclick() const { return m_click; }
 
 private:
 
@@ -23,7 +25,8 @@ private:
 
 	static Pos m_pos;
 	static bool m_click;
-
+	static Pos m_diff;
+	static Pos beforePos;
 
 };
 

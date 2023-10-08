@@ -1,21 +1,18 @@
 #pragma once
-
-
-class p13 : public Object
+class p133:public Object
 {
-
 public:
 
-	p13();
-	~p13();
+
+	p133();
+	~p133();
 
 	void Init() override;
 	void Update() override;
 	void Render() override;
 
+	int checkbox(); 
 	Pos diff;
-private:
 
-	int checkbox();
 };
 

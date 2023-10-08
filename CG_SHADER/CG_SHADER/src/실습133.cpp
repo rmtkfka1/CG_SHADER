@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "p13.h"
+#include "p133.h"
 #include "ObjectManager.h"
-p13 p;
+p133 p;
 
 void DrawScene()
 {
@@ -12,11 +12,11 @@ void DrawScene()
 }
 
 
-int main(int argc ,char ** argv)
+int main(int argc, char** argv)
 {
 	Core::GetInstance()->Init(argc, argv, 800, 600);
 	Core::GetInstance()->Render(DrawScene);
-	
+
 	KeyManager::GetInstance()->Update();
 	MouseManager::GetInstance()->Update();
 
@@ -24,16 +24,12 @@ int main(int argc ,char ** argv)
 	shader.Bind();
 	p.Init();
 
-	auto& t = ObjectManger::GetInstance()->GetTri();
-	t.push_back(&p);
-	cout << &p << endl;
+
 	while (1)
 	{
-	
+		
 		p.Update();
 		glutPostRedisplay();
 		glutMainLoopEvent();
 	}
 }
-
-

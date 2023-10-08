@@ -3,7 +3,7 @@
 
 
 KeyState KeyManager::_states[256];
-
+ bool KeyManager::turnandoff[256];
 
 void KeyManager::Update()
 {
@@ -16,6 +16,11 @@ KeyManager::KeyManager()
 	for (int i = 0; i < 256; ++i)
 	{
 		_states[i] = KeyState::NONE;
+	}
+
+	for (int i = 0; i < 256; ++i)
+	{
+		turnandoff[i] = false;
 	}
 	
 }
@@ -30,6 +35,9 @@ void KeyManager::KeyboardCallback(unsigned char key, int x, int y)
 		_states[key] = KeyState::PRESS;
 	else
 		_states[key] = KeyState::DOWN;
+
+
+	turnandoff[key] = !turnandoff[key];
 
 
 }

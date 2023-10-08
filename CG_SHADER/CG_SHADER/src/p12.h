@@ -13,10 +13,6 @@ enum class Type
 
 struct Shape
 {
-
-
-
-
 	Pos Center;
 	float Size;
 	float* Position; //포지션값
@@ -52,12 +48,12 @@ private:
 	void play_animation();
 	void make_dot();
 	void make_line();
-	void make_triangle();
+	void make_triangle(); 
 	void make_rectangle();
 	void make_okak();
 
 	vector<Shape*> v_shape;
-
+	bool hey; //애니매이션 클릭 끄고 키기
 
 };
 

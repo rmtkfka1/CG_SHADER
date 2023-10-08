@@ -70,7 +70,7 @@ void p13::Update()
 		}
 
 		else if (num == 3) //3사분면 작업
-		{
+		{ 
 			m_position[3] = mouse_pos.x;
 			m_position[4] = mouse_pos.y;
 		}
@@ -78,6 +78,19 @@ void p13::Update()
 		{
 			m_position[6] = mouse_pos.x;
 			m_position[7] = mouse_pos.y;
+		}
+
+		else if (num == 0)
+		{
+			m_position[0] += diff.x;
+			m_position[3] += diff.x;
+			m_position[6] += diff.x;
+			m_position[9] += diff.x;
+			
+			m_position[1] += diff.y;
+			m_position[4] += diff.y;
+			m_position[7] += diff.y;
+			m_position[10] += diff.y;
 		}
 	}
 
@@ -103,66 +116,71 @@ int p13::checkbox()
 	// 1사분면
 	//////////////////////////////////////////////////////////////////
 
+
+	float Top = { m_position[1] + size };
+	float Left = { m_position[0] - size };
+	float RIGHT = { m_position[0] + size };
+	float Bottom = { m_position[1] - size };
+
+	if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
 	{
-
-		float Top = { m_position[1] + size };
-		float Left = { m_position[0] - size };
-		float RIGHT = { m_position[0] + size };
-		float Bottom = { m_position[1] - size };
-
-		if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
-		{
-			return 1;
-		}
+		return 1;
 	}
+
 
 	// 3사분면 
 	//////////////////////////////////////////////////////////////////
+
+
+	 Top = { m_position[4] + size };
+	 Left = { m_position[3] - size };
+	 RIGHT = { m_position[3] + size };
+	 Bottom = { m_position[4] - size };
+
+	if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
 	{
-
-		float Top = { m_position[4] + size };
-		float Left = { m_position[3] - size };
-		float RIGHT = { m_position[3] + size };
-		float Bottom = { m_position[4] - size };
-
-		if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
-		{
-			return 3;
-		}
+		return 3;
 	}
+
 
 
 	// 4사분면 
 	////////////////////////////////////////////////////////////////////
 
+
+
+	 Top = { m_position[7] + size };
+	 Left = { m_position[6] - size };
+	 RIGHT = { m_position[6] + size };
+	 Bottom = { m_position[7] - size };
+
+	if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
 	{
-
-		float Top = { m_position[7] + size };
-		float Left = { m_position[6] - size };
-		float RIGHT = { m_position[6] + size };
-		float Bottom = { m_position[7] - size };
-
-		if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
-		{
-			return 4;
-		}
+		return 4;
 	}
 
 
 	// 2사분면  
 	//////////////////////////////////////////////////////////////////
 
+	 Top = { m_position[10] + size };
+	 Left = { m_position[9] - size };
+	 RIGHT = { m_position[9] + size };
+	 Bottom = { m_position[10] - size };
+
+	if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
 	{
-
-		float Top = { m_position[10] + size };
-		float Left = { m_position[9] - size };
-		float RIGHT = { m_position[9] + size };
-		float Bottom = { m_position[10] - size };
-
-		if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
-		{
-			return 2;
-		}
+		return 2;
 	}
 
-}
+
+	Top = { m_position[1] + size };
+	Left = { m_position[0] - size };
+	RIGHT = { m_position[6] + size };
+	Bottom = { m_position[7] - size };
+	
+	if (Left < mouse_pos.x && mouse_pos.x < RIGHT && mouse_pos.y < Top && mouse_pos.y > Bottom)
+	{
+		return 0;
+	}
+} 
