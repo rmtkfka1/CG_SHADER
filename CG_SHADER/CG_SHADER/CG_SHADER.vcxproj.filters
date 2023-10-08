@@ -41,14 +41,14 @@
     <Filter Include="03,Manager">
       <UniqueIdentifier>{85a7d254-0cbc-4d21-ae3e-a8673cebff75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object\실습13">
-      <UniqueIdentifier>{9c9529ef-a3d7-40c3-84bd-1f59520988ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.Object\00.Object">
       <UniqueIdentifier>{3c8f9fe8-8dad-4e39-bbef-a0e51e9b21f9}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.Object\실습12">
       <UniqueIdentifier>{65884de0-e858-4aba-9f03-bef770200dca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\실습13">
+      <UniqueIdentifier>{9c9529ef-a3d7-40c3-84bd-1f59520988ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

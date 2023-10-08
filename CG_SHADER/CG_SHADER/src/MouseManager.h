@@ -13,8 +13,8 @@ public:
 
 	void Update();
 
-	Pos GetMousePos() { return m_pos; }
-	bool Getboolclick() { return m_click; }
+	Pos& GetMousePos() const { return m_pos; }
+	bool& Getboolclick() const { return m_click; }
 
 private:
 

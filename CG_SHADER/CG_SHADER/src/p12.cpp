@@ -365,18 +365,25 @@ void p12::update_collusion(Shape* shape)
 void p12::update_Pos()
 {
 
-	Pos mouse_pos = MouseManager::GetInstance()->GetMousePos();
-	bool click = MouseManager::GetInstance()->Getboolclick();
+	const Pos& mouse_pos = MouseManager::GetInstance()->GetMousePos();
+	const bool& click = MouseManager::GetInstance()->Getboolclick();
 
+	hey =KeyManager::GetInstance()->Turnon('t');
 
 	if (click)
 	{
 		for (int i = 0; i < v_shape.size(); ++i)
 		{
-			/*if (v_shape[i]->animation)
+
+
+			if (hey)
 			{
-				continue;
-			}*/
+				if (v_shape[i]->animation)
+				{
+					continue;
+				}
+			}
+
 
 			if (v_shape[i]->Type == Type::dot)
 			{

@@ -21,7 +21,9 @@ int main(int argc, char** argv)
 	KeyManager::GetInstance()->Update();
 	MouseManager::GetInstance()->Update();
 
-	Shader* shader = new Shader("res/shader/Shader1.vs", "res/shader/Shader1.fs");
+	unique_ptr<Shader> shader = make_unique<Shader>("res/shader/Shader1.vs", "res/shader/Shader1.fs");
+
+
 	shader->Bind();
 	p.Init();
 	srand(time(NULL));
