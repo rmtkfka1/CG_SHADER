@@ -13,7 +13,7 @@ public:
 	void Update() override;
 	void Render() override;
 
-	Pos diff;
+
 private:
 
 	int checkbox();

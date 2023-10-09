@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "p13.h"
-#include "ObjectManager.h"
 p13 p;
 
 void DrawScene()
@@ -16,17 +15,14 @@ int main(int argc ,char ** argv)
 {
 	Core::GetInstance()->Init(argc, argv, 800, 600);
 	Core::GetInstance()->Render(DrawScene);
-	
+
 	KeyManager::GetInstance()->Update();
 	MouseManager::GetInstance()->Update();
 
-	Shader shader("res/shader/Shader1.vs", "res/shader/Shader1.fs");
-	shader.Bind();
+	Shader* shader = new Shader("res/shader/Shader1.vs", "res/shader/Shader1.fs");
+	shader->Bind();
 	p.Init();
 
-	auto& t = ObjectManger::GetInstance()->GetTri();
-	t.push_back(&p);
-	cout << &p << endl;
 	while (1)
 	{
 	
