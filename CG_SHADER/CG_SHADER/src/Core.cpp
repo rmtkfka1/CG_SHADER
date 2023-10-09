@@ -45,20 +45,20 @@ void Core::Render(void (*funcptr)(void))
 
 }
 
-//void Core::Keyboard(void (*funcptr)(unsigned char, int, int))
-//{
-//	glutKeyboardFunc(funcptr);
-//}
-//
-//void Core::mousein(void(*funcptr)(int button, int state, int x, int y))
-//{
-//	glutMouseFunc(funcptr);
-//}
-//
-//void Core::mouse_move(void(*funcptr)(int x, int y))
-//{
-//	glutMotionFunc(funcptr);
-//}
+void Core::Keyboard(void (*funcptr)(unsigned char, int, int))
+{
+	glutKeyboardFunc(funcptr);
+}
+
+void Core::mousein(void(*funcptr)(int button, int state, int x, int y))
+{
+	glutMouseFunc(funcptr);
+}
+
+void Core::mouse_move(void(*funcptr)(int x, int y))
+{
+	glutMotionFunc(funcptr);
+}
 
 Pos Core::convert(int x, int y, int WINDOW_WIDTH, int WINDOW_HEIGHT)
 {
