@@ -589,14 +589,16 @@ void p12::play_animation()
 	Pos left = { 1,0 };
 	Pos right = { -1, 0 };
 
+	
 
 	for (int i = 0; i < v_shape.size(); ++i)
 	{
+		
 		if (!v_shape[i]->animation)
 		{
-			continue;
+				continue;
 		}
-
+		
 		if (v_shape[i]->Type == Type::dot)
 		{
 			v_shape[i]->Position[0] += v_shape[i]->going_vector.x;

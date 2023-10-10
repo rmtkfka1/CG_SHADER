@@ -98,6 +98,7 @@ void p13::Render()
 int p13::checkbox()
 {
 	Pos mouse_pos = MouseManager::GetInstance()->GetMousePos();
+
 	float size = 0.1f; //바운딩박스 크기조절
 
 	// 1사분면

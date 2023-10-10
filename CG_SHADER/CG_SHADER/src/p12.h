@@ -23,7 +23,7 @@ struct Shape
 	Type Type; //모양 
 	int Count;  //정점개수 
 	bool animation = false;
-	Pos going_vector = { ((float)rand() / RAND_MAX) * (0.014f) - 0.005f,((float)rand() / RAND_MAX) * (0.014f) - 0.005f};
+	Pos going_vector = { ((float)rand() / RAND_MAX) * (0.0014f) - 0.0005f,((float)rand() / RAND_MAX) * (0.0014f) - 0.0005f};
 };
 
 class p12 

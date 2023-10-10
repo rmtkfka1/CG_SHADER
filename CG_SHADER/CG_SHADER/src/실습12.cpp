@@ -23,6 +23,10 @@ int main(int argc, char** argv)
 
 	unique_ptr<Shader> shader = make_unique<Shader>("res/shader/Shader1.vs", "res/shader/Shader1.fs");
 
+	{
+		p12 p;
+
+	}
 
 	shader->Bind();
 	p.Init();

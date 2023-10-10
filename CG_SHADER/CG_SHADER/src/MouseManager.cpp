@@ -29,10 +29,9 @@ void MouseManager::MousemoveCallBack(int x, int y)
 {
 	Pos pos = Core::GetInstance()->convert(x, y, 800, 600);
 
-	if (m_click)
-	{
-		m_pos = pos;
-	}
+	
+	m_pos = pos;
+	
 }
 
 
