@@ -13,25 +13,23 @@ public:
 
 	void Update();
 
-<<<<<<< HEAD
-	Pos& GetMousePos() const { return m_pos; }
-	bool& Getboolclick() const { return m_click; }
-=======
-	Pos& GetDiff() const { return m_diff; }
-	Pos& GetMousePos() const { return m_pos; }
+
+	vec2& GetMousePos() const { return m_pos; }
 	bool& Getboolclick() const { return m_click; }
 
->>>>>>> 1c0dca82b24112ca3d9f4281b601d6d242cf4be7
+	vec2& GetDiff() const { return m_diff; }
+
+
 
 private:
 
 	static void MouseCallBack(int button ,int state , int x, int y);
 	static void MousemoveCallBack(int x, int y);
 
-	static Pos m_pos;
+	static vec2 m_pos;
 	static bool m_click;
-	static Pos m_diff;
-	static Pos m_beforePos;
+	static vec2 m_diff;
+	static vec2 m_beforePos;
 
 };
 

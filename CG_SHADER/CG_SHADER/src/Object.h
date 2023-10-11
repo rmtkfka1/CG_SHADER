@@ -14,8 +14,8 @@ public:
 
 protected:
 
-	Pos m_center{}; // center pos 
-	Pos m_size{}; // 사이즈 값 
+	vec2 m_center{}; // center pos 
+	vec2 m_size{}; // 사이즈 값 
 	VAO m_vao;  
 	VBO m_vbo; //정점값
 	VBO m_vbo2; // 색상값

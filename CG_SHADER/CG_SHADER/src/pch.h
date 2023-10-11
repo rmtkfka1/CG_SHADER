@@ -22,6 +22,7 @@ using namespace std;
 #include <fstream>
 #include <cstring>
 #include <time.h>
+#include <utility>
 
 ///////////////////////////
 #include "Types.h"
@@ -34,3 +35,4 @@ using namespace std;
 #include "KeyManager.h"
 #include "MouseManager.h"
 #include "Object.h"
+#include "VertexBufferLayout.h"

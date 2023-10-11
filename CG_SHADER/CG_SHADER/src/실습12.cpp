@@ -23,13 +23,7 @@ int main(int argc, char** argv)
 
 	unique_ptr<Shader> shader = make_unique<Shader>("res/shader/Shader1.vs", "res/shader/Shader1.fs");
 
-<<<<<<< HEAD
-	{
-		p12 p;
 
-	}
-=======
->>>>>>> 1c0dca82b24112ca3d9f4281b601d6d242cf4be7
 
 	shader->Bind();
 	p.Init();

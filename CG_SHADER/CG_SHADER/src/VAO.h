@@ -1,6 +1,9 @@
 #pragma once
 
 
+class VertexBufferLayout;
+class VBO;
+
 class VAO
 {
 
@@ -8,6 +11,8 @@ public:
 	VAO();
 	~VAO();
 
+
+	void AddBuffer(const VBO& vb, const VertexBufferLayout& layout);
 
 	void Gen();
 	void Bind() const;

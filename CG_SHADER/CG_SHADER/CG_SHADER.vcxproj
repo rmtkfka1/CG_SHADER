@@ -135,8 +135,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\p12.cpp" />
-    <ClCompile Include="src\p13.cpp" />
+    <ClCompile Include="src\Cube.cpp" />
+    <ClCompile Include="src\p14.cpp" />
+    <ClCompile Include="src\p12.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\p13.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\MouseManager.cpp" />
     <ClCompile Include="src\KeyManager.cpp" />
     <ClCompile Include="src\Core.cpp" />
@@ -153,12 +161,12 @@
     <ClCompile Include="src\VAO.cpp" />
     <ClCompile Include="src\VBO.cpp" />
     <ClCompile Include="src\실습13.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="src\연습장.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\연습장.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\실습12.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -166,8 +174,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\p12.h" />
-    <ClInclude Include="src\p13.h" />
+    <ClInclude Include="src\Cube.h" />
+    <ClInclude Include="src\p14.h" />
+    <ClInclude Include="src\p12.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\p13.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="src\MouseManager.h" />
     <ClInclude Include="src\enum.h" />
     <ClInclude Include="src\KeyManager.h" />
@@ -180,6 +196,7 @@
     <ClInclude Include="src\Utility.h" />
     <ClInclude Include="src\VAO.h" />
     <ClInclude Include="src\VBO.h" />
+    <ClInclude Include="src\VertexBufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt" />
@@ -187,6 +204,8 @@
   <ItemGroup>
     <None Include="res\shader\Shader1.fs" />
     <None Include="res\shader\Shader1.vs" />
+    <None Include="res\shader\Shader2.fs" />
+    <None Include="res\shader\Shader2.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

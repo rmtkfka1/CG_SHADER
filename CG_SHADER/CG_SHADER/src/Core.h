@@ -24,6 +24,6 @@ public:
 	void mouse_move(void (*funcptr)(int x, int y));
 
 
-	Pos convert(int x, int y,int WINDOW_WIDTH, int WINDOW_HEIGHT);
+	vec2 convert(int x, int y,int WINDOW_WIDTH, int WINDOW_HEIGHT);
 
 };

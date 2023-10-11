@@ -50,6 +50,12 @@
     <Filter Include="02.Object\실습13">
       <UniqueIdentifier>{9c9529ef-a3d7-40c3-84bd-1f59520988ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\실습14">
+      <UniqueIdentifier>{4d829a47-ccae-4b40-918c-93486fe09688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.Shape">
+      <UniqueIdentifier>{9f6e2df9-1e21-4901-9c1e-988cfdc9145f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -91,6 +97,12 @@
       <Filter>02.Object\실습12</Filter>
     </ClCompile>
     <ClCompile Include="src\실습12.cpp" />
+    <ClCompile Include="src\p14.cpp">
+      <Filter>02.Object\실습14</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cube.cpp">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -129,11 +141,20 @@
     <ClInclude Include="src\Object.h">
       <Filter>02.Object\00.Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\p13.h">
-      <Filter>02.Object\실습13</Filter>
-    </ClInclude>
     <ClInclude Include="src\p12.h">
       <Filter>02.Object\실습12</Filter>
+    </ClInclude>
+    <ClInclude Include="src\p14.h">
+      <Filter>02.Object\실습14</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cube.h">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VertexBufferLayout.h">
+      <Filter>01.OPENGL\02.VAO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\p13.h">
+      <Filter>02.Object\실습13</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +167,12 @@
       <Filter>00.res\shader</Filter>
     </None>
     <None Include="res\shader\Shader1.vs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\shader\Shader2.fs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\shader\Shader2.vs">
       <Filter>00.res\shader</Filter>
     </None>
   </ItemGroup>

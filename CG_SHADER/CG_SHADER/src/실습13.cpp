@@ -11,14 +11,21 @@ void DrawScene()
 	v[0].Bind();
 	
 	glBegin(GL_LINES);
-	glVertex2f(-1.0f, 0); // 첫 번째 점의 좌표
-	glVertex2f(1.0f, 0);   // 두 번째 점의 좌표
+	glVertex3f(-1.0f, 0,0); // 첫 번째 점의 좌표
+	glVertex3f(1.0f, 0,0);   // 두 번째 점의 좌표
 	glEnd();
 
 	glBegin(GL_LINES);
-	glVertex2f(0, 1); // 첫 번째 점의 좌표
-	glVertex2f(0, -1);   // 두 번째 점의 좌표
+	glVertex3f(0, 1,0); // 첫 번째 점의 좌표
+	glVertex3f(0, -1,0);   // 두 번째 점의 좌표
 	glEnd();
+
+
+	glBegin(GL_LINES);
+	glVertex3f(0, 0, -1); // 첫 번째 점의 좌표
+	glVertex3f(0, 0, 1);   // 두 번째 점의 좌표
+	glEnd();
+
 
 
 	v[0].Bind();

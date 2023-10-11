@@ -9,6 +9,6 @@ uniform mat4 u_model;
 
 void main()
 {
-	gl_Position = position ; 
-	v_color = vec3(1.0f,0,0);
+	gl_Position = u_model*position ; 
+	v_color = color;
 };
