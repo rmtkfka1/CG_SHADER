@@ -229,7 +229,7 @@ void p14::Update()
 
 		m_counting = 36;
 	}
-	else if (KeyManager::GetInstance()->Getbutton('c'))
+	else if (KeyManager::GetInstance()->GetbuttonDown('c'))
 	{
 
 		vector<pair<vec3, vec3>> v;

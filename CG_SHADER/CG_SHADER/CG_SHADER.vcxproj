@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\p14_4.cpp" />
     <ClCompile Include="src\Cube.cpp" />
     <ClCompile Include="src\p14.cpp" />
     <ClCompile Include="src\p12.cpp">
@@ -174,6 +175,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\p14_4.h" />
     <ClInclude Include="src\Cube.h" />
     <ClInclude Include="src\p14.h" />
     <ClInclude Include="src\p12.h">

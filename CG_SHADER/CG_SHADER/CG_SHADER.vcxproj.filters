@@ -103,6 +103,9 @@
     <ClCompile Include="src\Cube.cpp">
       <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
+    <ClCompile Include="src\p14_4.cpp">
+      <Filter>02.Object\실습14</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -155,6 +158,9 @@
     </ClInclude>
     <ClInclude Include="src\p13.h">
       <Filter>02.Object\실습13</Filter>
+    </ClInclude>
+    <ClInclude Include="src\p14_4.h">
+      <Filter>02.Object\실습14</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
