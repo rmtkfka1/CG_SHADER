@@ -13,6 +13,26 @@ void DrawScene()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	auto simple = glm::mat4(1.0f);
+	v[0].SetUniformMat4f("u_model", simple);
+
+
+	glBegin(GL_LINES);
+	glVertex3f(-1.0f, 0, 0); // 첫 번째 점의 좌표
+	glVertex3f(1.0f, 0, 0);   // 두 번째 점의 좌표
+
+
+	glVertex3f(0, 1, 0); // 첫 번째 점의 좌표
+	glVertex3f(0, -1, 0);   // 두 번째 점의 좌표
+	glEnd();
+
+
+	auto t = glm::rotate(glm::mat4(1.0f), glm::radians(20.0f), glm::vec3(1.0f, 0, 0));
+	auto t2 = glm::rotate(glm::mat4(1.0f), glm::radians(20.0f), glm::vec3(0, 1.0f, 0));
+	auto t3 = t * t2;
+
+	v[0].SetUniformMat4f("u_model", t3);
+
 	p.Render();
 
 	glutSwapBuffers();
@@ -36,11 +56,7 @@ int main(int argc, char** argv)
 	auto &temp =ObjectManager::GetInstance()->Get_P14_world();
 	temp.push_back(&p);
 
-	auto t=glm::rotate(glm::mat4(1.0f), glm::radians(20.0f), glm::vec3(1.0f, 0, 0));
-	auto t2 = glm::rotate(glm::mat4(1.0f), glm::radians(20.0f), glm::vec3(0, 1.0f, 0));
-	auto t3 = t * t2;
 
-	shader.SetUniformMat4f("u_model", t3);
 	glEnable(GL_DEPTH_TEST);
 
 	while (1)
