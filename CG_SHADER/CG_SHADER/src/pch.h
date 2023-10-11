@@ -36,3 +36,4 @@ using namespace std;
 #include "MouseManager.h"
 #include "Object.h"
 #include "VertexBufferLayout.h"
+#include "ObjectManager.h"

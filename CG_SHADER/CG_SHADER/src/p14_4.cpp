@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "p14_4.h"
-
+#include "p14_world.h"
 p14_4::p14_4()
 {
 }
@@ -19,6 +19,7 @@ void p14_4::Init()
 
 void p14_4::Update()
 {
+	auto& t = ObjectManager::GetInstance()->Get_P14_world();
 
 	float vertex[] =
 	{
@@ -44,6 +45,10 @@ void p14_4::Update()
 		m_ibo.Gen(indices, 3);
 
 		m_counting = 3;
+		m_draw = true;
+		
+		t[0]->changepalkak();
+
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('8'))
@@ -61,6 +66,8 @@ void p14_4::Update()
 		m_ibo.Gen(indices, 3);
 
 		m_counting = 3;
+		m_draw = true;
+		t[0]->changepalkak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('9'))
@@ -79,6 +86,8 @@ void p14_4::Update()
 		m_ibo.Gen(indices, 3);
 
 		m_counting = 3;
+		m_draw = true;
+		t[0]->changepalkak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('0'))
@@ -100,6 +109,8 @@ void p14_4::Update()
 		m_ibo.Gen(indices, 12);
 
 		m_counting = 12;
+		m_draw = true;
+		t[0]->changepalkak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('t'))
@@ -144,14 +155,18 @@ void p14_4::Update()
 		m_ibo.Gen(indices2, 6);
 
 		m_counting = 6;
+		m_draw = true;
+		t[0]->changepalkak();
 	}
 
-
+	
 }
 
 void p14_4::Render()
 {
-
-	glDrawElements(GL_TRIANGLES, m_counting, GL_UNSIGNED_INT, 0);
-
+	if (m_draw)
+	{
+		m_vao.Bind();
+		glDrawElements(GL_TRIANGLES, m_counting, GL_UNSIGNED_INT, 0);
+	}
 }

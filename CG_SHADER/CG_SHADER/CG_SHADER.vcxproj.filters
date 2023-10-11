@@ -83,7 +83,7 @@
     <ClCompile Include="src\KeyManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\연습장.cpp" />
+    <ClCompile Include="src\실습14.cpp" />
     <ClCompile Include="src\MouseManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
@@ -105,6 +105,12 @@
     </ClCompile>
     <ClCompile Include="src\p14_4.cpp">
       <Filter>02.Object\실습14</Filter>
+    </ClCompile>
+    <ClCompile Include="src\p14_world.cpp">
+      <Filter>02.Object\실습14</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ObjectManager.cpp">
+      <Filter>03,Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +167,12 @@
     </ClInclude>
     <ClInclude Include="src\p14_4.h">
       <Filter>02.Object\실습14</Filter>
+    </ClInclude>
+    <ClInclude Include="src\p14_world.h">
+      <Filter>02.Object\실습14</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ObjectManager.h">
+      <Filter>03,Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

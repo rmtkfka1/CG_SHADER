@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ObjectManager.cpp" />
+    <ClCompile Include="src\p14_world.cpp" />
     <ClCompile Include="src\p14_4.cpp" />
     <ClCompile Include="src\Cube.cpp" />
     <ClCompile Include="src\p14.cpp" />
@@ -165,7 +167,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\연습장.cpp">
+    <ClCompile Include="src\실습14.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -175,6 +177,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ObjectManager.h" />
+    <ClInclude Include="src\p14_world.h" />
     <ClInclude Include="src\p14_4.h" />
     <ClInclude Include="src\Cube.h" />
     <ClInclude Include="src\p14.h" />

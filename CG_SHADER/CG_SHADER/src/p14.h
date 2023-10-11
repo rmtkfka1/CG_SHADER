@@ -11,8 +11,9 @@ public:
 	void Update();
 	void Render();
 
+	void SetDraw(bool what) { m_draw = what; }
 
-protected:
+private:
 
 	vec3 m_center{}; // center pos 
 	float m_size{}; // 사이즈 값 
@@ -23,6 +24,7 @@ protected:
 	IBO m_ibo;
 
 	int m_counting = 0;
+	bool m_draw = false;
 
 
 };

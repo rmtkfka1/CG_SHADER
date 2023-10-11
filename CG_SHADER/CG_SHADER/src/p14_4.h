@@ -11,8 +11,9 @@ public:
 	void Update();
 	void Render();
 
+	void SetDraw(bool what) { m_draw = what; }
 
-protected:
+private:
 
 
 
@@ -22,6 +23,6 @@ protected:
 	IBO m_ibo;
 
 	int m_counting = 0;
-
+	bool m_draw = false;
 };
 

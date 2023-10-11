@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "p14.h"
-
+#include "p14_world.h"
 
 p14::p14()
 {
@@ -65,7 +65,7 @@ void p14::Init(vec3 center, float size)
 
 void p14::Update()
 {
-
+	auto &t =ObjectManager::GetInstance()->Get_P14_world();
 
 	float vertex[] =
 	{
@@ -107,6 +107,8 @@ void p14::Update()
 		m_ibo.Gen(indices, 6);
 
 		m_counting = 6;
+		m_draw = true;
+		t[0]->changesakak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('2'))
@@ -127,6 +129,8 @@ void p14::Update()
 		m_ibo.Gen(indices, 6);
 
 		m_counting = 6;
+		m_draw = true;
+		t[0]->changesakak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('3'))
@@ -147,6 +151,8 @@ void p14::Update()
 		m_ibo.Gen(indices, 6);
 
 		m_counting = 6;
+		m_draw = true;
+		t[0]->changesakak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('4'))
@@ -167,6 +173,8 @@ void p14::Update()
 		m_ibo.Gen(indices, 6);
 
 		m_counting = 6;
+		m_draw = true;
+		t[0]->changesakak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('5'))
@@ -188,6 +196,8 @@ void p14::Update()
 		m_ibo.Gen(indices, 12);
 
 		m_counting = 12;
+		m_draw = true;
+		t[0]->changesakak();
 	}
 
 	else if (KeyManager::GetInstance()->GetbuttonDown('6'))
@@ -228,6 +238,8 @@ void p14::Update()
 		m_ibo.Gen(indices, 36);
 
 		m_counting = 36;
+		m_draw = true;
+		t[0]->changesakak();
 	}
 	else if (KeyManager::GetInstance()->GetbuttonDown('c'))
 	{
@@ -295,15 +307,19 @@ void p14::Update()
 		m_counting = 12;
 
 		v.clear();
+		m_draw = true;
+		t[0]->changesakak();
 	}
 
+	
 
 }
 
 void p14::Render()
 {
-	m_vao.Bind();
-	glDrawElements(GL_TRIANGLES, m_counting , GL_UNSIGNED_INT, 0);
-	
-
+	if (m_draw)
+	{
+		m_vao.Bind();
+		glDrawElements(GL_TRIANGLES, m_counting, GL_UNSIGNED_INT, 0);
+	}
 }
