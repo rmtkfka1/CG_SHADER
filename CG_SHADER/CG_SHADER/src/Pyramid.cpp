@@ -20,7 +20,7 @@ void Pyramid::Init(vec3 center, float size, int mode)
 	float vertex[] =
 	{
 	
-	 m_center.x , m_center.y +m_size , m_center.z , 0.5f,1.0f,0,
+	 m_center.x , m_center.y +m_size+0.1f , m_center.z , 0.5f,1.0f,0,
 
 	 m_center.x - m_size,  m_center.y - m_size,    m_center.z - m_size,  0.5f, 0.5f, 1.0f,
 	 // Á¤Á¡ 5

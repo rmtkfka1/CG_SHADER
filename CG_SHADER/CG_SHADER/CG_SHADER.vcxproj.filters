@@ -59,6 +59,9 @@
     <Filter Include="02.Object\실습15">
       <UniqueIdentifier>{e5e9c662-f2fe-4ecb-94cd-03150cb9dc75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\실습16">
+      <UniqueIdentifier>{d0deeec9-f840-485c-a576-fa799ef1fb48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -120,6 +123,13 @@
       <Filter>02.Object\실습15</Filter>
     </ClCompile>
     <ClCompile Include="src\Pyramid.cpp">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습16.cpp" />
+    <ClCompile Include="src\cs16.cpp">
+      <Filter>02.Object\실습16</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Line.cpp">
       <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,6 +198,12 @@
       <Filter>02.Object\실습15</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyramid.h">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs16.h">
+      <Filter>02.Object\실습16</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Line.h">
       <Filter>02.Object\01.Shape</Filter>
     </ClInclude>
   </ItemGroup>

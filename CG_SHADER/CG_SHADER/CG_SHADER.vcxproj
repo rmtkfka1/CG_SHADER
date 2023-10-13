@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Line.cpp" />
+    <ClCompile Include="src\cs16.cpp" />
     <ClCompile Include="src\Pyramid.cpp" />
     <ClCompile Include="src\cs15.cpp" />
     <ClCompile Include="src\ObjectManager.cpp" />
@@ -178,11 +180,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\실습15.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\실습16.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Line.h" />
+    <ClInclude Include="src\cs16.h" />
     <ClInclude Include="src\Pyramid.h" />
     <ClInclude Include="src\cs15.h" />
     <ClInclude Include="src\ObjectManager.h" />
