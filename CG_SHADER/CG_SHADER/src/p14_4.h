@@ -16,10 +16,8 @@ public:
 private:
 
 
-
 	VAO m_vao;
 	VBO m_vbo;
-	VBO m_vbo2;
 	IBO m_ibo;
 
 	int m_counting = 0;

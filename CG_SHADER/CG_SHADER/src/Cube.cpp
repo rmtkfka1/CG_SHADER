@@ -12,10 +12,15 @@ Cube::~Cube()
 {
 }
 
-void Cube::Init(vec3 center, float size)
+void Cube::Init(vec3 center, float size , int mode )
 {
+
+
 	m_center = center;
 	m_size = size;
+	m_mode = mode;
+
+	VertexBufferLayout layout;
 
 	float vertex[] =
 	{
@@ -39,43 +44,88 @@ void Cube::Init(vec3 center, float size)
 	};
 
 
-
-	unsigned int indices[] =
+	if (mode == 0)
 	{
-		//À­¸é
-		0, 1, 2,
-		0, 2, 3,
+		unsigned int indices[] =
+		{
+			//À­¸é
+			0, 1, 2,
+			0, 2, 3,
 
-		//¹Ø¸é
-		4, 6, 5,
-		4, 7, 6,
+			//¹Ø¸é
+			4, 6, 5,
+			4, 7, 6,
 
-		//µÞ¸é
-		0, 3, 7,
-		0, 7, 4,
+			//µÞ¸é
+			0, 3, 7,
+			0, 7, 4,
 
-		//¾Õ¸é
-		1, 5, 6,
-		1, 6, 2,
+			//¾Õ¸é
+			1, 5, 6,
+			1, 6, 2,
 
-		//¿Þ¸é
-		0, 1, 5,
-		0, 5, 4,
+			//¿Þ¸é
+			0, 1, 5,
+			0, 5, 4,
 
-		//¿À¸¥¸é
-		2, 6, 7,
-		2, 7, 3,
-	};
+			//¿À¸¥¸é
+			2, 6, 7,
+			2, 7, 3,
+		};
+
+		m_vao.Gen();
+		m_vbo.Gen(vertex, sizeof(vertex));
+		layout.Push<float>(3);
+		layout.Push<float>(3);
+		m_vao.AddBuffer(m_vbo, layout);
+		m_ibo.Gen(indices, 36);
 
 
-	VertexBufferLayout layout;
+	}
 
-	m_vao.Gen();
-	m_vbo.Gen(vertex, sizeof(vertex));
-	layout.Push<float>(3);
-	layout.Push<float>(3);
-	m_vao.AddBuffer(m_vbo, layout);
-	m_ibo.Gen(indices,36);
+	else if (mode == 1)
+	{
+			unsigned int indices[] =
+			{
+				//À­¸é
+				0, 1, 2,
+				0, 2, 3,
+
+				//¹Ø¸é
+				4, 6, 5,
+				4, 7, 6,
+
+				//µÞ¸é
+				0, 3, 7,
+				0, 7, 4,
+
+				//¾Õ¸é
+				1, 5, 6,
+				1, 6, 2,
+
+				//¿Þ¸é
+				0, 1, 5,
+				0, 5, 4,
+
+				//¿À¸¥¸é
+				2, 6, 7,
+				2, 7, 3,
+
+				1,2,
+				0,4,
+				5,6
+			};
+
+			m_vao.Gen();
+			m_vbo.Gen(vertex, sizeof(vertex));
+			layout.Push<float>(3);
+			layout.Push<float>(3);
+			m_vao.AddBuffer(m_vbo, layout);
+			m_ibo.Gen(indices, 42);
+
+	}
+
+	
 
 }
 
@@ -90,7 +140,9 @@ void Cube::Update()
 void Cube::Render()
 {
 	m_vao.Bind();
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0); 
-	//glDrawArrays(GL_TRIANGLES, 0, 3);
-
+	if(m_mode==0)
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	
+	if (m_mode == 1)
+	glDrawElements(GL_LINES, 42, GL_UNSIGNED_INT, 0);
 }

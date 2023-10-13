@@ -6,7 +6,6 @@
 vector<Shader> v;
 p14_world p;
 
-
 void DrawScene()
 {
 
@@ -16,14 +15,20 @@ void DrawScene()
 	auto simple = glm::mat4(1.0f);
 	v[0].SetUniformMat4f("u_model", simple);
 
-
 	glBegin(GL_LINES);
 	glVertex3f(-1.0f, 0, 0); // 첫 번째 점의 좌표
 	glVertex3f(1.0f, 0, 0);   // 두 번째 점의 좌표
+	glEnd();
 
-
+	glBegin(GL_LINES);
 	glVertex3f(0, 1, 0); // 첫 번째 점의 좌표
 	glVertex3f(0, -1, 0);   // 두 번째 점의 좌표
+	glEnd();
+
+
+	glBegin(GL_LINES);
+	glVertex3f(0, 0, -1); // 첫 번째 점의 좌표
+	glVertex3f(0, 0, 1);   // 두 번째 점의 좌표
 	glEnd();
 
 

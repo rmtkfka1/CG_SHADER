@@ -20,6 +20,7 @@ void p14_4::Init()
 void p14_4::Update()
 {
 	auto& t = ObjectManager::GetInstance()->Get_P14_world();
+	VertexBufferLayout layout;
 
 	float vertex[] =
 	{
@@ -29,7 +30,7 @@ void p14_4::Update()
 		0.4f,0,0,0.2f,0,0
 	};
 
-	VertexBufferLayout layout;
+
 	if (KeyManager::GetInstance()->GetbuttonDown('7'))
 	{
 		unsigned int indices[] =

@@ -1,17 +1,17 @@
 #pragma once
-class Cube
-{
 
+class Pyramid
+{
 public:
 
-	Cube();
-	~Cube();
+	Pyramid();
+	~Pyramid();
 
-	void Init(vec3 center, float size , int mode); // mode ==0 솔리드  , mode ==1 와이어
+	void Init(vec3 center, float size, int mode); // mode ==0 솔리드  , mode ==1 와이어
 	void Update();
 	void Render();
 
-	
+
 
 protected:
 
@@ -21,7 +21,7 @@ protected:
 	int m_mode; // 와이어 /솔리드
 
 	VAO m_vao;
-	VBO m_vbo; 
+	VBO m_vbo;
 	IBO m_ibo;
 
 
