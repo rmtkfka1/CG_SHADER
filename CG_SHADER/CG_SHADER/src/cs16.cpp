@@ -35,51 +35,131 @@ void cs16::Render()
 	//라인긋기
 	//===================================================================================//
 	
+	
 
-	if (mode == revolve) //둘다 공전
-	{
-		cb.t1 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.revolve.y), glm::vec3(0, 1.0f, 0));
-		cb.t2 = glm::rotate(glm::mat4(1.0f), glm::radians(10.0f), glm::vec3(1.0f, 0, 0));
-		cb.result = cb.t2 * cb.t1;
+		if (mode == revolve) //둘다 공전
+		{
+			if (!change_mode)
+			{
+				cb.t1 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.revolve.y), glm::vec3(0, 1.0f, 0));
+				cb.t2 = glm::rotate(glm::mat4(1.0f), glm::radians(10.0f), glm::vec3(1.0f, 0, 0));
+				cb.result = cb.t2 * cb.t1;
 
-		v[0]->SetUniformMat4f("u_model", cb.result);
-		cb.temp = cb.result * glm::vec4(cube_m_pos.x, cube_m_pos.y, cube_m_pos.z, 1);
-		cube.Render();
+				v[0]->SetUniformMat4f("u_model", cb.result);
+				cb.temp = cb.result * glm::vec4(cube_m_pos.x, cube_m_pos.y, cube_m_pos.z, 1);
+				cube.Render();
+
+				 
+				pr.t1 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.revolve.y), glm::vec3(0, 1.0f, 0));
+				pr.t2 = glm::rotate(glm::mat4(1.0f), glm::radians(10.0f), glm::vec3(1.0f, 0, 0));
+				pr.result = pr.t2 * pr.t1;
+
+				v[0]->SetUniformMat4f("u_model", pr.result);
+				pr.temp = pr.result * glm::vec4(pr_m_pos.x, pr_m_pos.y, pr_m_pos.z, 1);
+				pyramid.Render();
+			}
+
+			if (change_mode)
+			{
+				auto trans = glm::translate(glm::mat4(1.0f), glm::vec3(cube_m_pos.x, cube_m_pos.y, cube_m_pos.z));
+				cb.t1 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.revolve.y), glm::vec3(0, 1.0f, 0));
+				cb.t2 = glm::rotate(glm::mat4(1.0f), glm::radians(10.0f), glm::vec3(1.0f, 0, 0));
+				cb.result = cb.t2 * cb.t1*trans;
+
+				cb.temp = cb.result * glm::vec4(0,0, 0, 1);
+
+				v[0]->SetUniformMat4f("u_model", cb.result);
+				GLUquadricObj* qobj = gluNewQuadric(); // 객체 생성하기
+				gluQuadricDrawStyle(qobj, GLU_LINE);
+				gluQuadricNormals(qobj, GLU_SMOOTH);
+				gluQuadricOrientation(qobj, GLU_OUTSIDE);
+				gluSphere(qobj, 0.2, 50, 50);
+				gluDeleteQuadric(qobj);
 
 
-		pr.t1 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.revolve.y), glm::vec3(0, 1.0f, 0));
-		pr.t2 = glm::rotate(glm::mat4(1.0f), glm::radians(10.0f), glm::vec3(1.0f, 0, 0));
-		pr.result = pr.t2 * pr.t1;
+				auto trans2 = glm::translate(glm::mat4(1.0f), glm::vec3(pr_m_pos.x, pr_m_pos.y, pr_m_pos.z));
+				pr.t1 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.revolve.y), glm::vec3(0, 1.0f, 0));
+				pr.t2 = glm::rotate(glm::mat4(1.0f), glm::radians(10.0f), glm::vec3(1.0f, 0, 0));
+				pr.result = pr.t2 * pr.t1* trans2;
 
-		v[0]->SetUniformMat4f("u_model", pr.result);
-		pr.temp = pr.result * glm::vec4(pr_m_pos.x, pr_m_pos.y, pr_m_pos.z, 1);
-		pyramid.Render();
+				v[0]->SetUniformMat4f("u_model", pr.result);
+				pr.temp = pr.result * glm::vec4(0, 0, 0, 1);
+				
+				GLUquadricObj* qobj2= gluNewQuadric(); // 객체 생성하기
+				gluQuadricDrawStyle(qobj2, GLU_LINE); // 도형 스타일
+				gluQuadricNormals(qobj2, GLU_SMOOTH);
+				gluQuadricOrientation(qobj2, GLU_OUTSIDE); 
+				gluCylinder(qobj2, 0.01, 0.2, 0.3, 20, 30);// 객체 만들기
+				gluDeleteQuadric(qobj2);
+			}
 
-	}
+		}
 
 
 
-	else if (mode == Mode::rotate) // 둘다 자전
-	{
-		cb.goto00 = glm::translate(glm::mat4(1.0f), glm::vec3(-cb.temp.x, -cb.temp.y, -cb.temp.z));
-		cb.t3 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.rotate.y), glm::vec3(0, 1.0f, 0));
-		cb.t4 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.rotate.x), glm::vec3(1.0f, 0, 0));
-		cb.backtopos = glm::translate(glm::mat4(1.0f), glm::vec3(cb.temp.x, cb.temp.y, cb.temp.z));
+		else if (mode == Mode::rotate) // 둘다 자전
+		{
+			if (!change_mode)
+			{
+				cb.goto00 = glm::translate(glm::mat4(1.0f), glm::vec3(-cb.temp.x, -cb.temp.y, -cb.temp.z));
+				cb.t3 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.rotate.y), glm::vec3(0, 1.0f, 0));
+				cb.t4 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.rotate.x), glm::vec3(1.0f, 0, 0));
+				cb.backtopos = glm::translate(glm::mat4(1.0f), glm::vec3(cb.temp.x, cb.temp.y, cb.temp.z));
 
-		cb.result2 = cb.backtopos * cb.t4*cb.t3 * cb.goto00 * cb.result;
-		v[0]->SetUniformMat4f("u_model", cb.result2);
-		cube.Render();
+				cb.result2 = cb.backtopos * cb.t4 * cb.t3 * cb.goto00 * cb.result;
+				v[0]->SetUniformMat4f("u_model", cb.result2);
+				cube.Render();
 
-		pr.goto00 = glm::translate(glm::mat4(1.0f), glm::vec3(-pr.temp.x, -pr.temp.y, -pr.temp.z));
-		pr.t3 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.rotate.y), glm::vec3(0, 1.0f, 0));
-		pr.t4 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.rotate.x), glm::vec3(1.0f, 0, 0));
-		pr.backtopos = glm::translate(glm::mat4(1.0f), glm::vec3(pr.temp.x, pr.temp.y, pr.temp.z));
+				pr.goto00 = glm::translate(glm::mat4(1.0f), glm::vec3(-pr.temp.x, -pr.temp.y, -pr.temp.z));
+				pr.t3 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.rotate.y), glm::vec3(0, 1.0f, 0));
+				pr.t4 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.rotate.x), glm::vec3(1.0f, 0, 0));
+				pr.backtopos = glm::translate(glm::mat4(1.0f), glm::vec3(pr.temp.x, pr.temp.y, pr.temp.z));
 
-		pr.result2 = pr.backtopos * pr.t4 * pr.t3 * pr.goto00 * pr.result;
-		v[0]->SetUniformMat4f("u_model", pr.result2);
-		pyramid.Render();
+				pr.result2 = pr.backtopos * pr.t4 * pr.t3 * pr.goto00 * pr.result;
+				v[0]->SetUniformMat4f("u_model", pr.result2);
+				pyramid.Render();
+			}
 
-	}
+			else
+			{
+				auto trans = glm::translate(glm::mat4(1.0f), glm::vec3(cube_m_pos.x, cube_m_pos.y, cube_m_pos.z));
+				cb.goto00 = glm::translate(glm::mat4(1.0f), glm::vec3(-cb.temp.x, -cb.temp.y, -cb.temp.z));
+				cb.t3 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.rotate.y), glm::vec3(0, 1.0f, 0));
+				cb.t4 = glm::rotate(glm::mat4(1.0f), glm::radians(cb.rotate.x), glm::vec3(1.0f, 0, 0));
+				cb.backtopos = glm::translate(glm::mat4(1.0f), glm::vec3(cb.temp.x, cb.temp.y, cb.temp.z));
+
+				cb.result2 = cb.backtopos * cb.t4 * cb.t3 * cb.goto00 * cb.result ;
+				v[0]->SetUniformMat4f("u_model", cb.result2);
+			
+				GLUquadricObj* qobj = gluNewQuadric(); // 객체 생성하기
+				gluQuadricDrawStyle(qobj, GLU_LINE);
+				gluQuadricNormals(qobj, GLU_SMOOTH);
+				gluQuadricOrientation(qobj, GLU_OUTSIDE);
+				gluSphere(qobj, 0.2, 50, 50);
+				gluDeleteQuadric(qobj);
+
+
+				pr.goto00 = glm::translate(glm::mat4(1.0f), glm::vec3(-pr.temp.x, -pr.temp.y, -pr.temp.z));
+				pr.t3 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.rotate.y), glm::vec3(0, 1.0f, 0));
+				pr.t4 = glm::rotate(glm::mat4(1.0f), glm::radians(pr.rotate.x), glm::vec3(1.0f, 0, 0));
+				pr.backtopos = glm::translate(glm::mat4(1.0f), glm::vec3(pr.temp.x, pr.temp.y, pr.temp.z));
+
+				pr.result2 = pr.backtopos * pr.t4 * pr.t3 * pr.goto00 * pr.result;
+				v[0]->SetUniformMat4f("u_model", pr.result2);
+			
+				GLUquadricObj* qobj2 = gluNewQuadric(); // 객체 생성하기
+				gluQuadricDrawStyle(qobj2, GLU_LINE); // 도형 스타일
+				gluQuadricNormals(qobj2, GLU_SMOOTH);
+				gluQuadricOrientation(qobj2, GLU_OUTSIDE);
+				gluCylinder(qobj2, 0.01, 0.2, 0.3, 20, 30);// 객체 만들기
+				gluDeleteQuadric(qobj2);
+
+
+			}
+		}
+	
+
+	
 
 	
 	
@@ -100,9 +180,11 @@ void cs16::Update_key(unsigned char key, int x, int y)
 	auto& v = ObjectManager::GetInstance()->Get_Shader();
 	if (key == 'r') //둘다 양의 뱡향으로 공전함
 	{
-		mode = revolve;
-		cb.revolve.y += 10.0f;
-		pr.revolve.y += 10.0f;
+		
+			mode = revolve;
+			cb.revolve.y += 10.0f;
+			pr.revolve.y += 10.0f;
+		
 	}
 
 	if (key == 'R') //둘다 음의 방향으로 공전함
@@ -247,6 +329,10 @@ void cs16::Update_key(unsigned char key, int x, int y)
 		pr_m_pos = { 0.9f,0.3f,0 };
 	}
 
+	if (key == 'c')
+	{
+		change_mode = !change_mode;
+	}
 
 	glutPostRedisplay();
 }

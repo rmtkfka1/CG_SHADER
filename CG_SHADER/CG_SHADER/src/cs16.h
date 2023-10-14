@@ -58,6 +58,7 @@ private:
 	Mode mode;
 	XY mode2;
 
+	bool change_mode = false;
 	////////////////////////Å¥ºê///////////////////////////////
 	Cube cube;
 	vec3 cube_m_pos = { -0.9f ,0.3f, 0 };//ÃÊ±â Æ÷Áö¼Ç 
@@ -65,9 +66,12 @@ private:
 	Pyramid pyramid;
 	vec3 pr_m_pos = { 0.9f,0.3f,0 };
 
-	my cb;
-	my pr;
-	
+	////////////////////////»ï°¢»Ô///////////////////////////////
+	GLUquadricObj* qobj;
+
+	my cb; //Å¥ºê
+	my pr; //»ï°¢»Ô
+	my sp; //±¸ 
 
 	
 
