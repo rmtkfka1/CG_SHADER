@@ -16,13 +16,6 @@ void cs17::Init()
 	c2.y = 0.4f;
 	c2.z = 0;
 
-	c1.pos.x = -0.5f;
-	c1.pos.y = 0.4f;
-	c1.pos.z = 0;
-
-	c2.pos.x = 0.5f;
-	c2.pos.y = 0.4f;
-	c2.pos.z = 0;
 
 }
 
@@ -60,6 +53,7 @@ void cs17::Render()
 		auto r3 = glm::rotate(glm::mat4(1.0f), glm::radians(c1.dz), glm::vec3(1.0f, 0.8f, -1.0f)); //공전
 		auto trans = glm::translate(glm::mat4(1.0f), glm::vec3(c1.x, c1.y, c1.z));
 		auto result = s1 * r3 * r1 * r2 * trans * s2;
+
 		v[0]->SetUniformMat4f("u_model", result);
 		cube.Render();
 	}
@@ -90,9 +84,6 @@ void cs17::Render()
 			spiral.Render();
 		}
 	}
-
-
-
 
 }
 
@@ -211,6 +202,7 @@ void cs17::update_key(unsigned char key, int x, int y)
 		{
 			return;
 		}
+
 		start_j_animation = true;
 	}
 
@@ -598,11 +590,44 @@ void cs17::t_cl_animation()
 
 void cs17::j_animation()
 {
-	//서로의 위치를 저장한다
-	
 
-	 
+	if (j_init == false)
+	{
+		j_temp1.x = c1.x;
+		j_temp1.y = c1.y;
+		j_temp1.z = c1.z;
 
+		j_temp2.x = c2.x;
+		j_temp2.y = c2.y;
+		j_temp2.z = c2.z;
+
+		j_init = true;
+	}
+
+	static int frameCount = 0;
+
+	if (frameCount < 100)
+	{
+
+		float t = static_cast<float>(frameCount) / 100;
+		c1.x = (1 - t) * c1.x + t * j_temp2.x;
+		c1.y = (1 - t) * c1.y + t * j_temp2.y;
+		c1.z = (1 - t) * c1.z + t * j_temp2.z;
+
+
+		c2.x = (1 - t) * c2.x + t * j_temp1.x;
+		c2.y = (1 - t) * c2.y + t * j_temp1.y;
+		c2.z = (1 - t) * c2.z + t * j_temp1.z;
+
+		frameCount++;
+		if (frameCount == 100)
+		{
+			j_init = false;
+			frameCount = 0;
+			start_j_animation = false;
+		}
+		
+	}
 
 }
 void cs17::reset()

@@ -16,7 +16,6 @@ struct Stat
 	float y = 0;
 	float z = 0;
 
-	vec3 pos = { 0, 0, 0 };
 };
 
 
