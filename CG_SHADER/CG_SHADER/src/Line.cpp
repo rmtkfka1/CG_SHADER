@@ -25,18 +25,20 @@ void Line::Init()
 
 		0,1.0f,0,
 		0,-1.0f,0,
-		1.0f,0.7f,1.0f,
-		-1.0f,-0.7f,-1.0f,
+
+
+		1.0f,0.8f,-1.0f,
+		-1.0f,-0.8f,1.0f,
 	};
 
 	float color[]
 	{
 		1.0f,0,0,
 		1.0f,0,0,
-		1.0f,0,0,
-		1.0f,0,0,
-		1.0f,0,0,
-		1.0f,0,0
+		0.0f,1.0f,0,
+		0.0f,1.0f,0,
+		0.0f,0,1.0f,
+		0.0f,0,1.0f
 	};
 
 
@@ -52,6 +54,13 @@ void Line::Init()
 
 void Line::Render()
 {
+
+	auto &v =ObjectManager::GetInstance()->Get_Shader();
+
+	auto simple = glm::mat4(1.0f);
+
+	v[0]->SetUniformMat4f("u_model", simple);
+
 	m_vao.Bind();
 	glDrawArrays(GL_LINES, 0,6);
 

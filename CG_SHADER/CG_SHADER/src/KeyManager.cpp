@@ -39,6 +39,7 @@ void KeyManager::KeyboardCallback(unsigned char key, int x, int y)
 
 	turnandoff[key] = !turnandoff[key];
 
+	glutPostRedisplay();
 
 }
 
@@ -50,6 +51,6 @@ void KeyManager::KeyboardUpCallback(unsigned char key, int x, int y)
 	else
 		_states[key] = KeyState::UP;
 
-	
+	glutPostRedisplay();
     
 }

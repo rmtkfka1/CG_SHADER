@@ -62,6 +62,9 @@
     <Filter Include="02.Object\실습16">
       <UniqueIdentifier>{d0deeec9-f840-485c-a576-fa799ef1fb48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\실습17">
+      <UniqueIdentifier>{ef49781c-3d91-465a-beb6-4e77b9fad12d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -130,6 +133,20 @@
       <Filter>02.Object\실습16</Filter>
     </ClCompile>
     <ClCompile Include="src\Line.cpp">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습17.cpp" />
+    <ClCompile Include="src\00SRT예제.cpp">
+      <Filter>100.memo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cs17.cpp">
+      <Filter>02.Object\실습17</Filter>
+    </ClCompile>
+    <ClCompile Include="src\연습장.cpp" />
+    <ClCompile Include="src\Cylinder.cpp">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Spiral.cpp">
       <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
   </ItemGroup>
@@ -204,6 +221,15 @@
       <Filter>02.Object\실습16</Filter>
     </ClInclude>
     <ClInclude Include="src\Line.h">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs17.h">
+      <Filter>02.Object\실습17</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cylinder.h">
+      <Filter>02.Object\01.Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Spiral.h">
       <Filter>02.Object\01.Shape</Filter>
     </ClInclude>
   </ItemGroup>
