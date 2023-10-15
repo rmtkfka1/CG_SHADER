@@ -22,6 +22,11 @@ void cs17::Update()
 	{
 		zigzag();
 	}
+
+	if (start_t_animation)
+	{
+		t_animation();
+	}
 }
 
 void cs17::Render()
@@ -33,9 +38,9 @@ void cs17::Render()
 	{
 		auto s1 = glm::scale(glm::mat4(1.0f), glm::vec3(c1.m_size, c1.m_size, c1.m_size)); // 원점 중심에대한신축
 		auto s2 = glm::scale(glm::mat4(1.0f), glm::vec3(c1.m_size2, c1.m_size2, c1.m_size2)); // 자기 중심에대한신축
-		auto r1 = glm::rotate(glm::mat4(1.0f), glm::radians(c1.dx), glm::vec3(1.0f, 0, 0));
-		auto r2 = glm::rotate(glm::mat4(1.0f), glm::radians(c1.dy), glm::vec3(0, 1.0f, 0));
-		auto r3 = glm::rotate(glm::mat4(1.0f), glm::radians(c1.dz), glm::vec3(1.0f, 0.8f, -1.0f));
+		auto r1 = glm::rotate(glm::mat4(1.0f), glm::radians(c1.dx), glm::vec3(1.0f, 0, 0)); //공전
+		auto r2 = glm::rotate(glm::mat4(1.0f), glm::radians(c1.dy), glm::vec3(0, 1.0f, 0)); //공전
+		auto r3 = glm::rotate(glm::mat4(1.0f), glm::radians(c1.dz), glm::vec3(1.0f, 0.8f, -1.0f)); //공전
 		auto trans = glm::translate(glm::mat4(1.0f), glm::vec3(c1.x, c1.y, c1.z));
 		auto result = s1 * r3 * r1 * r2 * trans * s2;
 		v[0]->SetUniformMat4f("u_model", result);
@@ -45,9 +50,9 @@ void cs17::Render()
 	{
 		auto s1 = glm::scale(glm::mat4(1.0f), glm::vec3(c2.m_size, c2.m_size, c2.m_size)); // 원점 중심에대한신축
 		auto s2 = glm::scale(glm::mat4(1.0f), glm::vec3(c2.m_size2, c2.m_size2, c2.m_size2)); // 자기 중심에대한신축
-		auto r1 = glm::rotate(glm::mat4(1.0f), glm::radians(c2.dx), glm::vec3(1.0f, 0, 0));
-		auto r2 = glm::rotate(glm::mat4(1.0f), glm::radians(c2.dy), glm::vec3(0, 1.0f, 0));
-		auto r3 = glm::rotate(glm::mat4(1.0f), glm::radians(c2.dz), glm::vec3(1.0f, 0.8f, -1.0f));
+		auto r1 = glm::rotate(glm::mat4(1.0f), glm::radians(c2.dx), glm::vec3(1.0f, 0, 0));//공전
+		auto r2 = glm::rotate(glm::mat4(1.0f), glm::radians(c2.dy), glm::vec3(0, 1.0f, 0)); //공전
+		auto r3 = glm::rotate(glm::mat4(1.0f), glm::radians(c2.dz), glm::vec3(1.0f, 0.8f, -1.0f)); //공전
 		auto trans = glm::translate(glm::mat4(1.0f), glm::vec3(c2.x, c2.y, c1.z));
 		auto result = s1 * r3 * r1 * r2 * trans * s2;
 		v[0]->SetUniformMat4f("u_model", result);
@@ -139,6 +144,11 @@ void cs17::update_key(unsigned char key, int x, int y)
 	{
 		reset();
 	}
+	
+	if (key == 't')
+	{
+		start_t_animation = true;
+	}
 
 
 	
@@ -191,6 +201,167 @@ void cs17::zigzag()
 	}
 
 	glutPostRedisplay();
+
+}
+
+void cs17::t_animation()
+{
+
+	if (!init_t)
+	{
+		//현재값을 임시저장함 (되돌아가야함)
+		temp.dx = c1.dx;
+		temp.dy = c1.dy;
+		temp.dz = c1.dz;
+		temp.x = c1.x;
+		temp.y = c1.y;
+		temp.z = c1.z;
+		init_t = true;
+	}
+	
+
+	//원점에 진입한순간 을 체크함
+	if (abs(0 - c1.dx) < 2.0f && abs(0 - c1.dy) < 2.0f && abs(0 - c1.dz) < 2.0f && abs(0 - c1.x) < 0.01f
+		&& abs(0 - c1.y) < 0.01f && abs(0 - c1.z) < 0.01f)
+	{
+		stap = true;
+		next_step = true;
+	}
+
+
+	if (next_step)
+	{
+		if (abs(temp.dx - c1.dx) < 2.0f && abs(temp.dy - c1.dy) < 2.0f && abs(temp.dz - c1.dz) < 2.0f && abs(temp.x - c1.x) < 0.01f
+			&& abs(temp.y - c1.y) < 0.01f && abs(temp.z - c1.z) < 0.01f)
+		{
+			stap = false;
+			next_step = false;
+			init_t = false;
+			start_t_animation = false;
+			return;
+		}
+	}
+
+
+	if (stap == false)
+	{
+		if (c1.dx >= 0)
+		{
+			c1.dx -= 1.0f;
+		}
+		else
+		{
+			c1.dx += 1.0f;
+		}
+
+		if (c1.dy >= 0)
+		{
+			c1.dy -= 1.0f;
+		}
+		else
+		{
+			c1.dy += 1.0f;
+		}
+		if (c1.dz >= 0)
+		{
+			c1.dz -= 1.0f;
+		}
+		else
+		{
+			c1.dz += 1.0f;
+		}
+
+		if (c1.x >= 0)
+		{
+			c1.x -= 0.001f;
+		}
+		else
+		{
+			c1.x += 0.001f;
+		}
+
+		if (c1.y >= 0)
+		{
+			c1.y -= 0.001f;
+		}
+		else
+		{
+			c1.y += 0.001f;
+		}
+		if (c1.z >= 0)
+		{
+			c1.z -= 0.001f;
+		}
+		else
+		{
+			c1.z += 0.001f;
+		}
+	}
+
+	
+
+	if (next_step)
+	{
+		if (temp.dx >= c1.dx)
+		{
+			c1.dx += 1.0f;
+		}
+		else
+		{
+			c1.dx -= 1.0f;
+		}
+
+		if (temp.dy >= c1.dy)
+		{
+			c1.dy += 1.0f;
+		}
+		else
+		{
+			c1.dy -= 1.0f;
+		}
+
+		if (temp.dz >= c1.dz)
+		{
+			c1.dz += 1.0f;
+		}
+		else
+		{
+			c1.dz -= 1.0f;
+		}
+
+
+		if (temp.x > c1.x)
+		{
+			c1.x += 0.001f;
+		}
+		else
+		{
+			c1.x -= 0.001f;
+		}
+
+		if (temp.y > c1.y)
+		{
+			c1.y += 0.001f;
+		}
+		else
+		{
+			c1.y -= 0.001f;
+		}
+
+		if (temp.z > c1.z)
+		{
+			c1.z += 0.001f;
+		}
+		else
+		{
+			c1.z -= 0.001f;
+		}
+	}
+
+
+
+
+
 
 }
 

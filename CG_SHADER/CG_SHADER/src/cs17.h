@@ -63,11 +63,22 @@ private:
 	//스파이럴
 	Spiral spiral;
 	Stat c3; //스파이럴스텟
+
+
+	//애니메이션
 	void zigzag();
 	bool start_zigzag = false;
 	bool init_zigzag = false;
 	float radian = 0.0f; // 각도
 	float radius = 0.01f; // 반지름
+
+	///
+	void t_animation(); //원점으로 이동
+	bool start_t_animation = false;
+	bool init_t=false;
+	bool stap=false;
+	bool next_step = false;
+	Stat temp;
 
 
 };

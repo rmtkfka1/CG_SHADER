@@ -36,6 +36,7 @@ int main(int argc, char** argv)
 
 		cs17::GetInstance()->Update();
 		glutMainLoopEvent();
+		glutPostRedisplay();
 	}
 
 }
