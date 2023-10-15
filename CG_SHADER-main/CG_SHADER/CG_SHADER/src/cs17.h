@@ -15,6 +15,8 @@ struct Stat
 	float x = 0;
 	float y = 0;
 	float z = 0;
+
+	vec3 pos = { 0, 0, 0 };
 };
 
 
@@ -65,20 +67,41 @@ private:
 	Stat c3; //스파이럴스텟
 
 
-	//애니메이션
+	//스파이럴 애니매이션
 	void zigzag();
 	bool start_zigzag = false;
 	bool init_zigzag = false;
 	float radian = 0.0f; // 각도
 	float radius = 0.01f; // 반지름
 
-	///
+
+
+	//t애니매이션
 	void t_animation(); //원점으로 이동
+	void t_cube_animation();
+	void t_cl_animation();
+
 	bool start_t_animation = false;
 	bool init_t=false;
 	bool stap=false;
 	bool next_step = false;
+	bool finish = false;
 	Stat temp;
+
+
+	bool init_t2 = false;
+	bool stap2 = false;
+	bool next_step2 = false;
+	bool finish2 = false;
+	Stat temp2;
+	//////////////////////////////
+
+
+	bool start_j_animation = false;
+	void j_animation();
+	bool j_init = false;
+	Stat j_temp1;
+	Stat j_temp2;
 
 
 };

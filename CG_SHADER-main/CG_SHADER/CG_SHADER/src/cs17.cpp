@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "cs17.h"
 
+
 void cs17::Init()
 {
 	line.Init();
@@ -14,6 +15,15 @@ void cs17::Init()
 	c2.x = 0.5f;
 	c2.y = 0.4f;
 	c2.z = 0;
+
+	c1.pos.x = -0.5f;
+	c1.pos.y = 0.4f;
+	c1.pos.z = 0;
+
+	c2.pos.x = 0.5f;
+	c2.pos.y = 0.4f;
+	c2.pos.z = 0;
+
 }
 
 void cs17::Update()
@@ -27,6 +37,13 @@ void cs17::Update()
 	{
 		t_animation();
 	}
+
+
+	if (start_j_animation)
+	{
+		j_animation();
+	}
+
 }
 
 void cs17::Render()
@@ -91,17 +108,45 @@ void cs17::update_key(unsigned char key, int x, int y)
 	{
 		c1.dx += 3.0f;
 		c2.dx += 3.0f;
+
+		if (c1.dx > 360.0f)
+		{
+			c1.dx = 0;
+		}
+		if (c2.dx > 360.0f)
+		{
+			c2.dx = 0;
+		}
 	}
 	if (key == 'y')
 	{
 
 		c1.dy += 3.0f;
 		c2.dy += 3.0f;
+
+		if (c1.dy > 360.0f)
+		{
+			c1.dy = 0;
+		}
+		if (c2.dy > 360.0f)
+		{
+			c2.dy = 0;
+		}
 	}
 	if (key == 'z')
 	{
 		c1.dz += 3.0f;
 		c2.dz += 3.0f;
+
+
+		if (c1.dz > 360.0f)
+		{
+			c1.dz = 0;
+		}
+		if (c2.dz > 360.0f)
+		{
+			c2.dz = 0;
+		}
 	}
 
 	//자기중심에 대한신축
@@ -136,6 +181,11 @@ void cs17::update_key(unsigned char key, int x, int y)
 
 	if (key == 'r')
 	{
+		if (start_zigzag)
+		{
+			return;
+		}
+
 		start_zigzag = true;
 	}
 
@@ -147,13 +197,26 @@ void cs17::update_key(unsigned char key, int x, int y)
 	
 	if (key == 't')
 	{
+		if (start_t_animation)
+		{
+			return;
+		}
 		start_t_animation = true;
 	}
 
+	if (key == 'j')
+	{
+
+		if (start_j_animation)
+		{
+			return;
+		}
+		start_j_animation = true;
+	}
 
 	
 
-	glutPostRedisplay();
+
 }
 
 void cs17::zigzag()
@@ -206,7 +269,28 @@ void cs17::zigzag()
 
 void cs17::t_animation()
 {
+	if (!start_t_animation)
+	{
+		return;
+	}
 
+	if (finish && finish2)
+	{
+		finish = false;
+		finish2 = false;
+		start_t_animation = false;
+	}
+
+	
+	t_cube_animation();
+
+	t_cl_animation();
+	
+
+}
+
+void cs17::t_cube_animation()
+{
 	if (!init_t)
 	{
 		//현재값을 임시저장함 (되돌아가야함)
@@ -218,7 +302,6 @@ void cs17::t_animation()
 		temp.z = c1.z;
 		init_t = true;
 	}
-	
 
 	//원점에 진입한순간 을 체크함
 	if (abs(0 - c1.dx) < 2.0f && abs(0 - c1.dy) < 2.0f && abs(0 - c1.dz) < 2.0f && abs(0 - c1.x) < 0.01f
@@ -298,7 +381,7 @@ void cs17::t_animation()
 		}
 	}
 
-	
+
 
 	if (next_step)
 	{
@@ -357,14 +440,171 @@ void cs17::t_animation()
 			c1.z -= 0.001f;
 		}
 	}
+}
+
+void cs17::t_cl_animation()
+{
+
+	if (!init_t2)
+	{
+		//현재값을 임시저장함 (되돌아가야함)
+		temp2.dx = c2.dx;
+		temp2.dy = c2.dy;
+		temp2.dz = c2.dz;
+		temp2.x = c2.x;
+		temp2.y = c2.y;
+		temp2.z = c2.z;
+		init_t2 = true;
+	}
+
+	//원점에 진입한순간 을 체크함
+	if (abs(0 - c2.dx) < 2.0f && abs(0 - c2.dy) < 2.0f && abs(0 - c2.dz) < 2.0f && abs(0 - c2.x) < 0.01f
+		&& abs(0 - c2.y) < 0.01f && abs(0 - c2.z) < 0.01f)
+	{
+		stap2 = true;
+		next_step2 = true;
+	}
+
+
+	if (next_step2)
+	{
+		if (abs(temp2.dx - c2.dx) < 2.0f && abs(temp2.dy - c2.dy) < 2.0f && abs(temp2.dz - c2.dz) < 2.0f && abs(temp2.x - c2.x) < 0.01f
+			&& abs(temp2.y - c2.y) < 0.01f && abs(temp2.z - c2.z) < 0.01f)
+		{
+			stap2 = false;
+			next_step2 = false;
+			init_t2 = false;
+			finish2 = true;
+			return;
+		}
+	}
+
+
+	if (stap2 == false)
+	{
+		if (c2.dx >= 0)
+		{
+			c2.dx -= 1.0f;
+		}
+		else
+		{
+			c2.dx += 1.0f;
+		}
+
+		if (c2.dy >= 0)
+		{
+			c2.dy -= 1.0f;
+		}
+		else
+		{
+			c2.dy += 1.0f;
+		}
+		if (c2.dz >= 0)
+		{
+			c2.dz -= 1.0f;
+		}
+		else
+		{
+			c2.dz += 1.0f;
+		}
+
+		if (c2.x >= 0)
+		{
+			c2.x -= 0.001f;
+		}
+		else
+		{
+			c2.x += 0.001f;
+		}
+
+		if (c2.y >= 0)
+		{
+			c2.y -= 0.001f;
+		}
+		else
+		{
+			c2.y += 0.001f;
+		}
+		if (c2.z >= 0)
+		{
+			c2.z -= 0.001f;
+		}
+		else
+		{
+			c2.z += 0.001f;
+		}
+	}
 
 
 
+	if (next_step2)
+	{
+		if (temp2.dx >= c2.dx)
+		{
+			c2.dx += 1.0f;
+		}
+		else
+		{
+			c2.dx -= 1.0f;
+		}
 
+		if (temp2.dy >= c2.dy)
+		{
+			c2.dy += 1.0f;
+		}
+		else
+		{
+			c2.dy -= 1.0f;
+		}
+
+		if (temp2.dz >= c2.dz)
+		{
+			c2.dz += 1.0f;
+		}
+		else
+		{
+			c2.dz -= 1.0f;
+		}
+
+
+		if (temp2.x > c2.x)
+		{
+			c2.x += 0.001f;
+		}
+		else
+		{
+			c2.x -= 0.001f;
+		}
+
+		if (temp2.y > c2.y)
+		{
+			c2.y += 0.001f;
+		}
+		else
+		{
+			c2.y -= 0.001f;
+		}
+
+		if (temp2.z > c2.z)
+		{
+			c2.z += 0.001f;
+		}
+		else
+		{
+			c2.z -= 0.001f;
+		}
+	}
+}
+
+void cs17::j_animation()
+{
+	//서로의 위치를 저장한다
+	
+
+	 
 
 
 }
-
 void cs17::reset()
 {
 
