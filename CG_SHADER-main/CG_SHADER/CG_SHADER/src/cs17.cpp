@@ -42,6 +42,10 @@ void cs17::Update()
 		k_animation();
 	}
 
+	if (start_l_animation)
+	{
+		l_animation();
+	}
 }
 
 void cs17::Render()
@@ -220,8 +224,20 @@ void cs17::update_key(unsigned char key, int x, int y)
 		start_k_animation = true;
 	}
 
+	if (key == 'l')
+	{
+		if (start_l_animation)
+		{
+			return;
+		}
+		start_l_animation = true;
+	}
 	
+	if (key == 'm')
+	{
+		c1.x += 0.1f;
 
+	}
 
 }
 
@@ -688,6 +704,75 @@ void cs17::k_animation()
 	}
 	
 	
+
+
+
+}
+void cs17::l_animation()
+{
+	static int count = 0;
+	static int framecount = 0;
+
+	if (count % 2 == 0)
+	{
+		if (framecount < 100)
+		{
+			c1.y += 0.002f;
+			c2.y -= 0.002f;
+			framecount++;
+		}
+
+		if (framecount < 600 && framecount >= 100)
+		{
+			c1.x += 0.002f;
+			c2.x -= 0.002f;
+			framecount++;
+		}
+
+		if (framecount >= 600)
+		{
+			c1.y -= 0.002f;
+			c2.y += 0.002f;
+			framecount++;
+		}
+
+		if (framecount == 700)
+		{
+			framecount = 0;
+			count += 1;
+			start_l_animation = false;
+		}
+	}
+	else
+	{
+		if (framecount < 100)
+		{
+			c1.y += 0.002f;
+			c2.y -= 0.002f;
+			framecount++;
+		}
+
+		if (framecount < 600 && framecount >= 100)
+		{
+			c1.x -= 0.002f;
+			c2.x += 0.002f;
+			framecount++;
+		}
+
+		if (framecount >= 600)
+		{
+			c1.y -= 0.002f;
+			c2.y += 0.002f;
+			framecount++;
+		}
+
+		if (framecount == 700)
+		{
+			framecount = 0;
+			count += 1;
+			start_l_animation = false;
+		}
+	}
 
 
 

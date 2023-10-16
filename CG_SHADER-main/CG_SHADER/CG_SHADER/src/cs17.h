@@ -108,6 +108,9 @@ private:
 	bool k_init = false;
 	Stat k_temp1;
 	Stat k_temp2;
+	
+	void l_animation();
+	bool start_l_animation = false;
 
 };
 
