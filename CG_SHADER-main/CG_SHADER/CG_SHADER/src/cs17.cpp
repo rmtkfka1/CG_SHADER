@@ -37,6 +37,11 @@ void cs17::Update()
 		j_animation();
 	}
 
+	if (start_k_animation)
+	{
+		k_animation();
+	}
+
 }
 
 void cs17::Render()
@@ -100,14 +105,14 @@ void cs17::update_key(unsigned char key, int x, int y)
 		c1.dx += 3.0f;
 		c2.dx += 3.0f;
 
-		if (c1.dx > 360.0f)
+		/*if (c1.dx > 360.0f)
 		{
 			c1.dx = 0;
 		}
 		if (c2.dx > 360.0f)
 		{
 			c2.dx = 0;
-		}
+		}*/
 	}
 	if (key == 'y')
 	{
@@ -115,14 +120,14 @@ void cs17::update_key(unsigned char key, int x, int y)
 		c1.dy += 3.0f;
 		c2.dy += 3.0f;
 
-		if (c1.dy > 360.0f)
+	/*	if (c1.dy > 360.0f)
 		{
 			c1.dy = 0;
 		}
 		if (c2.dy > 360.0f)
 		{
 			c2.dy = 0;
-		}
+		}*/
 	}
 	if (key == 'z')
 	{
@@ -130,14 +135,14 @@ void cs17::update_key(unsigned char key, int x, int y)
 		c2.dz += 3.0f;
 
 
-		if (c1.dz > 360.0f)
+	/*	if (c1.dz > 360.0f)
 		{
 			c1.dz = 0;
 		}
 		if (c2.dz > 360.0f)
 		{
 			c2.dz = 0;
-		}
+		}*/
 	}
 
 	//자기중심에 대한신축
@@ -204,6 +209,15 @@ void cs17::update_key(unsigned char key, int x, int y)
 		}
 
 		start_j_animation = true;
+	}
+	if (key == 'k')
+	{
+		if (start_k_animation)
+		{
+			return;
+		}
+
+		start_k_animation = true;
 	}
 
 	
@@ -628,6 +642,54 @@ void cs17::j_animation()
 		}
 		
 	}
+
+}
+void cs17::k_animation()
+{
+	static int frameCount = 0;
+	if (k_init == false)
+	{
+		k_temp1.x = c1.x;
+		k_temp1.y = c1.y;
+		k_temp1.z = c1.z;
+
+		k_temp2.x = c2.x;
+		k_temp2.y = c2.y;
+		k_temp2.z = c2.z;
+		k_init = true;
+	}
+
+
+	float t = static_cast<float>(frameCount) / 100;
+
+	c1.x = (1 - t) * c1.x + t * k_temp2.x;
+	c1.y = (1 - t) * c1.y + t * k_temp2.y;
+	c1.z = (1 - t) * c1.z + t * k_temp2.z;
+
+
+	c2.x = (1 - t) * c2.x + t * k_temp1.x;
+	c2.y = (1 - t) * c2.y + t * k_temp1.y;
+	c2.z = (1 - t) * c2.z + t * k_temp1.z;
+
+
+	c1.dx += 3.6f;
+	c1.dy += 3.6f;
+	c1.dz += 3.6f;
+	c2.dx += 3.6f;
+	c2.dy += 3.6f;
+	c2.dz += 3.6f;
+
+	frameCount++;
+	if (frameCount == 100)
+	{
+		k_init = false;
+		frameCount = 0;
+		start_k_animation = false;
+	}
+	
+	
+
+
 
 }
 void cs17::reset()

@@ -95,13 +95,19 @@ private:
 	Stat temp2;
 	//////////////////////////////
 
-
-	bool start_j_animation = false;
 	void j_animation();
+	bool start_j_animation = false;
 	bool j_init = false;
 	Stat j_temp1;
 	Stat j_temp2;
+	////////////////////
 
+
+	void k_animation();
+	bool start_k_animation = false;
+	bool k_init = false;
+	Stat k_temp1;
+	Stat k_temp2;
 
 };
 
