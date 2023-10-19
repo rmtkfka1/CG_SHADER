@@ -38,3 +38,4 @@ using namespace std;
 #include "Object.h"
 #include "VertexBufferLayout.h"
 #include "ObjectManager.h"
+#include "TimeManager.h"

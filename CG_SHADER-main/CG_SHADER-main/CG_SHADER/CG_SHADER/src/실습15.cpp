@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 	Core::GetInstance()->Render(DrawScene);
 
 	KeyManager::GetInstance()->Update();
-
+	TimeManager::GetInstance()->Init();
 	Shader shader("res/shader/Shader2.vs", "res/shader/Shader2.fs");
 	shader.Bind();
 
@@ -34,12 +34,14 @@ int main(int argc, char** argv)
 	shader_vec.push_back(&shader);
 	
 
+
 	p.Init();
 
 	glEnable(GL_DEPTH_TEST);
 
 	while (1)
 	{
+		TimeManager::GetInstance()->Update();
 		p.Update();
 		glutPostRedisplay();
 		glutMainLoopEvent();

@@ -65,6 +65,9 @@
     <Filter Include="02.Object\실습17">
       <UniqueIdentifier>{ef49781c-3d91-465a-beb6-4e77b9fad12d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="완">
+      <UniqueIdentifier>{e75302f7-e5b5-4b70-803d-ab1ae599b84c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -73,7 +76,6 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>99.defines</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습13.cpp" />
     <ClCompile Include="src\VAO.cpp">
       <Filter>01.OPENGL\02.VAO</Filter>
     </ClCompile>
@@ -92,7 +94,6 @@
     <ClCompile Include="src\KeyManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습14.cpp" />
     <ClCompile Include="src\MouseManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
@@ -105,7 +106,6 @@
     <ClCompile Include="src\p12.cpp">
       <Filter>02.Object\실습12</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습12.cpp" />
     <ClCompile Include="src\p14.cpp">
       <Filter>02.Object\실습14</Filter>
     </ClCompile>
@@ -121,21 +121,18 @@
     <ClCompile Include="src\ObjectManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습15.cpp" />
     <ClCompile Include="src\cs15.cpp">
       <Filter>02.Object\실습15</Filter>
     </ClCompile>
     <ClCompile Include="src\Pyramid.cpp">
       <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습16.cpp" />
     <ClCompile Include="src\cs16.cpp">
       <Filter>02.Object\실습16</Filter>
     </ClCompile>
     <ClCompile Include="src\Line.cpp">
       <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습17.cpp" />
     <ClCompile Include="src\00SRT예제.cpp">
       <Filter>100.memo</Filter>
     </ClCompile>
@@ -148,6 +145,27 @@
     </ClCompile>
     <ClCompile Include="src\Spiral.cpp">
       <Filter>02.Object\01.Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습17.cpp">
+      <Filter>완</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습12.cpp">
+      <Filter>완</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습13.cpp">
+      <Filter>완</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습14.cpp">
+      <Filter>완</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습15.cpp">
+      <Filter>완</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습16.cpp">
+      <Filter>완</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TimeManager.cpp">
+      <Filter>03,Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +249,9 @@
     </ClInclude>
     <ClInclude Include="src\Spiral.h">
       <Filter>02.Object\01.Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TimeManager.h">
+      <Filter>03,Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

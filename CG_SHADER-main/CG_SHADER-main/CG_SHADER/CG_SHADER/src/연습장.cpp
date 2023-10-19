@@ -15,10 +15,8 @@ void draw()
 int main(int argc, char** argv)
 {
 	Core::GetInstance()->Init(argc, argv, 800, 800);
-
 	Core::GetInstance()->Render(draw);
-
-
+	
 	Shader shader("res/shader/Shader2.vs", "res/shader/Shader2.fs");
 	shader.Bind();
 	s.Init();
@@ -31,10 +29,6 @@ int main(int argc, char** argv)
 		glutMainLoopEvent();
 
 	}
-
-
-
-
 
 }
 

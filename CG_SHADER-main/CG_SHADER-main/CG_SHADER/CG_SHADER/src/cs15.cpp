@@ -55,9 +55,10 @@ void cs15::Update()
 		degree_y -= 1.0f;
 	}
 
-	else if (KeyManager::GetInstance()->GetbuttonDown('i'))
+	else if (KeyManager::GetInstance()->GetPress('i'))
 	{
-		dy += 0.01f;
+		auto t =TimeManager::GetInstance()->GetDeltaTime();
+		dy += 1.0f* t;
 	}
 	else if (KeyManager::GetInstance()->GetbuttonDown('k'))
 	{
