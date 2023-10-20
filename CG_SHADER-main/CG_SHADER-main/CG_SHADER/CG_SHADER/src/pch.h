@@ -7,13 +7,11 @@ using namespace std;
 #include <gl/freeglut.h>
 #include <gl/freeglut_ext.h>
 
-#include <gl/glm/glm.hpp>
-#include <gl/glm/ext.hpp>
-#include <gl/glm/gtc/matrix_transform.hpp>
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
-#include <gl/glew.h> 
-#include <gl/freeglut.h>
-#include <gl/freeglut_ext.h>
+#include <GLFW/glfw3.h>
 
 #include <vector>
 #include <iostream>
@@ -24,6 +22,7 @@ using namespace std;
 #include <cstring>
 #include <time.h>
 #include <utility>
+#include <Windows.h>
 
 ///////////////////////////
 #include "Types.h"
@@ -39,3 +38,4 @@ using namespace std;
 #include "VertexBufferLayout.h"
 #include "ObjectManager.h"
 #include "TimeManager.h"
+#include "enum.h"

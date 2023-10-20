@@ -1,49 +1,29 @@
 #pragma once
-
-enum class KeyState
-{
-    NONE,//아무것도 아닌상태
-    PRESS, //누르고있는상태
-    DOWN, //한번눌림
-    UP, //키보드 자판땜
-    END
-};
-
+#include "enum.h"
 
 class KeyManager
 {
+	DECLARE_SINGLE(KeyManager);
+
 public:
-    static KeyManager* GetInstance()
-    {
-        static KeyManager KM;
-        return &KM;
-    };
-    
+	void Init();
 
-    //누르고있을때
-    bool Getbutton(unsigned char key) { return _states[static_cast<unsigned char>(key)] == KeyState::PRESS; }
+	void Update();
 
-    //맨처음 눌렀을때
-    bool GetbuttonDown(unsigned char key) { return _states[static_cast<unsigned char>(key)] == KeyState::DOWN; }
+	//누르고있을때
+	bool Getbutton(KeyType key) { return GetState(key) == KeyState::PRESS; }
 
-    //맨처음 눌렀다가 땔대
-    bool GetbuttonUp(unsigned char key) { return _states[static_cast<unsigned char>(key)] == KeyState::UP; }
-    
-    bool GetPress(unsigned char key) { return _key[static_cast<unsigned char>(key)]; }
+	//맨처음 눌렀을때
+	bool GetbuttonDown(KeyType key) { return GetState(key) == KeyState::DOWN; }
 
-    static void KeyboardCallback(unsigned char key, int x, int y);
-    static void KeyboardUpCallback(unsigned char key, int x, int y);
-
-    void Update();
-
+	//맨처음 눌렀다가 땔대
+	bool GetbuttonUp(KeyType key) { return GetState(key) == KeyState::UP; }
 
 private:
+	KeyState GetState(KeyType key) { return _states[static_cast<uint8>(key)]; }
+
+	vector<KeyState> _states;
 
 
-    bool _key[1024]; //temp
-   KeyManager();
-   KeyState _states[256];
+
 };
-
-
-

@@ -44,29 +44,8 @@
     <Filter Include="02.Object\00.Object">
       <UniqueIdentifier>{3c8f9fe8-8dad-4e39-bbef-a0e51e9b21f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object\실습12">
-      <UniqueIdentifier>{65884de0-e858-4aba-9f03-bef770200dca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\실습13">
-      <UniqueIdentifier>{9c9529ef-a3d7-40c3-84bd-1f59520988ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\실습14">
-      <UniqueIdentifier>{4d829a47-ccae-4b40-918c-93486fe09688}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.Object\01.Shape">
       <UniqueIdentifier>{9f6e2df9-1e21-4901-9c1e-988cfdc9145f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\실습15">
-      <UniqueIdentifier>{e5e9c662-f2fe-4ecb-94cd-03150cb9dc75}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\실습16">
-      <UniqueIdentifier>{d0deeec9-f840-485c-a576-fa799ef1fb48}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\실습17">
-      <UniqueIdentifier>{ef49781c-3d91-465a-beb6-4e77b9fad12d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="완">
-      <UniqueIdentifier>{e75302f7-e5b5-4b70-803d-ab1ae599b84c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -100,35 +79,14 @@
     <ClCompile Include="src\Object.cpp">
       <Filter>02.Object\00.Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\p13.cpp">
-      <Filter>02.Object\실습13</Filter>
-    </ClCompile>
-    <ClCompile Include="src\p12.cpp">
-      <Filter>02.Object\실습12</Filter>
-    </ClCompile>
-    <ClCompile Include="src\p14.cpp">
-      <Filter>02.Object\실습14</Filter>
-    </ClCompile>
     <ClCompile Include="src\Cube.cpp">
       <Filter>02.Object\01.Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\p14_4.cpp">
-      <Filter>02.Object\실습14</Filter>
-    </ClCompile>
-    <ClCompile Include="src\p14_world.cpp">
-      <Filter>02.Object\실습14</Filter>
     </ClCompile>
     <ClCompile Include="src\ObjectManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\cs15.cpp">
-      <Filter>02.Object\실습15</Filter>
-    </ClCompile>
     <ClCompile Include="src\Pyramid.cpp">
       <Filter>02.Object\01.Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cs16.cpp">
-      <Filter>02.Object\실습16</Filter>
     </ClCompile>
     <ClCompile Include="src\Line.cpp">
       <Filter>02.Object\01.Shape</Filter>
@@ -136,33 +94,12 @@
     <ClCompile Include="src\00SRT예제.cpp">
       <Filter>100.memo</Filter>
     </ClCompile>
-    <ClCompile Include="src\cs17.cpp">
-      <Filter>02.Object\실습17</Filter>
-    </ClCompile>
     <ClCompile Include="src\연습장.cpp" />
     <ClCompile Include="src\Cylinder.cpp">
       <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
     <ClCompile Include="src\Spiral.cpp">
       <Filter>02.Object\01.Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습17.cpp">
-      <Filter>완</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습12.cpp">
-      <Filter>완</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습13.cpp">
-      <Filter>완</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습14.cpp">
-      <Filter>완</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습15.cpp">
-      <Filter>완</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습16.cpp">
-      <Filter>완</Filter>
     </ClCompile>
     <ClCompile Include="src\TimeManager.cpp">
       <Filter>03,Manager</Filter>
@@ -205,44 +142,20 @@
     <ClInclude Include="src\Object.h">
       <Filter>02.Object\00.Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\p12.h">
-      <Filter>02.Object\실습12</Filter>
-    </ClInclude>
-    <ClInclude Include="src\p14.h">
-      <Filter>02.Object\실습14</Filter>
-    </ClInclude>
     <ClInclude Include="src\Cube.h">
       <Filter>02.Object\01.Shape</Filter>
     </ClInclude>
     <ClInclude Include="src\VertexBufferLayout.h">
       <Filter>01.OPENGL\02.VAO</Filter>
     </ClInclude>
-    <ClInclude Include="src\p13.h">
-      <Filter>02.Object\실습13</Filter>
-    </ClInclude>
-    <ClInclude Include="src\p14_4.h">
-      <Filter>02.Object\실습14</Filter>
-    </ClInclude>
-    <ClInclude Include="src\p14_world.h">
-      <Filter>02.Object\실습14</Filter>
-    </ClInclude>
     <ClInclude Include="src\ObjectManager.h">
       <Filter>03,Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cs15.h">
-      <Filter>02.Object\실습15</Filter>
     </ClInclude>
     <ClInclude Include="src\Pyramid.h">
       <Filter>02.Object\01.Shape</Filter>
     </ClInclude>
-    <ClInclude Include="src\cs16.h">
-      <Filter>02.Object\실습16</Filter>
-    </ClInclude>
     <ClInclude Include="src\Line.h">
       <Filter>02.Object\01.Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cs17.h">
-      <Filter>02.Object\실습17</Filter>
     </ClInclude>
     <ClInclude Include="src\Cylinder.h">
       <Filter>02.Object\01.Shape</Filter>

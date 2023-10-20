@@ -1,57 +1,44 @@
 #include "pch.h"
 #include "KeyManager.h"
+#include "enum.h"
 
 
+void KeyManager::Init()
+{
+	
 
+	_states.resize(KEY_TYPE_COUNT, KeyState::NONE);
+}
 
 void KeyManager::Update()
 {
-    glutKeyboardFunc(KeyboardCallback);
-    glutKeyboardUpFunc(KeyboardUpCallback);
-}
+	BYTE asciiKeys[KEY_TYPE_COUNT] = {};
+	if (GetKeyboardState(asciiKeys) == false)
+		return;
 
-KeyManager::KeyManager()
-{
-	for (int i = 0; i < 256; ++i)
+	for (uint32 key = 0; key < KEY_TYPE_COUNT; key++)
 	{
-		_states[i] = KeyState::NONE;
+		if (asciiKeys[key] & 0x80)
+		{
+			KeyState& state = _states[key];
+
+			if (state == KeyState::PRESS || state == KeyState::DOWN)
+				state = KeyState::PRESS;
+			else
+				state = KeyState::DOWN;
+		}
+
+		//Å°º¸µå¶«
+		else
+		{
+			KeyState& state = _states[key];
+
+			if (state == KeyState::PRESS || state == KeyState::DOWN)
+				state = KeyState::UP;
+			else
+				state = KeyState::UP;
+		}
 	}
 
-	for (int i = 0; i < 1024; ++i)
-	{
-		_key[i] = false;
-	}
 
-
-}
-
-
-
-void KeyManager::KeyboardCallback(unsigned char key, int x, int y)
-{
-	
-
-	if (KeyManager::GetInstance()->_states[key] == KeyState::PRESS || KeyManager::GetInstance()->_states[key] == KeyState::DOWN)
-		KeyManager::GetInstance()->_states[key] = KeyState::PRESS;
-	else
-		KeyManager::GetInstance()->_states[key] = KeyState::DOWN;
-
-
-	KeyManager::GetInstance()->_key[key] = true;
-
-	glutPostRedisplay();
-
-}
-
-void KeyManager::KeyboardUpCallback(unsigned char key, int x, int y)
-{
-	
-	if (KeyManager::GetInstance()->_states[key] == KeyState::PRESS || KeyManager::GetInstance()->_states[key] == KeyState::DOWN)
-		KeyManager::GetInstance()->_states[key] = KeyState::UP;
-	else
-		KeyManager::GetInstance()->_states[key] = KeyState::UP;
-
-	KeyManager::GetInstance()->_key[key] = false;
-	glutPostRedisplay();
-    
 }

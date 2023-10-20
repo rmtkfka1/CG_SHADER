@@ -16,18 +16,25 @@ int main(int argc, char** argv)
 {
 	Core::GetInstance()->Init(argc, argv, 800, 800);
 	Core::GetInstance()->Render(draw);
-	
+	KeyManager::GetInstance()->Init();
+	TimeManager::GetInstance()->Init();
+	MouseManager::GetInstance()->Init();
+
+
 	Shader shader("res/shader/Shader2.vs", "res/shader/Shader2.fs");
 	shader.Bind();
 	s.Init();
 	v.push_back(shader);
 
 	glm::mat4 result = glm::mat4(1.0f);
-	v[0].SetUniformMat4f("u_model", result);  // Update the transformation matrix in your shader
+	v[0].SetUniformMat4f("u_model", result);  
+
 	while (1)
 	{
-		glutMainLoopEvent();
+		KeyManager::GetInstance()->Update();
+		TimeManager::GetInstance()->Update();
 
+		glutMainLoopEvent();
 	}
 
 }

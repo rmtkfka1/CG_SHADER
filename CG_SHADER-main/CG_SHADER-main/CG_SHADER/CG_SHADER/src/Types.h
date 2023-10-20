@@ -10,6 +10,24 @@ using uint32 = unsigned __int32;
 using uint64 = unsigned __int64;
 
 
+#define DECLARE_SINGLE(classname)                   \
+public:											    \
+	classname(){}									\
+													\
+public:												\
+													\
+	static classname* GetInstance()					\
+	{												\
+		static classname s_Insatance;				\
+		return &s_Insatance;						\
+	}												
+
+#define GET_SINGLE(classname) classname::GetInstance() 
+
+
+
+
+
 struct vec2 {
 	float x;
 	float y;
