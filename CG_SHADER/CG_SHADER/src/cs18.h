@@ -92,5 +92,7 @@ private:
 
 	//Åõ¿µ 
 	bool perspective = true;
+
+	bool depthtest = true;
 };
 

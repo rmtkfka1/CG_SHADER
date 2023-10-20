@@ -225,7 +225,6 @@ void cs18::TriRender()
 	}
 
 
-	
 	//======================================카메라 ,투영===========================================================/
 	float angle = camera_speed;
 	auto x = sinf(angle) * 30.0f;
@@ -295,6 +294,22 @@ void cs18::keyhandle()
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::P))
 	{
 		perspective = !perspective;
+	}
+
+	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::H))
+	{
+
+		depthtest = !depthtest;
+
+		if (depthtest)
+		{
+			glEnable(GL_DEPTH_TEST);
+		}
+		else
+		{
+			glDisable(GL_DEPTH_TEST);
+		}
+
 	}
 
 
@@ -406,8 +421,6 @@ void cs18::b_animation()
 		return;
 	}
 
-	
-
 	if (b_open)
 	{
 		b_dt -= 0.5f * dt;
@@ -440,7 +453,6 @@ void cs18::o_animation()
 	{
 		return;
 	}
-
 
 	if (o_open)
 	{
