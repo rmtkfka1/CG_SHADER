@@ -3,18 +3,6 @@
 #include "rect18.h"
 #include "Line.h"
 
-enum rect_dir
-{
-	left,
-	right,
-	up,
-	down,
-	back,
-	front
-};
-
-
-
 
 class cs18
 {

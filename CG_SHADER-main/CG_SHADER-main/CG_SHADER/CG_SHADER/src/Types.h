@@ -123,9 +123,3 @@ struct vec3 {
 };
 
 
-
-struct Color
-{
-	float R, G, B;
-};
-

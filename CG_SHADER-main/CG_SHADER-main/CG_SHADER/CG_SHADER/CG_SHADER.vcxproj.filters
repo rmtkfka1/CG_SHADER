@@ -53,6 +53,9 @@
     <Filter Include="02.Object\02.실습\18번">
       <UniqueIdentifier>{0ecfeb9c-a2fe-4ef0-afcf-c3f856392ec5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04.Matrix">
+      <UniqueIdentifier>{84f712b1-4e15-4ee6-abf7-1df1d8269d35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -115,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="src\rect18.cpp">
       <Filter>02.Object\02.실습\18번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\matrix.cpp">
+      <Filter>04.Matrix</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +189,9 @@
     </ClInclude>
     <ClInclude Include="src\rect18.h">
       <Filter>02.Object\02.실습\18번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\matrix.h">
+      <Filter>04.Matrix</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

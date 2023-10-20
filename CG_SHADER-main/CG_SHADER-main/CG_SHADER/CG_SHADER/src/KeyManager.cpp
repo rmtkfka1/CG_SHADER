@@ -5,8 +5,6 @@
 
 void KeyManager::Init()
 {
-	
-
 	_states.resize(KEY_TYPE_COUNT, KeyState::NONE);
 }
 

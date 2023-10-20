@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\matrix.cpp" />
     <ClCompile Include="src\rect18.cpp" />
     <ClCompile Include="src\cs18.cpp" />
     <ClCompile Include="src\Spiral.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="src\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\matrix.h" />
     <ClInclude Include="src\rect18.h" />
     <ClInclude Include="src\cs18.h" />
     <ClInclude Include="src\Spiral.h" />

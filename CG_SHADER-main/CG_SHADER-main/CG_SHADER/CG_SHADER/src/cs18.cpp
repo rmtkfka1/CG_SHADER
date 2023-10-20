@@ -121,7 +121,6 @@ void cs18::Render()
 	}
 
 
-
 	///카메라 셋팅
 	float angle = camera_speed;
 	auto x =  sinf(angle) * 30.0f;
@@ -134,13 +133,8 @@ void cs18::Render()
 	view = glm::lookAt(cameraPos, cameraDirection, cameraUp);
 	v[0]->SetUniformMat4f("u_view", view);
 
-
 	//프로젝션
-	glm::mat4 projection = glm::mat4(1.0f);
-	projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f); //--- 투영 공간 설정: fovy, aspect, near, far
-	v[0]->SetUniformMat4f("u_proj", projection);
-
-
+	v[0]->SetUniformMat4f("u_proj",matrix::GetInstance()->GetProjection());
 
 }
 
@@ -188,8 +182,13 @@ void cs18::t_animation()
 		return;
 	}
 
+	if (t_degree > 360.0f)
+	{
+		t_degree = 0;
+		start_t_anim = false;
+	}
+	
 	t_degree += 100.0f * dt;
-
 }
 
 void cs18::f_animation()
