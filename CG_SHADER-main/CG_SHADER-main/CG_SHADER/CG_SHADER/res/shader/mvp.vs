@@ -6,9 +6,11 @@ layout(location = 1) in vec3 color;
 out vec3 v_color;
 
 uniform mat4 u_model;
-
+uniform mat4 u_view;
+uniform mat4 u_proj;
 void main()
 {
-	gl_Position = position ; 
-	v_color = vec3(color);
+	gl_Position = u_proj* u_view * u_model * position ; 
+	v_color = color;
+
 };

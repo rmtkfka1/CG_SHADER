@@ -47,6 +47,12 @@
     <Filter Include="02.Object\01.Shape">
       <UniqueIdentifier>{9f6e2df9-1e21-4901-9c1e-988cfdc9145f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\02.실습">
+      <UniqueIdentifier>{19581f8f-db17-44f8-a059-b8287384f2e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\02.실습\18번">
+      <UniqueIdentifier>{0ecfeb9c-a2fe-4ef0-afcf-c3f856392ec5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -103,6 +109,12 @@
     </ClCompile>
     <ClCompile Include="src\TimeManager.cpp">
       <Filter>03,Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cs18.cpp">
+      <Filter>02.Object\02.실습\18번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rect18.cpp">
+      <Filter>02.Object\02.실습\18번</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +178,12 @@
     <ClInclude Include="src\TimeManager.h">
       <Filter>03,Manager</Filter>
     </ClInclude>
+    <ClInclude Include="src\cs18.h">
+      <Filter>02.Object\02.실습\18번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rect18.h">
+      <Filter>02.Object\02.실습\18번</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt">
@@ -183,6 +201,12 @@
       <Filter>00.res\shader</Filter>
     </None>
     <None Include="res\shader\Shader2.vs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\shader\mvp.vs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\shader\mvp.fs">
       <Filter>00.res\shader</Filter>
     </None>
   </ItemGroup>

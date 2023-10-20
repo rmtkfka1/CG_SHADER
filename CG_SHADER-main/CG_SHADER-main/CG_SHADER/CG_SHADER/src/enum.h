@@ -27,30 +27,27 @@ enum class KeyType
 	SpaceBar = VK_SPACE,
 	ESC = VK_ESCAPE,
 
-	//플레이어1
+
 	W = 'W',
 	A = 'A',
 	S = 'S',
 	D = 'D',
+	d = 'd',
+
 	F = 'F',
 	G = 'G',
+	Z = 'Z',
+	X=  'X',
 
-	//플레이어2
+
+	
+
+
 	Up = VK_UP,
 	Down = VK_DOWN,
 	Left = VK_LEFT,
 	Right = VK_RIGHT,
-	J = 'J',
-	K = 'K',
-	Z = 'Z',
-	X = 'X',
-	I = '1',
-	O = '2',
-	P = '3',
-	Q = 'Q',
 
-	U = 'U',
-	on = 'O'
 
 
 };

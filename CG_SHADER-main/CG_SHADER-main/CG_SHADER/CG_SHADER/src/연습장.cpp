@@ -1,14 +1,19 @@
 #include "pch.h"
-#include "Spiral.h"
-vector<Shader> v;
+#include "cs18.h"
 
-Spiral s;
+
+
+cs18 p;
+
 void draw()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	s.Render();
+
+	p.Render();
 	glutSwapBuffers();
+
+
 };
 
 
@@ -20,20 +25,20 @@ int main(int argc, char** argv)
 	TimeManager::GetInstance()->Init();
 	MouseManager::GetInstance()->Init();
 
-
-	Shader shader("res/shader/Shader2.vs", "res/shader/Shader2.fs");
+	Shader shader("res/shader/mvp.vs", "res/shader/mvp.fs");
 	shader.Bind();
-	s.Init();
-	v.push_back(shader);
+	auto &v=ObjectManager::GetInstance()->Get_Shader();
+	v.push_back(&shader);
 
-	glm::mat4 result = glm::mat4(1.0f);
-	v[0].SetUniformMat4f("u_model", result);  
+	p.Init();
 
 	while (1)
 	{
 		KeyManager::GetInstance()->Update();
 		TimeManager::GetInstance()->Update();
 
+		p.Update();
+		glutPostRedisplay();
 		glutMainLoopEvent();
 	}
 

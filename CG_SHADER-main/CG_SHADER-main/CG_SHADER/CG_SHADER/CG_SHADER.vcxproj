@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\rect18.cpp" />
+    <ClCompile Include="src\cs18.cpp" />
     <ClCompile Include="src\Spiral.cpp" />
     <ClCompile Include="src\Cylinder.cpp" />
     <ClCompile Include="src\Line.cpp" />
@@ -167,6 +169,8 @@
     <ClCompile Include="src\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\rect18.h" />
+    <ClInclude Include="src\cs18.h" />
     <ClInclude Include="src\Spiral.h" />
     <ClInclude Include="src\Cylinder.h" />
     <ClInclude Include="src\Line.h" />
@@ -192,6 +196,8 @@
     <Text Include="자주사용하는코드.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shader\mvp.fs" />
+    <None Include="res\shader\mvp.vs" />
     <None Include="res\shader\Shader1.fs" />
     <None Include="res\shader\Shader1.vs" />
     <None Include="res\shader\Shader2.fs" />

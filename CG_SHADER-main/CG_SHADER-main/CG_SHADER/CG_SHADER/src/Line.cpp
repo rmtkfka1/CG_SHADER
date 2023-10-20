@@ -20,15 +20,14 @@ void Line::Init()
 
 	float position[] =
 	{
-		-1.0f,0,0,
-		1.0f,0,0,
+		-50.0f,0,0, //xÃà
+		50.0f,0,0,
 
-		0,1.0f,0,
-		0,-1.0f,0,
+		0,50.0f,0,
+		0,-50.0f,0,
 
-
-		1.0f,0.8f,-1.0f,
-		-1.0f,-0.8f,1.0f,
+		0,0,50.0f,
+		0,0,-50.0f
 	};
 
 	float color[]
@@ -55,11 +54,6 @@ void Line::Init()
 void Line::Render()
 {
 
-	auto &v =ObjectManager::GetInstance()->Get_Shader();
-
-	auto simple = glm::mat4(1.0f);
-
-	v[0]->SetUniformMat4f("u_model", simple);
 
 	m_vao.Bind();
 	glDrawArrays(GL_LINES, 0,6);
