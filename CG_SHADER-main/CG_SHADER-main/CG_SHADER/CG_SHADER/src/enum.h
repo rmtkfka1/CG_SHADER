@@ -28,19 +28,32 @@ enum class KeyType
 	ESC = VK_ESCAPE,
 
 
-	W = 'W',
 	A = 'A',
-	S = 'S',
+	B = 'B',
+	C = 'C',
 	D = 'D',
-	d = 'd',
-
+	E = 'E',
 	F = 'F',
 	G = 'G',
+	H = 'H',
+	I = 'I',
+	J = 'J',
+	K = 'K',
+	L = 'L',
+	M = 'M',
+	N = 'N',
+	O = 'O',
+	P = 'P',
+	Q = 'Q',
+	R = 'R',
+	S = 'S',
+	T = 'T',
+	U = 'U',
+	V = 'V',
+	W = 'W',
+	X = 'X',
+	Y = 'Y',
 	Z = 'Z',
-	X=  'X',
-
-
-	
 
 
 	Up = VK_UP,
