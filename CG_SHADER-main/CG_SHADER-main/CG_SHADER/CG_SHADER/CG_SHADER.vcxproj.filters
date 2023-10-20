@@ -122,6 +122,9 @@
     <ClCompile Include="src\matrix.cpp">
       <Filter>04.Matrix</Filter>
     </ClCompile>
+    <ClCompile Include="src\tri18.cpp">
+      <Filter>02.Object\02.실습\18번</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -192,6 +195,9 @@
     </ClInclude>
     <ClInclude Include="src\matrix.h">
       <Filter>04.Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tri18.h">
+      <Filter>02.Object\02.실습\18번</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

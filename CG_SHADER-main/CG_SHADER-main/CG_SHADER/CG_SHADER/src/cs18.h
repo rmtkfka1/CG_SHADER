@@ -1,7 +1,16 @@
 #pragma once
 
 #include "rect18.h"
+#include "tri18.h"
 #include "Line.h"
+
+enum class who_start
+{
+	left,
+	right,
+	front,
+	back
+};
 
 
 class cs18
@@ -15,14 +24,20 @@ public:
 	void Init();
 	void Update();
 	void Render();
-
+	
+	void RectRender();
+	void TriRender();
 	
 
 
 private:
 
+	
+	bool rectdraw = false;
+
 	Line line;
 	rect18 rect;
+	tri18 tri;
 
 	void keyhandle();
 
@@ -57,8 +72,25 @@ private:
 	bool b_open = true;
 	float b_dt = 1.0f;
 
+	//애니메이션 O,R
+	void o_animation();
+	void r_animation();
+	bool  start_o_anim = false;
+	bool  start_r_anim = false;
 
+	bool o_open = true;
+	float o_dt_left = 0;
+	float o_dt_right = 0;
+	float o_dt_front = 0;
+	float o_dt_back = 0;
+
+	bool r_open = true;
+	who_start start= who_start::front;
+	//카메라
 	float camera_speed = 0.1f;
 	float dt = 0;
+
+	//투영 
+	bool perspective = true;
 };
 

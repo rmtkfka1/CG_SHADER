@@ -10,15 +10,10 @@ class rect18
 {
 
 public:
+
 	void Init();
 	void Update();
 	void Render();
-
-
-	float degree; //회전할때 사용
-	float dx;
-	float dy;
-	float dz;
 
 private:
 

@@ -19,7 +19,8 @@ glm::mat4 matrix::GetScale(float dx, float dy, float dz)
 
 glm::mat4 matrix::GetRotate(float degree, float x, float y, float z)
 {
-	return glm::rotate(glm::mat4(1.0f), glm::degrees(degree), glm::vec3(x, y, z));
+	return glm::rotate(glm::mat4(1.0f), glm::radians(degree), glm::vec3(x, y, z));
+
 }
 
 
@@ -43,6 +44,14 @@ glm::mat4 matrix::GetProjection(float _fovy, float _aspect, float _near, float _
 {
 	glm::mat4 projection = glm::mat4(1.0f);
 	projection = glm::perspective(glm::radians(_fovy), _aspect, _near, _far); //--- 투영 공간 설정: fovy, aspect, near, far
+
+	return projection;
+}
+
+glm::mat4 matrix::Getortho()
+{
+	glm::mat4 projection = glm::mat4(1.0f);
+	projection = glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, -30.0f, 50.0f);
 
 	return projection;
 }

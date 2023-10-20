@@ -25,6 +25,7 @@ public:
 	glm::mat4 GetProjection();
 	glm::mat4 GetProjection(float _fovy,float _aspect, float _near ,float _far);
 
+	glm::mat4 Getortho();
 
 private:
 };

@@ -168,6 +168,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\TimeManager.cpp" />
+    <ClCompile Include="src\tri18.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\matrix.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="src\VBO.h" />
     <ClInclude Include="src\VertexBufferLayout.h" />
     <ClInclude Include="src\TimeManager.h" />
+    <ClInclude Include="src\tri18.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt" />
