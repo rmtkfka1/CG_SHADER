@@ -2,6 +2,9 @@
 #include "pch.h"
 #include "ex19.h"
 
+#include "Sphere.h"
+#include "Circle.h"
+
 void ex19::Init()
 {
 	cout << "=========================================" << endl;
@@ -11,6 +14,13 @@ void ex19::Init()
 	cout << " T,Y : Y축 양음 으로 회전 " << endl;
 	cout << " Z,X : Z축 양음 으로 회전 " << endl;
 	cout << " O,P : 직각투영 / 원근 투영" << endl;
+
+	earth = new Sphere(3.0f);
+	earth_circle = new Circle(12.0f, 12.0f);
+
+	moon = new Sphere(1.0f);
+	moon_circle = new Circle(5.0f, 5.0f);
+	star = new Sphere(0.5f);
 
 }
 

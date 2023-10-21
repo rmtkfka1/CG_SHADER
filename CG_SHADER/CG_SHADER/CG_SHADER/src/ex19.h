@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Sphere.h"
-#include "Circle.h"
-
+class Sphere;
+class Circle;
 
 class ex19
 {
@@ -19,15 +18,13 @@ public:
 private:
 
 	//Áö±¸
-	Sphere* earth = new Sphere(3.0f);
-	Circle* earth_circle = new Circle(12.0f, 12.0f);
+	Sphere*  earth        = nullptr;
+	Circle * earth_circle = nullptr;
 
-	
-	Sphere* moon = new Sphere(1.0f);
-	Circle* moon_circle = new Circle(5.0f, 5.0f);
+	Sphere * moon         = nullptr;
+	Circle * moon_circle  = nullptr;
 
-
-	Sphere* star = new Sphere(0.5f);
+	Sphere * star         = nullptr;
 
 
 
