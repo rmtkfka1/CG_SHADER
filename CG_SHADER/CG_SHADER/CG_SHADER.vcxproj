@@ -135,6 +135,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Circle.cpp" />
+    <ClCompile Include="src\Sphere.cpp" />
+    <ClCompile Include="src\ex19.cpp" />
     <ClCompile Include="src\matrix.cpp" />
     <ClCompile Include="src\rect18.cpp" />
     <ClCompile Include="src\cs18.cpp" />
@@ -163,14 +166,20 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\연습장.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    <ClCompile Include="src\실습18.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\TimeManager.cpp" />
     <ClCompile Include="src\tri18.cpp" />
+    <ClCompile Include="src\실습19.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Circle.h" />
+    <ClInclude Include="src\Sphere.h" />
+    <ClInclude Include="src\ex19.h" />
     <ClInclude Include="src\matrix.h" />
     <ClInclude Include="src\rect18.h" />
     <ClInclude Include="src\cs18.h" />
@@ -206,6 +215,8 @@
     <None Include="res\shader\Shader1.vs" />
     <None Include="res\shader\Shader2.fs" />
     <None Include="res\shader\Shader2.vs" />
+    <None Include="res\shader\shader_19.fs" />
+    <None Include="res\shader\shader_19.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -56,6 +56,9 @@
     <Filter Include="04.Matrix">
       <UniqueIdentifier>{84f712b1-4e15-4ee6-abf7-1df1d8269d35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\02.실습\19번">
+      <UniqueIdentifier>{4fbfdb86-d354-42ea-ac6c-9702e093bf7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -103,7 +106,7 @@
     <ClCompile Include="src\00SRT예제.cpp">
       <Filter>100.memo</Filter>
     </ClCompile>
-    <ClCompile Include="src\연습장.cpp" />
+    <ClCompile Include="src\실습18.cpp" />
     <ClCompile Include="src\Cylinder.cpp">
       <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
@@ -124,6 +127,16 @@
     </ClCompile>
     <ClCompile Include="src\tri18.cpp">
       <Filter>02.Object\02.실습\18번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습19.cpp" />
+    <ClCompile Include="src\ex19.cpp">
+      <Filter>02.Object\02.실습\19번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sphere.cpp">
+      <Filter>02.Object\02.실습\19번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Circle.cpp">
+      <Filter>02.Object\02.실습\19번</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +212,15 @@
     <ClInclude Include="src\tri18.h">
       <Filter>02.Object\02.실습\18번</Filter>
     </ClInclude>
+    <ClInclude Include="src\ex19.h">
+      <Filter>02.Object\02.실습\19번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sphere.h">
+      <Filter>02.Object\02.실습\19번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Circle.h">
+      <Filter>02.Object\02.실습\19번</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt">
@@ -222,6 +244,12 @@
       <Filter>00.res\shader</Filter>
     </None>
     <None Include="res\shader\mvp.fs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\shader\shader_19.vs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\shader\shader_19.fs">
       <Filter>00.res\shader</Filter>
     </None>
   </ItemGroup>

@@ -27,7 +27,6 @@ enum class KeyType
 	SpaceBar = VK_SPACE,
 	ESC = VK_ESCAPE,
 
-
 	A = 'A',
 	B = 'B',
 	C = 'C',
@@ -54,13 +53,23 @@ enum class KeyType
 	X = 'X',
 	Y = 'Y',
 	Z = 'Z',
-
-
+	ONE='1',
+	TWO='2',
+	THREE='3',
+	FOUR='4',
+	FIVE='5',
+	SIX='6',
+	SEVEN='7',
+	EIGHT='8',
+	NINE='9',
 	Up = VK_UP,
 	Down = VK_DOWN,
 	Left = VK_LEFT,
 	Right = VK_RIGHT,
 
+	Plus='+',
+	Minus='-',
+	a='a',
 
 
 };

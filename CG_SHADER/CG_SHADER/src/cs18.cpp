@@ -42,6 +42,8 @@ void cs18::Render()
 	{
 		TriRender();
 	}
+
+	
 }
 
 void cs18::RectRender()

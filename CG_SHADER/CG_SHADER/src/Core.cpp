@@ -31,8 +31,6 @@ void Core::Init(int argc, char** argv, int x, int y) //
 		std::cerr << "glew 초기화 실패" << std::endl;
 		exit(EXIT_FAILURE);
 	}
-	else
-		std::cout << "glew 초기화 성공 " << std::endl;
 
 
 

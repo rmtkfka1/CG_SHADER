@@ -4,6 +4,7 @@
 #include "tri18.h"
 #include "Line.h"
 
+
 enum class who_start
 {
 	left,
@@ -30,6 +31,7 @@ public:
 	
 
 
+	
 private:
 
 	
