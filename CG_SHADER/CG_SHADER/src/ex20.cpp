@@ -421,6 +421,7 @@ void ex20::animation_1()
 
 		if (dx_1 >= 90.0f)
 		{
+			start_1 = false;
 			anim_1 = false;
 			return;
 		}
@@ -439,6 +440,7 @@ void ex20::animation_2()
 
 	if (dx_1 <= 0)
 	{
+		start_1 = false;
 		anim_2 = false;
 		return;
 	}
@@ -467,8 +469,8 @@ void ex20::animation_e()
 
 		if (dx_e > 3.5f)
 		{
-			anim_e = false;
 			e_start = false;
+			anim_e = false;
 			return;
 		}
 	}
@@ -498,8 +500,8 @@ void ex20::animation_r()
 
 		if (dx_e < 0)
 		{
-			anim_r = false;
 			e_start = false;
+			anim_r = false;
 			return;
 		}
 	}

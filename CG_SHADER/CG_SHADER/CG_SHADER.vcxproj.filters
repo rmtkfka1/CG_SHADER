@@ -148,15 +148,6 @@
     <ClCompile Include="src\Body.cpp">
       <Filter>02.Object\02.실습\20번</Filter>
     </ClCompile>
-    <ClCompile Include="src\Arm.cpp">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Small_body.cpp">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Small_arm.cpp">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClCompile>
     <ClCompile Include="src\Bottom.cpp">
       <Filter>02.Object\02.실습\20번</Filter>
     </ClCompile>
@@ -247,15 +238,6 @@
       <Filter>02.Object\02.실습\20번</Filter>
     </ClInclude>
     <ClInclude Include="src\Body.h">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Arm.h">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Small_body.h">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Small_arm.h">
       <Filter>02.Object\02.실습\20번</Filter>
     </ClInclude>
     <ClInclude Include="src\Bottom.h">

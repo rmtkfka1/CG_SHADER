@@ -136,9 +136,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Bottom.cpp" />
-    <ClCompile Include="src\Small_arm.cpp" />
-    <ClCompile Include="src\Small_body.cpp" />
-    <ClCompile Include="src\Arm.cpp" />
     <ClCompile Include="src\Body.cpp" />
     <ClCompile Include="src\ex20.cpp" />
     <ClCompile Include="src\Circle.cpp" />
@@ -185,9 +182,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bottom.h" />
-    <ClInclude Include="src\Small_arm.h" />
-    <ClInclude Include="src\Small_body.h" />
-    <ClInclude Include="src\Arm.h" />
     <ClInclude Include="src\Body.h" />
     <ClInclude Include="src\ex20.h" />
     <ClInclude Include="src\Circle.h" />
