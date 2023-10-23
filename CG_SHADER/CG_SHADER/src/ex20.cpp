@@ -44,6 +44,7 @@ void ex20::Render()
 
 
 
+
 	//////////////////////////////////////////
 	bottom->Render();
 
@@ -293,7 +294,9 @@ void ex20::HandleKey()
 
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::R))
 	{
+
 		anim_r = !anim_r;
+
 	}
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::T))
 	{
@@ -308,10 +311,10 @@ void ex20::HandleKey()
 		n_anim = false;
 		m_anim = false;
 		anim_1 = false;
-		start_1 = false;
+
 		anim_2 = false;
 		anim_e = false;
-		e_start = false;
+
 		anim_r = false;
 		t_anim = false;
 		camera_bingle = false;
@@ -330,11 +333,11 @@ void ex20::HandleKey()
 		n_animation();
 		dx_1 = 0;
 		anim_1 = false;
-		start_1 = false;
+
 		anim_2 = false;
 		dx_e = 0;
 		anim_e = false;
-		e_start = false;
+
 		anim_r = false;
 		t_anim = false;
 		t_dx = 0;
@@ -397,38 +400,41 @@ void ex20::n_animation()
 	m_dx -= 100.0f * dt;
 }
 
-void ex20::animation_1()
+void ex20::animation_1() //팔벌리기
 {
 	if (!anim_1)
 	{
 		return;
 	}
 
+
+	//만약 이동거리가 존재한다면 그만큼 먼저 보간을해준다.
 	if (dx_e >= 0)
 	{
 		dx_e -= 10.0f * dt;
+
+		
 	}
 
-	if (abs(dx_e) < 0.1f)
+	if (abs(dx_e) < 0.2f)
 	{
 		start_1 = true;
 	}
 
+	dx_1 += 100.0f * dt;
+
 	if (start_1)
 	{
-		dx_1 += 100.0f * dt;
-
-
 		if (dx_1 >= 90.0f)
 		{
-			start_1 = false;
 			anim_1 = false;
+			start_1 = false;
 			return;
 		}
 	}
 }
 
-void ex20::animation_2()
+void ex20::animation_2() //팔오므리기
 {
 
 	if (!anim_2)
@@ -436,14 +442,31 @@ void ex20::animation_2()
 		return;
 	}
 
+
+	//만약 이동거리가 존재한다면 그만큼 먼저 보간을해준다.
+	if (dx_e >= 0)
+	{
+		dx_e -= 40.0f * dt;
+
+	}
+
+	if (abs(dx_e) < 0.2f)
+	{
+		start_1 = true;
+	}
+
 	dx_1 -= 100.0f * dt;
 
-	if (dx_1 <= 0)
+	if (start_1)
 	{
-		start_1 = false;
-		anim_2 = false;
-		return;
+		if (dx_1 <= 0)
+		{
+			anim_2 = false;
+			start_1 = false;
+			return;
+		}
 	}
+	
 }
 
 void ex20::animation_e()
@@ -455,25 +478,27 @@ void ex20::animation_e()
 
 	if (dx_1 > 0)
 	{
-		dx_1 -= 100 * dt;
+		dx_1 -= 40.0f * dt;
 	}
 
-	if (abs(dx_1) < 0.1f)
+	if (abs(dx_1) < 1.0f)
 	{
-		e_start = true;
+		start_e = true;
 	}
 
-	if (e_start)
+
+	if (start_e)
 	{
-		dx_e += 10.0f *dt;
+		dx_e += 10.0f * dt;
 
 		if (dx_e > 3.5f)
 		{
-			e_start = false;
+			start_e = false;
 			anim_e = false;
 			return;
 		}
 	}
+
 
 }
 
@@ -486,25 +511,26 @@ void ex20::animation_r()
 
 	if (dx_1 > 0)
 	{
-		dx_1 -= 100 * dt;
+		dx_1 -= 30.0f * dt;
 	}
 
-	if (abs(dx_1) < 0.1f)
+	if (abs(dx_1) < 1.0f)
 	{
-		e_start = true;
+		start_e = true;
 	}
 
-	if (e_start)
+	if (start_e)
 	{
 		dx_e -= 10.0f * dt;
 
 		if (dx_e < 0)
 		{
-			e_start = false;
+			start_e = false;
 			anim_r = false;
 			return;
 		}
 	}
+
 
 
 
@@ -517,10 +543,29 @@ void ex20::t_animation()
 		return;
 	}
 
-	t_dx += 50.0f * dt;
-	
-	
+	static int count = 0; 
 
+	if (count % 2 == 0)
+	{
+		t_dx += 50.0f * dt;
+
+		if (t_dx > 90.0f)
+		{
+			count++;
+		}
+	}
+
+	else
+	{
+
+		t_dx -= 50.0f * dt;
+
+		if (t_dx < 0)
+		{
+			count++;
+		}
+
+	}
 }
 
 

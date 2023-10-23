@@ -45,17 +45,16 @@ public:
 
 	//포신 이동하기위한 변수
 	float dx_1 = 0;
-	float anim_1 = false;
 	bool start_1 = false;
+	float anim_1 = false;
 	float anim_2 = false;
 	void animation_1();
 	void animation_2();
 
 	//포신 이동하기위한 변수2
 	float dx_e = 0;
+	bool start_e;
 	float anim_e = false;
-	bool e_start = false;
-
 	bool anim_r = false;
 	void animation_e();
 	void animation_r();
