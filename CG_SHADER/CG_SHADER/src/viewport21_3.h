@@ -4,11 +4,13 @@ class Body;
 class Line;
 class Bottom;
 
-class ex20
+
+
+class viewport21_3
 {
 
-public:
 
+public:
 
 	void Init();
 
@@ -28,13 +30,13 @@ public:
 	//아래몸체 이동하기위한 변수
 	void b_animation();
 	void v_animation();
-	float b_dx=0;
-	float v_anim=false;
-	float b_anim=false;
+	float b_dx = 0;
+	float v_anim = false;
+	float b_anim = false;
 
 
 	//윗몸체 이동하기위한 변수
-	float m_dx=0;
+	float m_dx = 0;
 	float n_anim = false;
 	float m_anim = false;
 	void m_animation();
@@ -79,7 +81,7 @@ public:
 	float camera_rotate_dx;
 	float camera_rotate_dz;
 	float camera_dx = 0.0f;
-	float camera_dy = 50.0f;
+	float camera_dy = 200.0f;
 	float camera_dz = 100.0f;
 };
 

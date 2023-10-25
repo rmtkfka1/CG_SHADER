@@ -62,6 +62,9 @@
     <Filter Include="02.Object\02.실습\20번">
       <UniqueIdentifier>{007e4d2a-b5d5-4239-b3f7-3822e3ae5506}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\02.실습\21번">
+      <UniqueIdentifier>{8ad94f20-0e8f-4a9a-a598-9b8013b02518}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -150,6 +153,13 @@
     </ClCompile>
     <ClCompile Include="src\Bottom.cpp">
       <Filter>02.Object\02.실습\20번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습21.cpp" />
+    <ClCompile Include="src\viewport21_2.cpp">
+      <Filter>02.Object\02.실습\21번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\viewport21_3.cpp">
+      <Filter>02.Object\02.실습\21번</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +252,12 @@
     </ClInclude>
     <ClInclude Include="src\Bottom.h">
       <Filter>02.Object\02.실습\20번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\viewport21_2.h">
+      <Filter>02.Object\02.실습\21번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\viewport21_3.h">
+      <Filter>02.Object\02.실습\21번</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

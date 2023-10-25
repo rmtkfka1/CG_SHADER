@@ -2,11 +2,6 @@
 #include "Core.h"
 
 
-GLvoid Reshape(int w, int h)
-{
-	glViewport(0, 0, w, h);
-}
-
 Core::Core()
 {
 	//init 에서 처리함
@@ -39,8 +34,13 @@ void Core::Init(int argc, char** argv, int x, int y) //
 void Core::Render(void (*funcptr)(void))
 {
 	::glutDisplayFunc(funcptr);
-	::glutReshapeFunc(Reshape);
 
+
+}
+
+void Core::Reshape(void(*funcptr)(int, int))
+{
+	::glutReshapeFunc(funcptr);
 }
 
 void Core::Keyboard(void (*funcptr)(unsigned char, int, int))

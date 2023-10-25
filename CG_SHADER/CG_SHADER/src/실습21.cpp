@@ -1,14 +1,28 @@
 #include "pch.h"
 #include "ex20.h"
+#include "viewport21_2.h"
+#include "viewport21_3.h"
 
 ex20 p;
+viewport21_2 p2;
+viewport21_3 p3;
 
 void draw()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	glViewport(0, 400, 400, 400);
 	p.Render();
+
+
+	glViewport(0, 0, 400, 400);
+	p2.Render();
+
+
+	glViewport(400, 0, 400, 400);
+	p3.Render();
+
 	glEnable(GL_DEPTH_TEST);
 	glutSwapBuffers();
 
@@ -30,13 +44,16 @@ int main(int argc, char** argv)
 	v.push_back(&shader);
 
 	p.Init();
-
+	p2.Init();
+	p3.Init();
 
 	while (1)
 	{
 		KeyManager::GetInstance()->Update();
 		TimeManager::GetInstance()->Update();
 		p.Update();
+		p2.Update();
+		p3.Update();
 		glutPostRedisplay();
 		glutMainLoopEvent();
 

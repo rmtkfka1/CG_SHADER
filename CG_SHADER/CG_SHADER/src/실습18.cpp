@@ -2,20 +2,27 @@
 #include "cs18.h"
 
 cs18 p;
+int x=800, y=800;
+
 void draw()
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	p.Render();
+
+	glViewport(0, 0, x, y);
 	glutSwapBuffers();
 
 };
+
 
 
 int main(int argc, char** argv)
 {
 	Core::GetInstance()->Init(argc, argv, 800, 800);
 	Core::GetInstance()->Render(draw);
+
+
 	KeyManager::GetInstance()->Init();
 	TimeManager::GetInstance()->Init();
 	MouseManager::GetInstance()->Init();

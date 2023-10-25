@@ -1,11 +1,10 @@
 #include "pch.h"
-#include "ex20.h"
-
-#include "Body.h"
+#include "viewport21_3.h"
 #include "Line.h"
+#include "Body.h"
 #include "Bottom.h"
 
-void ex20::Init()
+void viewport21_3::Init()
 {
 	line = new Line;
 	line->Init();
@@ -16,28 +15,13 @@ void ex20::Init()
 	bottom = new Bottom;
 	bottom->Init();
 
-	cout << "V / B: 크레인의 아래 몸체가 x축 방향으로 양 / 음 방향으로 이동한다.다시 누르면 멈춘다.		" << endl;
-	cout << "M / N : 크레인의 중앙 몸체가 y축에 대하여 양 / 음 방향으로 회전한다.다시 누르면 멈춘다.	" << endl;
-	cout << "1 / 2 : 포신이 y축에 대하여 양 / 음 방향으로 회전하는데, 두 포신이 서로 반대방향으로 회전한다.다시 누르면 멈춘다." << endl;
-	cout << "E / R : 2개 포신이 조금씩 이동해서 한 개가 된다 / 다시 제자리로 이동해서 2개가 된다." << endl;
-	cout << "이때 포신이 회전되어 있다면, 원래 자리까지 회전된 후 이동한다" << endl;
-	cout << "t / T : 크레인의 맨 위 2개의 팔이 z축에 대하여 양 / 음 방향으로 서로 반대방향으로 회전한다.다시 누르면 멈춘다.	" << endl;
-	cout << "카메라 변환								" << endl;
-	cout << "W / S : 카메라가 z축 양 / 음 방향으로 이동									" << endl;
-	cout << "A / D : 카메라가 x축 양 / 음 방향으로 이동							" << endl;
-	cout << "X     :  카메라 기준 y축에 대하여 회전								" << endl;
-	cout << "F/G   : 화면의 중심의 y축에 대하여 카메라가 회전(중점에 대하여 공전)				" << endl;
-	cout << "Z     : 화면의 중심의 축에 대하여 카메라가 회전하는 애니메이션을 진행한다 / 멈춘다.	" << endl;
-	cout << "3     : 모든 움직임 멈추기				" << endl;
-	cout << "4     : 모든 움직임이 초기화된다.		" << endl;
-	cout << "Q     : 프로그램 종료하기" << endl;
 
 }
 
-void ex20::Update()
+void viewport21_3::Update()
 {
 
-	dt =TimeManager::GetInstance()->GetDeltaTime();
+	dt = TimeManager::GetInstance()->GetDeltaTime();
 	HandleKey();
 	b_animation();
 	v_animation();
@@ -51,7 +35,7 @@ void ex20::Update()
 	t_animation();
 }
 
-void ex20::Render()
+void viewport21_3::Render()
 {
 	auto v = ObjectManager::GetInstance()->Get_Shader();
 
@@ -65,14 +49,14 @@ void ex20::Render()
 	bottom->Render();
 
 	//몸체그리기
-	v[0]->SetUniformMat4f("u_model", matrix::GetInstance()->GetTranslation(0.0f+b_dx, 2.0f, 0));
+	v[0]->SetUniformMat4f("u_model", matrix::GetInstance()->GetTranslation(0.0f + b_dx, 2.0f, 0));
 	body->Render();
 
 
 	//위에 작은 몸체그리기
 	{
 		auto rotate = matrix::GetInstance()->GetRotate(m_dx, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(0.0f+ b_dx, 5.0f, 0);
+		auto trans = matrix::GetInstance()->GetTranslation(0.0f + b_dx, 5.0f, 0);
 		auto scale = matrix::GetInstance()->GetScale(0.5f, 0.5f, 0.5f);
 		auto result = trans * scale * rotate;
 		v[0]->SetUniformMat4f("u_model", result);
@@ -84,9 +68,9 @@ void ex20::Render()
 	{
 		auto trans2 = matrix::GetInstance()->GetTranslation(dx_e, 0, 0);
 		auto rotate = matrix::GetInstance()->GetRotate(-dx_1, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(-3.5f+ b_dx, 0.0f, 3.0f);
+		auto trans = matrix::GetInstance()->GetTranslation(-3.5f + b_dx, 0.0f, 3.0f);
 		auto scale = matrix::GetInstance()->GetScale(0.2f, 1.0f, 1.0f); // 즉 포신의 크기는 x:2 , y:3, z:10
-		auto result =  trans2* trans* rotate * scale;
+		auto result = trans2 * trans * rotate * scale;
 		v[0]->SetUniformMat4f("u_model", result);
 		body->Render();
 	}
@@ -94,9 +78,9 @@ void ex20::Render()
 	{
 		auto trans2 = matrix::GetInstance()->GetTranslation(-dx_e, 0, 0);
 		auto rotate = matrix::GetInstance()->GetRotate(dx_1, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(3.5f+ b_dx, 0.0f, 3.0f);
+		auto trans = matrix::GetInstance()->GetTranslation(3.5f + b_dx, 0.0f, 3.0f);
 		auto scale = matrix::GetInstance()->GetScale(0.2f, 1.0f, 1.0f); // 즉 포신의 크기는 x:2 , y:3, z:10
-		auto result = trans2 *trans *rotate * scale;
+		auto result = trans2 * trans * rotate * scale;
 		v[0]->SetUniformMat4f("u_model", result);
 		body->Render();
 	}
@@ -106,10 +90,10 @@ void ex20::Render()
 
 		auto rotate_t = matrix::GetInstance()->GetRotate(t_dx, 1.0f, 0, 0);
 		auto m_rotate = matrix::GetInstance()->GetRotate(m_dx, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(-1.0f+ b_dx, 6.0f, 0);
+		auto trans = matrix::GetInstance()->GetTranslation(-1.0f + b_dx, 6.0f, 0);
 		auto rotate = matrix::GetInstance()->GetRotate(90.0f, 1.0f, 0, 0);
 		auto sclae = matrix::GetInstance()->GetScale(0.1f, 0.3f, 0.1f);
-		v[0]->SetUniformMat4f("u_model", trans* m_rotate * rotate_t * sclae * rotate);
+		v[0]->SetUniformMat4f("u_model", trans * m_rotate * rotate_t * sclae * rotate);
 		body->Render();
 	}
 
@@ -118,7 +102,7 @@ void ex20::Render()
 
 		auto rotate_t = matrix::GetInstance()->GetRotate(-t_dx, 1.0f, 0, 0);
 		auto m_rotate = matrix::GetInstance()->GetRotate(m_dx, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(1.0f+ b_dx, 6.0f, 0);
+		auto trans = matrix::GetInstance()->GetTranslation(1.0f + b_dx, 6.0f, 0);
 		auto rotate = matrix::GetInstance()->GetRotate(90.0f, 1.0f, 0, 0);
 		auto sclae = matrix::GetInstance()->GetScale(0.1f, 0.3f, 0.1f);
 		v[0]->SetUniformMat4f("u_model", trans * m_rotate * rotate_t * sclae * rotate);
@@ -132,17 +116,14 @@ void ex20::Render()
 	/*카메라, 투영 설정*/
 
 
-
-
-
 	if (camera_bingle == false)
 	{
 
 		if (camera_auto_rotate)
 		{
-
-			camera_rotate_dx = sinf(camera_angle) * 100.0f;
-			camera_rotate_dz = cosf(camera_angle) * 100.0f;
+			//z 키 눌렀을떄 카메라 돌리기
+			camera_rotate_dx = sinf(camera_angle) ;
+			camera_rotate_dz = cosf(camera_angle) ;
 
 			glm::mat4 view = glm::mat4(1.0f);
 			glm::vec3 cameraPos = glm::vec3(camera_rotate_dx, camera_dy, camera_rotate_dz); //--- 카메라 위치
@@ -160,18 +141,19 @@ void ex20::Render()
 			if (move_xy)
 			{
 
-
+			
 
 				v[0]->SetUniformMat4f("u_view",
-					matrix::GetInstance()->GetCamera(glm::vec3(camera_dx, camera_dy, camera_dz), glm::vec3(0, 0, 0)));
+					matrix::GetInstance()->GetCamera(glm::vec3(camera_dx, camera_dy, 1.0f), glm::vec3(camera_dx, camera_dy-200.0f, 0)));
 
 
 			}
 
 			else
 			{
-				camera_rotate_dx = sinf(camera_angle) * 100.0f;
-				camera_rotate_dz = cosf(camera_angle) * 100.0f;
+				// F 로 카메라 수동조작
+				camera_rotate_dx = sinf(camera_angle) ;
+				camera_rotate_dz = cosf(camera_angle) ;
 				glm::mat4 view = glm::mat4(1.0f);
 				glm::vec3 cameraPos = glm::vec3(camera_rotate_dx, camera_dy, camera_rotate_dz); //--- 카메라 위치
 				glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, 0.0f); //--- 카메라 바라보는 방향
@@ -186,11 +168,11 @@ void ex20::Render()
 
 	else
 	{
-
-		camera_revolve_dx =  camera_dx +sinf(camera_angle2) * 100.0f;
-		camera_revolve_dz =  camera_dz +cosf(camera_angle2) * 100.0f;
+		//x 눌러서 카메라 돌리기
+		camera_revolve_dx = 0 + sinf(camera_angle2) * 1;
+		camera_revolve_dz = 0 + cosf(camera_angle2) * 1;
 		glm::mat4 view = glm::mat4(1.0f);
-		glm::vec3 cameraPos = glm::vec3(camera_dx, camera_dy, camera_dz); //--- 카메라 위치
+		glm::vec3 cameraPos = glm::vec3(0, camera_dy, 0); //--- 카메라 위치
 		glm::vec3 cameraDirection = glm::vec3(camera_revolve_dx, 0, camera_revolve_dz); //--- 카메라 바라보는 방향
 		glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); //--- 카메라 위쪽 방향
 		view = glm::lookAt(cameraPos, cameraDirection, cameraUp);
@@ -201,16 +183,16 @@ void ex20::Render()
 
 
 
-	
+
 
 	v[0]->SetUniformMat4f("u_proj",
-	matrix::GetInstance()->GetProjection());
+		matrix::GetInstance()->GetProjection());
 
 	glEnable(GL_DEPTH);
 
 }
 
-void ex20::HandleKey()
+void viewport21_3::HandleKey()
 {
 
 
@@ -218,7 +200,7 @@ void ex20::HandleKey()
 	{
 		camera_auto_rotate = false;
 		move_xy = true;
-		camera_dx -= 20.0f * dt;
+		camera_dx -= 10.0f * dt;
 		camera_bingle = false;
 	}
 
@@ -226,7 +208,7 @@ void ex20::HandleKey()
 	{
 		camera_auto_rotate = false;
 		move_xy = true;
-		camera_dx += 20.0f * dt;
+		camera_dx += 10.0f * dt;
 		camera_bingle = false;
 	}
 
@@ -234,7 +216,7 @@ void ex20::HandleKey()
 	{
 		camera_auto_rotate = false;
 		move_xy = true;
-		camera_dz -= 20.0f * dt;
+		camera_dy -= 20.0f * dt;
 		camera_bingle = false;
 	}
 
@@ -242,7 +224,7 @@ void ex20::HandleKey()
 	{
 		camera_auto_rotate = false;
 		move_xy = true;
-		camera_dz += 20.0f * dt;
+		camera_dy += 20.0f * dt;
 		camera_bingle = false;
 	}
 
@@ -375,7 +357,7 @@ void ex20::HandleKey()
 
 }
 
-void ex20::b_animation()
+void viewport21_3::b_animation()
 {
 	if (!b_anim)
 	{
@@ -385,7 +367,7 @@ void ex20::b_animation()
 	b_dx += 10.0f * dt;
 }
 
-void ex20::v_animation()
+void viewport21_3::v_animation()
 {
 
 	if (!v_anim)
@@ -396,9 +378,9 @@ void ex20::v_animation()
 	b_dx -= 10.0f * dt;
 }
 
-void ex20::m_animation()
+void viewport21_3::m_animation()
 {
-	if(m_anim==false)
+	if (m_anim == false)
 	{
 		return;
 	}
@@ -406,7 +388,7 @@ void ex20::m_animation()
 	m_dx += 100.0f * dt;
 }
 
-void ex20::n_animation()
+void viewport21_3::n_animation()
 {
 	if (n_anim == false)
 	{
@@ -416,7 +398,7 @@ void ex20::n_animation()
 	m_dx -= 100.0f * dt;
 }
 
-void ex20::animation_1() //팔벌리기
+void viewport21_3::animation_1() //팔벌리기
 {
 	if (!anim_1)
 	{
@@ -429,7 +411,7 @@ void ex20::animation_1() //팔벌리기
 	{
 		dx_e -= 10.0f * dt;
 
-		
+
 	}
 
 	if (abs(dx_e) < 0.2f)
@@ -450,7 +432,7 @@ void ex20::animation_1() //팔벌리기
 	}
 }
 
-void ex20::animation_2() //팔오므리기
+void viewport21_3::animation_2() //팔오므리기
 {
 
 	if (!anim_2)
@@ -482,10 +464,10 @@ void ex20::animation_2() //팔오므리기
 			return;
 		}
 	}
-	
+
 }
 
-void ex20::animation_e()
+void viewport21_3::animation_e()
 {
 	if (!anim_e)
 	{
@@ -518,7 +500,7 @@ void ex20::animation_e()
 
 }
 
-void ex20::animation_r()
+void viewport21_3::animation_r()
 {
 	if (!anim_r)
 	{
@@ -552,14 +534,14 @@ void ex20::animation_r()
 
 }
 
-void ex20::t_animation()
+void viewport21_3::t_animation()
 {
 	if (!t_anim)
 	{
 		return;
 	}
 
-	static int count = 0; 
+	static int count = 0;
 
 	if (count % 2 == 0)
 	{
@@ -586,7 +568,7 @@ void ex20::t_animation()
 
 
 
-void ex20::x_animation()
+void viewport21_3::x_animation()
 {
 
 	if (camera_bingle == false)

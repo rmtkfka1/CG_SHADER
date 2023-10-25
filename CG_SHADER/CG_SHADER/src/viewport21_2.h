@@ -1,14 +1,16 @@
 #pragma once
 
+
 class Body;
 class Line;
 class Bottom;
 
-class ex20
+
+class viewport21_2
 {
 
-public:
 
+public:
 
 	void Init();
 
@@ -28,13 +30,13 @@ public:
 	//아래몸체 이동하기위한 변수
 	void b_animation();
 	void v_animation();
-	float b_dx=0;
-	float v_anim=false;
-	float b_anim=false;
+	float b_dx = 0;
+	float v_anim = false;
+	float b_anim = false;
 
 
 	//윗몸체 이동하기위한 변수
-	float m_dx=0;
+	float m_dx = 0;
 	float n_anim = false;
 	float m_anim = false;
 	void m_animation();
