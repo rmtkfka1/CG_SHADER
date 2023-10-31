@@ -39,16 +39,16 @@ glm::mat4 matrix::GetRotateCamera()
 	float dt = TimeManager::GetInstance()->GetDeltaTime();
 	float angle = camera_speed;
 
-	auto x = sinf(angle) * 30.0f;
-	auto z = cosf(angle) * 30.0f;
+	auto x = sinf(angle) * 10.0f;
+	auto z = cosf(angle) * 10.0f;
 
 	glm::mat4 view = glm::mat4(1.0f);
-	glm::vec3 cameraPos = glm::vec3(x, 20.0f, z); //--- 카메라 위치
+	glm::vec3 cameraPos = glm::vec3(x, 0, z); //--- 카메라 위치
 	glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, 0.0f); //--- 카메라 바라보는 방향
 	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f); //--- 카메라 위쪽 방향
 	view = glm::lookAt(cameraPos, cameraDirection, cameraUp);
 
-	camera_speed += 0.1f * dt; //사실은 스피드가 아니라 라디안개념
+	camera_speed += 0.5f * dt; //사실은 스피드가 아니라 라디안개념
 	return view;
 }
 

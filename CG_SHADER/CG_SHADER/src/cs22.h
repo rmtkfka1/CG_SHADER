@@ -24,6 +24,7 @@ public:
 	void Render();
 
 	void OpenTheDoor();
+	void jump();
 
 private:
 
@@ -48,7 +49,7 @@ private:
 
 	float dt;
 
-	float dx = 0;
+
 	float open_dx = 0;
 
 	bool doyouwantopen = false;
@@ -60,6 +61,20 @@ private:
 	float move_dx = 0;
 	float move_dz = 0;
 
+	float dy = 0;
+
 	float swing;
+	float swing2;
+	int count = 0;
+
+	float test;
+	float speed=1.0f;
+
+	bool doyouwantjump = false;
+
+	float camera_dx;
+	float camera_dz;
+
+	bool camera_flag = false;
 };
 
