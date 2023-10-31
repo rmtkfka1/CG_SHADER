@@ -1,20 +1,6 @@
 #pragma once
-
-
-enum class Shape
+class obstacle
 {
-	body,
-	arm,
-	leg,
-	head,
-	nose
-};
-
-
-
-class robot
-{
-
 
 public:
 
@@ -22,15 +8,17 @@ public:
 	void Update();
 	void Render();
 
-	Shape shape;
-	float x, y, z;
+	float x = 0;
+	float y = 0;
+	float z = 0;
+	float m_size = 0.3f;
+
 
 private:
 
 	VAO vao;
 	VBO vbo;
 	IBO ibo;
-
 
 
 

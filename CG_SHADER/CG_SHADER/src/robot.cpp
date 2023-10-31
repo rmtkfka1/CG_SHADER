@@ -277,6 +277,9 @@ void robot::Init()
 
 void robot::Update()
 {
+
+
+
 }
 
 void robot::Render()

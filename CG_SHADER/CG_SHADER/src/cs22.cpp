@@ -36,6 +36,7 @@ void cs22::Init()
 	nose.shape = Shape::nose;
 	nose.Init();
 	
+	obs.Init();
 
 }
 
@@ -50,6 +51,8 @@ void cs22::Update()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::D))
 	{
+
+
 		degree = 90.0f;
 
 		swing2 = 0;
@@ -77,7 +80,9 @@ void cs22::Update()
 			move_dx += speed * dt;
 		}
 
-	
+		body.x += speed * dt;
+		
+		
 	
 	}
 
@@ -109,6 +114,8 @@ void cs22::Update()
 		{
 			move_dx -= speed * dt;
 		}
+
+		body.x -= speed * dt;
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::W))
@@ -137,7 +144,7 @@ void cs22::Update()
 			}
 		}
 
-
+		body.z -= speed * dt;
 
 	}
 
@@ -162,6 +169,8 @@ void cs22::Update()
 				count = 0;
 			}
 		}
+
+		body.z += speed * dt;
 	}
 	
 	if (KeyManager::GetInstance()->Getbutton(KeyType::SpaceBar))
@@ -225,6 +234,7 @@ void cs22::Render()
 	st.Render();
 
 
+
 	{
 		auto trans = matrix::GetInstance()->GetTranslation(-2.0f, 0, 2.0f);
 		auto rotate = matrix::GetInstance()->GetRotate(180.0f + open_dx, 0, 1.0f, 0);
@@ -240,12 +250,17 @@ void cs22::Render()
 		right.Render();
 	}
 
+
+	v[0]->SetUniformMat4f("u_model",matrix::GetInstance()->GetTranslation(0,-1.8f,0));
+	obs.Render();
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	{
+		
 		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(0, -1.2f+dy, 0);
+		auto trans = matrix::GetInstance()->GetTranslation(0, -1.2f+ move_dy, 0);
 		auto move = matrix::GetInstance()->GetTranslation(move_dx,0,move_dz);
 	
 		auto result = move * rotate * trans ;
@@ -256,7 +271,7 @@ void cs22::Render()
 
 	{
 		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(0, -1.2f+dy, 0.05f);
+		auto trans = matrix::GetInstance()->GetTranslation(0, -1.2f+ move_dy, 0.05f);
 		auto move = matrix::GetInstance()->GetTranslation(move_dx, 0, move_dz);
 		auto result = move * rotate * trans ;
 		v[0]->SetUniformMat4f("u_model", result);
@@ -266,7 +281,7 @@ void cs22::Render()
 
 	{
 		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(0, -1.5f+dy, 0);
+		auto trans = matrix::GetInstance()->GetTranslation(0, -1.5f+ move_dy, 0);
 		auto move = matrix::GetInstance()->GetTranslation(move_dx, 0, move_dz);
 		auto result = move * rotate * trans ;
 		v[0]->SetUniformMat4f("u_model", result);
@@ -275,7 +290,7 @@ void cs22::Render()
 
 	{
 		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(-0.04, -1.5f+dy -0.3f,0);
+		auto trans = matrix::GetInstance()->GetTranslation(-0.04, -1.5f+ move_dy -0.3f,0);
 		auto move = matrix::GetInstance()->GetTranslation(move_dx, 0, move_dz);
 		auto rotate3 = matrix::GetInstance()->GetRotate(-swing2, 1.0f, 0, 0);
 		auto rotate2 = matrix::GetInstance()->GetRotate(swing, 1.0f, 0, 1.0f);
@@ -286,7 +301,7 @@ void cs22::Render()
 
 	{
 		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(0.04, -1.5f+dy - 0.3f, 0);
+		auto trans = matrix::GetInstance()->GetTranslation(0.04, -1.5f+ move_dy - 0.3f, 0);
 		auto move = matrix::GetInstance()->GetTranslation(move_dx, 0, move_dz);
 		auto rotate3 = matrix::GetInstance()->GetRotate(swing2, 1.0f, 0, 0);
 		auto rotate2 = matrix::GetInstance()->GetRotate(-swing, 1.0f, 0, 1.0f);
@@ -297,7 +312,7 @@ void cs22::Render()
 
 	{
 		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(-0.12f, -1.5f+dy ,0);
+		auto trans = matrix::GetInstance()->GetTranslation(-0.12f, -1.5f+ move_dy,0);
 		auto move = matrix::GetInstance()->GetTranslation(move_dx, 0, move_dz);
 		auto rotate3 = matrix::GetInstance()->GetRotate(swing2, 1.0f, 0, 0);
 		auto rotate2 = matrix::GetInstance()->GetRotate(swing, 1.0f, 0, 1.0f);
@@ -308,7 +323,7 @@ void cs22::Render()
 
 	{
 		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1.0f, 0);
-		auto trans = matrix::GetInstance()->GetTranslation(0.12f, -1.5f+dy, 0);
+		auto trans = matrix::GetInstance()->GetTranslation(0.12f, -1.5f+ move_dy, 0);
 		auto move = matrix::GetInstance()->GetTranslation(move_dx, 0, move_dz);
 		auto rotate3 = matrix::GetInstance()->GetRotate(swing2, 1.0f, 0, 0);
 		auto rotate2 = matrix::GetInstance()->GetRotate(swing, 1.0f, 0, 0);
@@ -317,6 +332,7 @@ void cs22::Render()
 		right_arm.Render();
 	}
 
+	
 
 	if (!camera_flag)
 	{
@@ -359,13 +375,13 @@ void cs22::jump()
 
 	if (count < 20)
 	{
-		dy += 3.0f * dt;
+		move_dy += 3.0f * dt;
 		count++;
 	}
 
 	if (count >= 20)
 	{
-		dy -= 3.0f * dt;
+		move_dy -= 3.0f * dt;
 		count++;
 
 		if (count == 40)

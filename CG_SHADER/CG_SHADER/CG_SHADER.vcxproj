@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\obstacle.cpp" />
     <ClCompile Include="src\front.cpp" />
     <ClCompile Include="src\cs22.cpp" />
     <ClCompile Include="src\robot.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="src\실습22.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\obstacle.h" />
     <ClInclude Include="src\front.h" />
     <ClInclude Include="src\cs22.h" />
     <ClInclude Include="src\robot.h" />

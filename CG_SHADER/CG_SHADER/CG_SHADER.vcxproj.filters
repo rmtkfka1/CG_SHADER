@@ -177,6 +177,9 @@
     <ClCompile Include="src\front.cpp">
       <Filter>02.Object\02.실습\22번</Filter>
     </ClCompile>
+    <ClCompile Include="src\obstacle.cpp">
+      <Filter>02.Object\02.실습\22번</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -285,6 +288,9 @@
       <Filter>02.Object\02.실습\22번</Filter>
     </ClInclude>
     <ClInclude Include="src\front.h">
+      <Filter>02.Object\02.실습\22번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\obstacle.h">
       <Filter>02.Object\02.실습\22번</Filter>
     </ClInclude>
   </ItemGroup>

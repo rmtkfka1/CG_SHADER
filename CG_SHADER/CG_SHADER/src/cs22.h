@@ -3,7 +3,7 @@
 #include "robot.h"
 #include "stage.h"
 #include "front.h"
-
+#include "obstacle.h"
 
 enum class Dir
 {
@@ -46,6 +46,7 @@ private:
 
 	robot left_leg;
 	robot right_leg;
+	obstacle obs;
 
 	float dt;
 
@@ -57,9 +58,6 @@ private:
 	Dir dir;
 
 	float degree = 0;
-
-	float move_dx = 0;
-	float move_dz = 0;
 
 	float dy = 0;
 
@@ -76,5 +74,13 @@ private:
 	float camera_dz;
 
 	bool camera_flag = false;
+
+
+	float move_dx = 0;
+	float move_dy = 0;
+	float move_dz = 0;
+
+
 };
+
 
