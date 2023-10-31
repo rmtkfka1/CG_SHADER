@@ -37,7 +37,10 @@ void cs22::Init()
 	nose.Init();
 	
 	obs.Init();
-
+	obs2.Init();
+	obs2.x = 1.3f;
+	obs3.Init();
+	obs3.x = -1.3f;
 }
 
 void cs22::Update()
@@ -51,6 +54,26 @@ void cs22::Update()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::D))
 	{
+
+		if (obs.x - obs.m_size < move_dx && move_dx < obs.x + obs.m_size && obs.z - obs.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		else
+		{
+			if (!doyouwantjump)
+			{
+				move_dy = 0;
+			}
+		}
+		if (obs2.x - obs2.m_size < move_dx && move_dx < obs2.x + obs2.m_size && obs2.z - obs2.m_size < move_dz && move_dz < obs2.z + obs2.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		if (obs3.x - obs3.m_size < move_dx && move_dx < obs3.x + obs3.m_size && obs3.z - obs3.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
 
 
 		degree = 90.0f;
@@ -88,6 +111,27 @@ void cs22::Update()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::A))
 	{
+
+		if (obs.x - obs.m_size < move_dx && move_dx < obs.x + obs.m_size && obs.z - obs.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		else
+		{
+			if (!doyouwantjump)
+			{
+				move_dy = 0;
+			}
+		}
+		if (obs2.x - obs2.m_size < move_dx && move_dx < obs2.x + obs2.m_size && obs2.z - obs2.m_size < move_dz && move_dz < obs2.z + obs2.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		if (obs3.x - obs3.m_size < move_dx && move_dx < obs3.x + obs3.m_size && obs3.z - obs3.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
+
 		degree = -90.0f;
 
 		swing2 = 0;
@@ -120,6 +164,27 @@ void cs22::Update()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::W))
 	{
+
+		if (obs.x - obs.m_size < move_dx && move_dx < obs.x + obs.m_size && obs.z - obs.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		else
+		{
+			if (!doyouwantjump)
+			{
+				move_dy = 0;
+			}
+		}
+		if (obs2.x - obs2.m_size < move_dx && move_dx < obs2.x + obs2.m_size && obs2.z - obs2.m_size < move_dz && move_dz < obs2.z + obs2.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		if (obs3.x - obs3.m_size < move_dx && move_dx < obs3.x + obs3.m_size && obs3.z - obs3.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
+
 		degree = 180.0f;
 		swing = 0;
 
@@ -150,6 +215,30 @@ void cs22::Update()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::S))
 	{
+
+
+		if (obs.x - obs.m_size < move_dx && move_dx < obs.x + obs.m_size && obs.z - obs.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		else
+		{
+			if (!doyouwantjump)
+			{
+				move_dy = 0;
+			}
+		}
+		if (obs2.x - obs2.m_size < move_dx && move_dx < obs2.x + obs2.m_size && obs2.z - obs2.m_size < move_dz && move_dz < obs2.z + obs2.m_size)
+		{
+			move_dy = 0.2f;
+		}
+		if (obs3.x - obs3.m_size < move_dx && move_dx < obs3.x + obs3.m_size && obs3.z - obs3.m_size < move_dz && move_dz < obs.z + obs.m_size)
+		{
+			move_dy = 0.2f;
+		}
+
+
+
 		degree = 0;
 		swing = 0;
 		move_dz += speed * dt;
@@ -253,7 +342,10 @@ void cs22::Render()
 
 	v[0]->SetUniformMat4f("u_model",matrix::GetInstance()->GetTranslation(0,-1.8f,0));
 	obs.Render();
-
+	v[0]->SetUniformMat4f("u_model", matrix::GetInstance()->GetTranslation(1.3f, -1.8f, 0));
+	obs2.Render();
+	v[0]->SetUniformMat4f("u_model", matrix::GetInstance()->GetTranslation(-1.3f, -1.8f, 0));
+	obs3.Render();
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
 

@@ -47,7 +47,8 @@ private:
 	robot left_leg;
 	robot right_leg;
 	obstacle obs;
-
+	obstacle obs2;
+	obstacle obs3;
 	float dt;
 
 
