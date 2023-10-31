@@ -24,14 +24,14 @@ void Cube::Init(vec3 center, float size , int mode )
 
 	float vertex[] =
 	{
-	 m_center.x - m_size,  m_center.y + m_size,   m_center.z - m_size,   0.0f, 0.4f, 0.4f,
-	 m_center.x - m_size,  m_center.y + m_size,   m_center.z + m_size,   0.0f, 0, 0.0f,
-	 m_center.x + m_size,  m_center.y + m_size,    m_center.z + m_size,  0.0f, 0.3f, 0.0f,
-	 m_center.x + m_size,  m_center.y + m_size,    m_center.z - m_size,  1.0f, 0.0f, 0.0f,
-	 m_center.x - m_size,  m_center.y - m_size,    m_center.z - m_size,  0.0f, 0.0f, 1.0f,
-	 m_center.x - m_size,  m_center.y - m_size,    m_center.z + m_size,  1.0f, 1.0f, 0.5f,
-	 m_center.x + m_size,  m_center.y - m_size,    m_center.z + m_size,  0.5f, 1.0f, 1.0f,
-	 m_center.x + m_size,  m_center.y - m_size,    m_center.z - m_size,  0.2f, 0.7f, 0.2f,
+	 m_center.x - m_size,  m_center.y + m_size,   m_center.z - m_size,   1.0f, 0.0f, 0.0f, //0
+	 m_center.x - m_size,  m_center.y + m_size,   m_center.z + m_size,   1.0f, 0.0f, 0.0f,  //1
+	 m_center.x + m_size,  m_center.y + m_size,    m_center.z + m_size,  1.0f, 0.0f, 0.0f, //2
+	 m_center.x + m_size,  m_center.y + m_size,    m_center.z - m_size,  1.0f, 0.0f, 0.0f,  //3
+	 m_center.x - m_size,  m_center.y - m_size,    m_center.z - m_size,  1.0f, 0.0f, 0.0f,
+	 m_center.x - m_size,  m_center.y - m_size,    m_center.z + m_size,  1.0f, 0.0f, 0.0f, //5
+	 m_center.x + m_size,  m_center.y - m_size,    m_center.z + m_size,  1.0f, 0.0f, 0.0f, //6
+	 m_center.x + m_size,  m_center.y - m_size,    m_center.z - m_size,  1.0f, 0.0f, 0.0f,
 	};
 
 

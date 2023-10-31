@@ -135,6 +135,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\front.cpp" />
+    <ClCompile Include="src\cs22.cpp" />
+    <ClCompile Include="src\robot.cpp" />
     <ClCompile Include="src\Bottom.cpp" />
     <ClCompile Include="src\Body.cpp" />
     <ClCompile Include="src\ex20.cpp" />
@@ -182,12 +185,17 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\실습21.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\viewport21_2.cpp" />
     <ClCompile Include="src\viewport21_3.cpp" />
+    <ClCompile Include="src\stage.cpp" />
+    <ClCompile Include="src\실습22.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\front.h" />
+    <ClInclude Include="src\cs22.h" />
+    <ClInclude Include="src\robot.h" />
     <ClInclude Include="src\Bottom.h" />
     <ClInclude Include="src\Body.h" />
     <ClInclude Include="src\ex20.h" />
@@ -220,6 +228,7 @@
     <ClInclude Include="src\tri18.h" />
     <ClInclude Include="src\viewport21_2.h" />
     <ClInclude Include="src\viewport21_3.h" />
+    <ClInclude Include="src\stage.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt" />

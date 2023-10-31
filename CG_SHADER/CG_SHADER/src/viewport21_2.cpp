@@ -179,7 +179,7 @@ void viewport21_2::Render()
 
 
 	v[0]->SetUniformMat4f("u_proj",
-		matrix::GetInstance()->GetProjection());
+		matrix::GetInstance()->Getortho());
 
 
 

@@ -185,8 +185,12 @@ void viewport21_3::Render()
 
 
 
+	//v[0]->SetUniformMat4f("u_proj",
+	//	matrix::GetInstance()->GetProjection());
+
+
 	v[0]->SetUniformMat4f("u_proj",
-		matrix::GetInstance()->GetProjection());
+		matrix::GetInstance()->Getortho());
 
 	glEnable(GL_DEPTH);
 
