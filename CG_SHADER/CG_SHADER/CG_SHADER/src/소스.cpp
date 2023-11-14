@@ -36,10 +36,12 @@ int main(int argc, char** argv)
 
 	Camera camera{ glm::vec3{0.0f,0.0f,15.0f}, glm::vec3{0.0f,1.0f,0.0f}, -90.0f, 0.0f, 5.0f, 0.5f };
 
- 	Texture texture{ "res/textures/1.jpg" };
+ 	Texture texture{ "res/textures/zz.jpg" };
 	texture.Bind(1); //0번 슬롯에 바인딩
 	shader->SetUniform1i("test", 1); //0번 슬롯의 텍스처를 사용할 것이라는 것을 셰이더에 명시
 
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
 	glutSetCursor(GLUT_CURSOR_NONE);
 
 

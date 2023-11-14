@@ -28,6 +28,7 @@ private:
 	static void MousemoveCallBack(int x, int y);
 	static void MousemoveCallBack2(int x, int y);
 
+
 	 vec2 m_pos;
 	 bool m_click;
 	 vec2 m_diff;

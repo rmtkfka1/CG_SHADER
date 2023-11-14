@@ -270,6 +270,8 @@
     <Image Include="res\models\K-093.png" />
     <Image Include="res\textures\JBNU.png" />
     <Image Include="res\textures\1.jpg" />
+    <Image Include="res\textures\zz.jpg" />
+    <Image Include="res\textures\해리.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="res\models\teapot.obj">

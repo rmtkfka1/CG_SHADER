@@ -9,7 +9,7 @@ void MouseManager::Init()
 	glutMouseFunc(MouseCallBack);
 	glutMotionFunc(MousemoveCallBack);
 	glutPassiveMotionFunc(MousemoveCallBack2);
-
+	
 }
 
 void MouseManager::MouseCallBack(int button, int state, int x, int y)
@@ -75,6 +75,7 @@ void MouseManager::MousemoveCallBack2(int x, int y)
 	}
 
 }
+
 
 float MouseManager::GetXChange()
 {
