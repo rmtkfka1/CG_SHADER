@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Model.h"
-
+#include "Shader.h"
+#include "Renderer.h"
 
 Model::Model()
 {
@@ -48,16 +49,12 @@ void Model::ClearModel()
 
 }
 
-void Model::RenderModel(const VAO& vao, const IBO& ib, const Shader& shader)
+void Model::RenderModel(Shader shader)
 {
 	for (int i = 0; i < VAOs.size(); i++)
 	{
-		shader.Bind();
-		vao.Bind();
-		ib.Bind();
-
-		//그리기
-		GLCall(glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
+		Renderer r;
+		r.Draw(*VAOs[i], *IBOs[i], shader);
 	}
 }
 
@@ -111,7 +108,7 @@ void Model::LoadMesh(aiMesh* mesh, const aiScene* scene)
 
 	//vao 생성 VertexArray가 담당
 	VAO* vao = new VAO;
-	VBO* vbo = new VBO(& vertices[0], mesh->mNumVertices * 8 * sizeof(float));
+	VBO* vbo = new VBO{ &vertices[0], static_cast<unsigned int>(mesh->mNumVertices * 8 * sizeof(float)) };
 	VertexBufferLayout layout;
 	layout.Push<float>(3); //vertex당 3개의 위치를 표현하는 float 데이터
 	layout.Push<float>(2); //vertex당 2개의 텍스처 좌표를 표현하는 float 데이터

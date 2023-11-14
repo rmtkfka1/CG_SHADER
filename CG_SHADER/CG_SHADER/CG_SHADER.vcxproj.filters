@@ -74,6 +74,15 @@
     <Filter Include="01.OPENGL\07.Assimp">
       <UniqueIdentifier>{29ed043c-de66-4ad0-be5c-4e4093b48f62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="00.res\models">
+      <UniqueIdentifier>{ebde5f3d-7d57-4ad7-a97e-c71420274709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.OPENGL\08.Renderer">
+      <UniqueIdentifier>{b60f2b00-1ec8-4219-ad5f-8d261a460ce7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.res\textures">
+      <UniqueIdentifier>{54357efe-d561-4482-b315-a775c8309a4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -192,6 +201,11 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>01.OPENGL\07.Assimp</Filter>
     </ClCompile>
+    <ClCompile Include="src\소스.cpp" />
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>01.OPENGL\08.Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\연습장.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -311,6 +325,9 @@
     <ClInclude Include="src\Model.h">
       <Filter>01.OPENGL\07.Assimp</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderer.h">
+      <Filter>01.OPENGL\08.Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt">
@@ -342,5 +359,27 @@
     <None Include="res\shader\shader_19.fs">
       <Filter>00.res\shader</Filter>
     </None>
+    <None Include="res\shader\mvp_new.vs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\shader\mvp_new.fs">
+      <Filter>00.res\shader</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\JBNU.png">
+      <Filter>00.res\textures</Filter>
+    </Image>
+    <Image Include="res\textures\1.jpg">
+      <Filter>00.res\textures</Filter>
+    </Image>
+    <Image Include="res\models\K-093.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="res\models\teapot.obj">
+      <Filter>00.res\models</Filter>
+    </Object>
   </ItemGroup>
 </Project>

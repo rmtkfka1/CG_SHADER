@@ -1,11 +1,6 @@
 #pragma once
-#pragma once
 
 
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
-#include "Texture.h"
 
 class Model
 {
@@ -16,7 +11,7 @@ public:
 	void LoadModel(const std::string& fileName);
 	void ClearModel();
 
-	void RenderModel(const VAO& vao, const IBO& ib, const Shader& shader);
+	void RenderModel(Shader shader);
 
 private:
 	void LoadNode(aiNode* node, const aiScene* scene);
@@ -29,4 +24,3 @@ private:
 	std::vector<Texture*> m_TextureList;
 	std::vector<unsigned int> m_MeshToTex;
 };
-

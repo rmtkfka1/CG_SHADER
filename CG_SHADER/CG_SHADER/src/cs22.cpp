@@ -428,14 +428,14 @@ void cs22::Render()
 
 	if (!camera_flag)
 	{
-		v[0]->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(camera_dx, 0.0f, camera_dz + 10.0f), glm::vec3(0, 0, 0)));
+		v[0]->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(camera_dx, 0.0f, 100.0f + 10.0f), glm::vec3(0, 0, 0)));
 	}
 	else
 	{
 		v[0]->SetUniformMat4f("u_view", matrix::GetInstance()->GetRotateCamera());
 	}
 
-	v[0]->SetUniformMat4f("u_proj", matrix::GetInstance()->GetProjection(45.0f, 1.0f, 0.1f, 30.0f));
+	v[0]->SetUniformMat4f("u_proj", matrix::GetInstance()->GetProjection());
 
 }
 

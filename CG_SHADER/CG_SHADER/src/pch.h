@@ -10,8 +10,8 @@ using namespace std;
 #include <gl/glm/glm.hpp>
 #include <gl/glm/ext.hpp>
 #include <gl/glm/gtc/matrix_transform.hpp>
-
-#include <GLFW/glfw3.h>
+//
+//#include <GLFW/glfw3.h>
 
 #include <vector>
 #include <iostream>
@@ -23,6 +23,11 @@ using namespace std;
 #include <time.h>
 #include <utility>
 #include <Windows.h>
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 
 ///////////////////////////
 #include "Types.h"
@@ -40,3 +45,8 @@ using namespace std;
 #include "TimeManager.h"
 #include "enum.h"
 #include "matrix.h"
+#include "Texture.h"
+#include "Model.h"
+
+
+
