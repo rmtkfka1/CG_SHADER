@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\obstacle.cpp" />
     <ClCompile Include="src\front.cpp" />
     <ClCompile Include="src\cs22.cpp" />
@@ -192,8 +193,10 @@
     <ClCompile Include="src\viewport21_3.cpp" />
     <ClCompile Include="src\stage.cpp" />
     <ClCompile Include="src\실습22.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\obstacle.h" />
     <ClInclude Include="src\front.h" />
     <ClInclude Include="src\cs22.h" />
@@ -231,6 +234,7 @@
     <ClInclude Include="src\viewport21_2.h" />
     <ClInclude Include="src\viewport21_3.h" />
     <ClInclude Include="src\stage.h" />
+    <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt" />

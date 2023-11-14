@@ -68,6 +68,12 @@
     <Filter Include="02.Object\02.실습\22번">
       <UniqueIdentifier>{db844dc2-e421-41c5-b771-bc49c41b7b2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.OPENGL\06.Texture">
+      <UniqueIdentifier>{3315251a-0657-4053-b76c-d35e6748e9e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.OPENGL\07.Assimp">
+      <UniqueIdentifier>{29ed043c-de66-4ad0-be5c-4e4093b48f62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -179,6 +185,12 @@
     </ClCompile>
     <ClCompile Include="src\obstacle.cpp">
       <Filter>02.Object\02.실습\22번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>01.OPENGL\06.Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Model.cpp">
+      <Filter>01.OPENGL\07.Assimp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +304,12 @@
     </ClInclude>
     <ClInclude Include="src\obstacle.h">
       <Filter>02.Object\02.실습\22번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture.h">
+      <Filter>01.OPENGL\06.Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model.h">
+      <Filter>01.OPENGL\07.Assimp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
