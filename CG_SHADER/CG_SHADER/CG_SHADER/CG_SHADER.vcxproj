@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\obstacle.cpp" />
@@ -205,6 +206,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\obstacle.h" />
@@ -250,6 +252,9 @@
     <Text Include="자주사용하는코드.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\models\11.fbx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </None>
     <None Include="res\shader\mvp_new.fs" />
     <None Include="res\shader\mvp_new.vs" />
     <None Include="res\shader\mvp.fs" />

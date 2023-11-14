@@ -83,6 +83,9 @@
     <Filter Include="00.res\textures">
       <UniqueIdentifier>{54357efe-d561-4482-b315-a775c8309a4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="05.Camera">
+      <UniqueIdentifier>{edd6bed1-dcc5-4eb4-bdfe-0de4c2a05e49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -206,6 +209,9 @@
       <Filter>01.OPENGL\08.Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\연습장.cpp" />
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>05.Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -328,6 +334,9 @@
     <ClInclude Include="src\Renderer.h">
       <Filter>01.OPENGL\08.Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>05.Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt">
@@ -364,6 +373,9 @@
     </None>
     <None Include="res\shader\mvp_new.fs">
       <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="res\models\11.fbx">
+      <Filter>00.res\models</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
