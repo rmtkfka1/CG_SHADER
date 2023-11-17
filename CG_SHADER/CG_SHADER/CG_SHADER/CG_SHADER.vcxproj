@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Light.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Model.cpp" />
@@ -206,6 +207,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Light.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Model.h" />
@@ -250,6 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt" />
+    <Text Include="텍스트.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\models\11.fbx">

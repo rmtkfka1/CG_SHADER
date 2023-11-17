@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "cs22.h"
 #include "Camera.h"
-
+#include "Light.h"
 Model teapot;
 Shader* shader;
 
@@ -38,11 +38,14 @@ int main(int argc, char** argv)
 
  	Texture texture{ "res/textures/zz.jpg" };
 	texture.Bind(1); //0번 슬롯에 바인딩
-	shader->SetUniform1i("test", 1); //0번 슬롯의 텍스처를 사용할 것이라는 것을 셰이더에 명시
+	shader->SetUniform1i("u_Texture", 1); //0번 슬롯의 텍스처를 사용할 것이라는 것을 셰이더에 명시
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glutSetCursor(GLUT_CURSOR_NONE);
+
+	Light mainLight{ glm::vec3{1.0f,0,0}, 1.0f };
+
 
 
 	while (1)
@@ -51,6 +54,7 @@ int main(int argc, char** argv)
 		TimeManager::GetInstance()->Update();
 		camera.KeyControl();
 		camera.MouseControl(MouseManager::GetInstance()->GetXChange(), MouseManager::GetInstance()->GetYChange());
+		mainLight.UseLight(*shader); //light 관련한 uniform setting
 		shader->SetUniformMat4f("u_view", camera.calculateViewMatrix()); //카메라 변화에 따라 새로 계산된 view 행렬 셰이더에 전달
 		glutPostRedisplay();
 		glutMainLoopEvent();

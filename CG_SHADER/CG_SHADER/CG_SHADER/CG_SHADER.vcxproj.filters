@@ -86,6 +86,9 @@
     <Filter Include="05.Camera">
       <UniqueIdentifier>{edd6bed1-dcc5-4eb4-bdfe-0de4c2a05e49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.OPENGL\09.Light">
+      <UniqueIdentifier>{4705ef9a-09eb-491a-9e64-1d67e0408fa3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -212,6 +215,9 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>05.Camera</Filter>
     </ClCompile>
+    <ClCompile Include="src\Light.cpp">
+      <Filter>01.OPENGL\09.Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -337,9 +343,15 @@
     <ClInclude Include="src\Camera.h">
       <Filter>05.Camera</Filter>
     </ClInclude>
+    <ClInclude Include="src\Light.h">
+      <Filter>01.OPENGL\09.Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="자주사용하는코드.txt">
+      <Filter>100.memo</Filter>
+    </Text>
+    <Text Include="텍스트.txt">
       <Filter>100.memo</Filter>
     </Text>
   </ItemGroup>
