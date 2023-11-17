@@ -1,11 +1,14 @@
 #pragma once
 #include "Object.h"
-class Box :public Object
+
+
+
+class SimpleModel :public Object
 {
 
 public:
-	Box(const string& model_filepath, const string& texture_filepath,int slot);
-	~Box();
+	SimpleModel(const string& model_filepath);
+	~SimpleModel();
 
 
 	void Init() override;
@@ -13,7 +16,6 @@ public:
 	void Render(Shader& shader) override;
 
 private:
-
 
 
 };

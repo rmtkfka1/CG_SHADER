@@ -134,7 +134,7 @@
     <ClCompile Include="src\Object.cpp">
       <Filter>02.Object\00.Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Box.cpp">
+    <ClCompile Include="src\SimpleModel.cpp">
       <Filter>02.Object\00.Object</Filter>
     </ClCompile>
   </ItemGroup>
@@ -205,7 +205,7 @@
     <ClInclude Include="src\Object.h">
       <Filter>02.Object\00.Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Box.h">
+    <ClInclude Include="src\SimpleModel.h">
       <Filter>02.Object\00.Object</Filter>
     </ClInclude>
   </ItemGroup>

@@ -84,7 +84,7 @@ void Model::LoadModel(const std::string& fileName)
 	_center.z = center.z;
 
 
-	PrintInfo();
+	//PrintInfo();
 
 	LoadNode(scene->mRootNode, scene);
 	LoadMaterials(scene);
@@ -109,7 +109,6 @@ void Model::RenderModel(Shader& shader)
 
 void Model::PrintInfo()
 {
-
 	std::cout << _fileName << "Model's size: x=" << _size.x << ", y=" << _size.y << ", z=" << _size.z << std::endl;
 	std::cout << _fileName << "Model's center: x=" << _center.x << ", y=" << _center.y << ", z=" << _center.z << std::endl;
 }

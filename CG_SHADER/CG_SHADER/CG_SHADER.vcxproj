@@ -135,7 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Box.cpp" />
+    <ClCompile Include="src\SimpleModel.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Collider.cpp" />
     <ClCompile Include="src\cs23.cpp" />
@@ -172,7 +172,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Box.h" />
+    <ClInclude Include="src\SimpleModel.h" />
     <ClInclude Include="src\Object.h" />
     <ClInclude Include="src\Collider.h" />
     <ClInclude Include="src\cs23.h" />

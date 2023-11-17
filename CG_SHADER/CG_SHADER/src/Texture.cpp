@@ -35,8 +35,9 @@ Texture::~Texture()
 	GLCall(glDeleteTextures(1, &m_RendererID));
 }
 
-void Texture::Bind(unsigned int slot) const
+void Texture::Bind(unsigned int slot) 
 {
+	m_slot = slot;
 	GLCall(glActiveTexture(GL_TEXTURE0 + slot)); //텍스처는 활성화 할 수 있는 슬롯이 한정되어 있으며, 이를 명시해야 함
 	GLCall(glBindTexture(GL_TEXTURE_2D, m_RendererID));
 }

@@ -16,13 +16,14 @@ public:
 	virtual void Init();
 	virtual void Update();
 	virtual void Render(Shader& shader);
+
+
+	void SetRotate(Shader& shader, float radian , float x, float y, float z);// radian 은 각도설정
 	void PrintInfo();
 
 protected:
+
 	Model* _model;
-	Texture*_texture;
-
-
 	int _slot; //texture 슬롯
 	glm::vec3 _center;
 	glm::vec3 _size;

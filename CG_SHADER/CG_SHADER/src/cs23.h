@@ -1,9 +1,8 @@
 #pragma once
 
-class Texture;
-class Model;
-class Camera;
+class SimpleModel;
 class Shader;
+class Texture;
 
 class cs23
 {
@@ -20,23 +19,19 @@ public:
 
 private:
 	
+	SimpleModel* plane;
+	SimpleModel* box;
 
-	shared_ptr<Model> _plane;
-	shared_ptr<Model> _rect;
-	shared_ptr<Texture> _texture;
-	shared_ptr<Texture> _texture_box;
-	shared_ptr<Camera> _camera;
-	shared_ptr<Shader> _shader;
+	Shader* shader;
 
-
+	Texture* box_texture;
+	Texture* plane_texture;
 
 	float dx = 0;
 	float dz = 30;
 	float dy = 30;
 	
-
-
-
+	float testing = 0;
 
 
 
