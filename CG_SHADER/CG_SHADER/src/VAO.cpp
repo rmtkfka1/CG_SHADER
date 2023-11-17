@@ -4,6 +4,7 @@
 #include "VertexBufferLayout.h"
 VAO::VAO()
 {
+	GLCall(glGenVertexArrays(1, &m_RendererID)); //vao 持失
 }
 
 VAO::~VAO()
@@ -36,14 +37,6 @@ void VAO::AddBuffer(const VBO& vb, const VertexBufferLayout& layout)
 
 }
 
-void VAO::Gen()
-{
-	if (!m_RendererID)
-	{
-		GLCall(glGenVertexArrays(1, &m_RendererID)); //vao 持失
-	}
-	glBindVertexArray(m_RendererID);
-}
 
 void VAO::Bind() const
 {

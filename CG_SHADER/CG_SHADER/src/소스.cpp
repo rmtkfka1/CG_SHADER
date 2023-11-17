@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "cs22.h"
 #include "Camera.h"
 #include "Light.h"
 Model teapot;
+Model teapot2;
 Shader* shader;
 
 void draw()
@@ -10,7 +10,12 @@ void draw()
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	shader->SetUniformMat4f("u_model", matrix::GetInstance()->GetSimple());
 	teapot.RenderModel(*shader);
+
+	shader->SetUniformMat4f("u_model", matrix::GetInstance()->GetTranslation(20,0,0));
+	teapot2.RenderModel(*shader);
+
 	glutSwapBuffers();
 
 };
@@ -29,6 +34,8 @@ int main(int argc, char** argv)
 	shader->Bind();
 
 	teapot.LoadModel("res/models/teapot.obj"); 
+	teapot2.LoadModel("res/models/ball.obj");
+
 
 	shader->SetUniformMat4f("u_model", matrix::GetInstance()->GetSimple());
 	shader->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(100.0f, 0, 0), glm::vec3(0, 0, 0)));
@@ -45,8 +52,6 @@ int main(int argc, char** argv)
 	glutSetCursor(GLUT_CURSOR_NONE);
 
 	Light mainLight{ glm::vec3{1.0f,0,0}, 1.0f };
-
-
 
 	while (1)
 	{

@@ -118,88 +118,17 @@
     <ClCompile Include="src\MouseManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\Object.cpp">
-      <Filter>02.Object\00.Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Cube.cpp">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClCompile>
     <ClCompile Include="src\ObjectManager.cpp">
       <Filter>03,Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Pyramid.cpp">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Line.cpp">
-      <Filter>02.Object\01.Shape</Filter>
     </ClCompile>
     <ClCompile Include="src\00SRT예제.cpp">
       <Filter>100.memo</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습18.cpp" />
-    <ClCompile Include="src\Cylinder.cpp">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Spiral.cpp">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClCompile>
     <ClCompile Include="src\TimeManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\cs18.cpp">
-      <Filter>02.Object\02.실습\18번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rect18.cpp">
-      <Filter>02.Object\02.실습\18번</Filter>
-    </ClCompile>
     <ClCompile Include="src\matrix.cpp">
       <Filter>04.Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tri18.cpp">
-      <Filter>02.Object\02.실습\18번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습19.cpp" />
-    <ClCompile Include="src\ex19.cpp">
-      <Filter>02.Object\02.실습\19번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Sphere.cpp">
-      <Filter>02.Object\02.실습\19번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Circle.cpp">
-      <Filter>02.Object\02.실습\19번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습20.cpp" />
-    <ClCompile Include="src\ex20.cpp">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Body.cpp">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Bottom.cpp">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습21.cpp" />
-    <ClCompile Include="src\viewport21_2.cpp">
-      <Filter>02.Object\02.실습\21번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\viewport21_3.cpp">
-      <Filter>02.Object\02.실습\21번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\실습22.cpp" />
-    <ClCompile Include="src\cs22.cpp">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\robot.cpp">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\stage.cpp">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\front.cpp">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\obstacle.cpp">
-      <Filter>02.Object\02.실습\22번</Filter>
     </ClCompile>
     <ClCompile Include="src\Texture.cpp">
       <Filter>01.OPENGL\06.Texture</Filter>
@@ -253,83 +182,17 @@
     <ClInclude Include="src\MouseManager.h">
       <Filter>03,Manager</Filter>
     </ClInclude>
-    <ClInclude Include="src\Object.h">
-      <Filter>02.Object\00.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cube.h">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClInclude>
     <ClInclude Include="src\VertexBufferLayout.h">
       <Filter>01.OPENGL\02.VAO</Filter>
     </ClInclude>
     <ClInclude Include="src\ObjectManager.h">
       <Filter>03,Manager</Filter>
     </ClInclude>
-    <ClInclude Include="src\Pyramid.h">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Line.h">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cylinder.h">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Spiral.h">
-      <Filter>02.Object\01.Shape</Filter>
-    </ClInclude>
     <ClInclude Include="src\TimeManager.h">
       <Filter>03,Manager</Filter>
     </ClInclude>
-    <ClInclude Include="src\cs18.h">
-      <Filter>02.Object\02.실습\18번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\rect18.h">
-      <Filter>02.Object\02.실습\18번</Filter>
-    </ClInclude>
     <ClInclude Include="src\matrix.h">
       <Filter>04.Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tri18.h">
-      <Filter>02.Object\02.실습\18번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ex19.h">
-      <Filter>02.Object\02.실습\19번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Sphere.h">
-      <Filter>02.Object\02.실습\19번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Circle.h">
-      <Filter>02.Object\02.실습\19번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ex20.h">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Body.h">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Bottom.h">
-      <Filter>02.Object\02.실습\20번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\viewport21_2.h">
-      <Filter>02.Object\02.실습\21번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\viewport21_3.h">
-      <Filter>02.Object\02.실습\21번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cs22.h">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\robot.h">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\stage.h">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\front.h">
-      <Filter>02.Object\02.실습\22번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\obstacle.h">
-      <Filter>02.Object\02.실습\22번</Filter>
     </ClInclude>
     <ClInclude Include="src\Texture.h">
       <Filter>01.OPENGL\06.Texture</Filter>

@@ -14,7 +14,6 @@ public:
 
 	void AddBuffer(const VBO& vb, const VertexBufferLayout& layout);
 
-	void Gen();
 	void Bind() const;
 	void Unbind() const;
 	void Delete() const;

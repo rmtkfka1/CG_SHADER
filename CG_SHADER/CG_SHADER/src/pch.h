@@ -39,7 +39,6 @@ using namespace std;
 #include "Shader.h"
 #include "KeyManager.h"
 #include "MouseManager.h"
-#include "Object.h"
 #include "VertexBufferLayout.h"
 #include "ObjectManager.h"
 #include "TimeManager.h"
