@@ -1,45 +1,53 @@
 #include "pch.h"
-#include "Cube.h"
-Cube cube;
 
-void draw()
+
+class test
 {
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	cube.Render();
-	glEnable(GL_DEPTH_TEST);
-	glutSwapBuffers();
+
+public:
+	test()
+	{
+		ptr = make_shared<int>(30);
+	}
+
+	~test()
+	{
+		cout << "소멸자 호출" << endl;
+	}
+
+
+	void print()
+	{
+		cout << *ptr << endl;
+	}
+
+
+private:
+
+	shared_ptr<int> ptr;
+
 
 };
 
 
-int main(int argc, char** argv)
+void test_def()
 {
-	Core::GetInstance()->Init(argc, argv, 800, 800);
-	Core::GetInstance()->Render(draw);
-	KeyManager::GetInstance()->Init();
-	TimeManager::GetInstance()->Init();
-	MouseManager::GetInstance()->Init();
+	shared_ptr<test> p1 = make_shared<test>();
 
-	Shader shader("res/shader/shader1.vs", "res/shader/shader1.fs");
-	shader.Bind();
-	cube.Init(vec3(0,0,0),0.1f,0);
+	p1->print();
 
-	shader.SetUniform4f("test", 0.5f, 0.5f, 0, 0);
-
-
-	auto& v = ObjectManager::GetInstance()->Get_Shader();
-	v.push_back(&shader);
+}
 
 
 
-	while (1)
-	{
-		KeyManager::GetInstance()->Update();
-		TimeManager::GetInstance()->Update();
-		glutPostRedisplay();
-		glutMainLoopEvent();
+int main()
+{
 
-	}
 
+	cout << "===============시작====================" << endl;
+
+	test_def();
+
+
+	cout << "===============끝====================" << endl;
 }

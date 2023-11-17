@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "Model.h"
 #include "Shader.h"
-#include "Renderer.h"
-
+#include "Utility.h"
 Model::Model()
 {
 }
@@ -40,6 +39,53 @@ void Model::LoadModel(const std::string& fileName)
 		return;
 	}
 
+	aiVector3D min(FLT_MAX, FLT_MAX, FLT_MAX);
+	aiVector3D max(-FLT_MAX, -FLT_MAX, -FLT_MAX);
+
+	for (unsigned int i = 0; i < scene->mNumMeshes; ++i) {
+		aiMesh* mesh = scene->mMeshes[i];
+		for (unsigned int j = 0; j < mesh->mNumVertices; ++j) {
+			aiVector3D vertex = mesh->mVertices[j];
+			min.x = std::min(min.x, vertex.x);
+			min.y = std::min(min.y, vertex.y);
+			min.z = std::min(min.z, vertex.z);
+
+			max.x = std::max(max.x, vertex.x);
+			max.y = std::max(max.y, vertex.y);
+			max.z = std::max(max.z, vertex.z);
+		}
+	}
+
+	aiVector3D size = max - min;
+	_fileName = fileName;
+	_size.x = size.x;
+	_size.y = size.y;
+	_size.z = size.z;
+
+
+	aiVector3D center(0.0f, 0.0f, 0.0f);
+	unsigned int vertexCount = 0;
+
+	for (unsigned int i = 0; i < scene->mNumMeshes; ++i) {
+		aiMesh* mesh = scene->mMeshes[i];
+		for (unsigned int j = 0; j < mesh->mNumVertices; ++j) {
+			aiVector3D vertex = mesh->mVertices[j];
+			center += vertex;
+			vertexCount++;
+		}
+	}
+
+	if (vertexCount > 0) {
+		center /= static_cast<float>(vertexCount);
+	}
+
+	_center.x = center.x;
+	_center.y = center.y;
+	_center.z = center.z;
+
+
+	PrintInfo();
+
 	LoadNode(scene->mRootNode, scene);
 	LoadMaterials(scene);
 }
@@ -53,10 +99,21 @@ void Model::RenderModel(Shader& shader)
 {
 	for (int i = 0; i < VAOs.size(); i++)
 	{
-		Renderer r;
-		r.Draw(*VAOs[i], *IBOs[i], shader);
+		VAOs[i]->Bind();
+		VBOs[i]->Bind();
+		IBOs[i]->Bind();
+
+		GLCall(glDrawElements(GL_TRIANGLES, IBOs[i]->GetCount(), GL_UNSIGNED_INT, nullptr));
 	}
 }
+
+void Model::PrintInfo()
+{
+
+	std::cout << _fileName << "Model's size: x=" << _size.x << ", y=" << _size.y << ", z=" << _size.z << std::endl;
+	std::cout << _fileName << "Model's center: x=" << _center.x << ", y=" << _center.y << ", z=" << _center.z << std::endl;
+}
+
 
 void Model::LoadNode(aiNode* node, const aiScene* scene)
 {

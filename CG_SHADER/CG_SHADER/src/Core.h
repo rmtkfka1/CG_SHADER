@@ -17,7 +17,7 @@ private:
 
 public:
 
-	void Init(int argc, char** argv, int x, int y);// argc,argv,윈도우x,윈도우y
+	void Init(int argc, char** argv,int x, int y);// argc,argv,윈도우x,윈도우y
 	void Render(void (*funcptr)(void));// 그리기 
 	void Reshape(void (*funcptr)(int, int));
 	void Keyboard(void (*funcptr)(unsigned char, int, int)); //키입력 

@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="99.defines">
       <UniqueIdentifier>{5bcbb399-0001-4edc-9449-e7e56e1110a2}</UniqueIdentifier>
     </Filter>
@@ -44,29 +40,8 @@
     <Filter Include="02.Object\00.Object">
       <UniqueIdentifier>{3c8f9fe8-8dad-4e39-bbef-a0e51e9b21f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object\01.Shape">
-      <UniqueIdentifier>{9f6e2df9-1e21-4901-9c1e-988cfdc9145f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\02.실습">
-      <UniqueIdentifier>{19581f8f-db17-44f8-a059-b8287384f2e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\02.실습\18번">
-      <UniqueIdentifier>{0ecfeb9c-a2fe-4ef0-afcf-c3f856392ec5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04.Matrix">
       <UniqueIdentifier>{84f712b1-4e15-4ee6-abf7-1df1d8269d35}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\02.실습\19번">
-      <UniqueIdentifier>{4fbfdb86-d354-42ea-ac6c-9702e093bf7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\02.실습\20번">
-      <UniqueIdentifier>{007e4d2a-b5d5-4239-b3f7-3822e3ae5506}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\02.실습\21번">
-      <UniqueIdentifier>{8ad94f20-0e8f-4a9a-a598-9b8013b02518}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Object\02.실습\22번">
-      <UniqueIdentifier>{db844dc2-e421-41c5-b771-bc49c41b7b2a}</UniqueIdentifier>
     </Filter>
     <Filter Include="01.OPENGL\06.Texture">
       <UniqueIdentifier>{3315251a-0657-4053-b76c-d35e6748e9e7}</UniqueIdentifier>
@@ -77,16 +52,22 @@
     <Filter Include="00.res\models">
       <UniqueIdentifier>{ebde5f3d-7d57-4ad7-a97e-c71420274709}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.OPENGL\08.Renderer">
-      <UniqueIdentifier>{b60f2b00-1ec8-4219-ad5f-8d261a460ce7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="00.res\textures">
       <UniqueIdentifier>{54357efe-d561-4482-b315-a775c8309a4b}</UniqueIdentifier>
     </Filter>
     <Filter Include="05.Camera">
       <UniqueIdentifier>{edd6bed1-dcc5-4eb4-bdfe-0de4c2a05e49}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.OPENGL\09.Light">
+    <Filter Include="06.Collider">
+      <UniqueIdentifier>{601b5cda-8140-4860-a889-5006e15d4eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.실습">
+      <UniqueIdentifier>{19581f8f-db17-44f8-a059-b8287384f2e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.실습\23번">
+      <UniqueIdentifier>{5032c993-65f2-4260-ac12-c6c9c25c670b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.OPENGL\08.Light">
       <UniqueIdentifier>{4705ef9a-09eb-491a-9e64-1d67e0408fa3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -137,15 +118,24 @@
       <Filter>01.OPENGL\07.Assimp</Filter>
     </ClCompile>
     <ClCompile Include="src\소스.cpp" />
-    <ClCompile Include="src\Renderer.cpp">
-      <Filter>01.OPENGL\08.Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\연습장.cpp" />
     <ClCompile Include="src\Camera.cpp">
       <Filter>05.Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\Light.cpp">
-      <Filter>01.OPENGL\09.Light</Filter>
+      <Filter>01.OPENGL\08.Light</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cs23.cpp">
+      <Filter>02.Object\01.실습\23번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collider.cpp">
+      <Filter>06.Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object.cpp">
+      <Filter>02.Object\00.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Box.cpp">
+      <Filter>02.Object\00.Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,14 +190,23 @@
     <ClInclude Include="src\Model.h">
       <Filter>01.OPENGL\07.Assimp</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer.h">
-      <Filter>01.OPENGL\08.Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Camera.h">
       <Filter>05.Camera</Filter>
     </ClInclude>
     <ClInclude Include="src\Light.h">
-      <Filter>01.OPENGL\09.Light</Filter>
+      <Filter>01.OPENGL\08.Light</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs23.h">
+      <Filter>02.Object\01.실습\23번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Collider.h">
+      <Filter>06.Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Object.h">
+      <Filter>02.Object\00.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Box.h">
+      <Filter>02.Object\00.Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -219,28 +218,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shader\Shader1.fs">
-      <Filter>00.res\shader</Filter>
-    </None>
-    <None Include="res\shader\Shader1.vs">
-      <Filter>00.res\shader</Filter>
-    </None>
-    <None Include="res\shader\Shader2.fs">
-      <Filter>00.res\shader</Filter>
-    </None>
-    <None Include="res\shader\Shader2.vs">
-      <Filter>00.res\shader</Filter>
-    </None>
     <None Include="res\shader\mvp.vs">
       <Filter>00.res\shader</Filter>
     </None>
     <None Include="res\shader\mvp.fs">
-      <Filter>00.res\shader</Filter>
-    </None>
-    <None Include="res\shader\shader_19.vs">
-      <Filter>00.res\shader</Filter>
-    </None>
-    <None Include="res\shader\shader_19.fs">
       <Filter>00.res\shader</Filter>
     </None>
     <None Include="res\shader\mvp_new.vs">
@@ -261,13 +242,13 @@
       <Filter>00.res\textures</Filter>
     </Image>
     <Image Include="res\models\K-093.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="res\textures\해리.jpeg">
-      <Filter>리소스 파일</Filter>
+      <Filter>00.res\textures</Filter>
     </Image>
     <Image Include="res\textures\zz.jpg">
-      <Filter>리소스 파일</Filter>
+      <Filter>00.res\textures</Filter>
+    </Image>
+    <Image Include="res\textures\해리.jpeg">
+      <Filter>00.res\textures</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

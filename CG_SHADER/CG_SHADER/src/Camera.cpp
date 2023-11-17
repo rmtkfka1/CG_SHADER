@@ -16,6 +16,7 @@ Camera::Camera(glm::vec3 initEye, glm::vec3 initUp, float initYaw, float initPit
 
 Camera::~Camera()
 {
+
 }
 
 void Camera::KeyControl()
