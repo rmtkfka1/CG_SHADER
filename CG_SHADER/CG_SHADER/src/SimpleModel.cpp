@@ -37,4 +37,6 @@ void SimpleModel::Render(Shader& shader)
 
 	_model->RenderModel(shader);
 
+
+
 }

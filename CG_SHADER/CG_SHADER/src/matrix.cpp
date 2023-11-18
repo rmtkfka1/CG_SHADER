@@ -73,7 +73,7 @@ glm::mat4 matrix::GetRotateCamera(float dy)
 glm::mat4 matrix::GetProjection()
 {
 	glm::mat4 projection = glm::mat4(1.0f);
-	projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 300.0f); //--- 투영 공간 설정: fovy, aspect, near, far
+	projection = glm::perspective(glm::radians(50.0f), 1.0f, 0.1f, 500.0f); //--- 투영 공간 설정: fovy, aspect, near, far
 
 	return projection;
 }
