@@ -28,8 +28,12 @@ private:
 
 	SimpleModel* hat;
 
+	SimpleModel* people_body;
+
+
 	Shader* shader;
 
+	Texture* body_texture;
 	Texture* box_texture;
 	Texture* plane_texture;
 
@@ -42,6 +46,17 @@ private:
 
 	float left_door_degree2 = 0;
 	float right_door_degree2 = 0;
+
+	//사람
+	float people_x;
+	float people_y;
+	float people_z;
+
+
+	bool is_jump = false;
+	bool is_down = false;
+	void jump_animation();
+
 
 	//testing 용 변수들
 	float dx = 0;

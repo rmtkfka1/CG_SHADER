@@ -29,13 +29,16 @@ void cs23::Init()
 
 	hat = new SimpleModel("res/models/hat.obj");
 
+	people_body = new SimpleModel("res/models/people.obj");
 
 
 	plane_texture = new Texture("res/textures/1.jpg");
 	box_texture = new Texture("res/textures/box.jpg");
+	body_texture = new Texture("res/textures/ÇØ¸®.jpeg");
 
 	plane_texture->Bind(0);
 	box_texture->Bind(1);
+	body_texture->Bind(2);
 
 
 	shader->Bind();
@@ -51,9 +54,16 @@ void cs23::Update()
 
 	keyboard();
 
+
+
 	if (door_open)
 	{
 		door_animation();
+	}
+
+	if (is_jump)
+	{
+		jump_animation();
 	}
 
 
@@ -72,12 +82,6 @@ void cs23::keyboard()
 		door_open = true;
 	}
 
-
-	if (KeyManager::GetInstance()->Getbutton(KeyType::SpaceBar))
-	{
-		dy += 1.0f;
-
-	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Q))
 	{
@@ -112,23 +116,33 @@ void cs23::keyboard()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Left))
 	{
-		testing -= 1.0f;
+		people_x -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
+
+
+
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Right))
 	{
-		testing += 1.0f;
+		people_x += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Down))
 	{
-		testing2 += 1.0f;
+		people_z += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Up))
 	{
-		testing2 -= 1.0f;
+		people_z -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
 	}
+
+	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::SpaceBar))
+	{
+		is_jump=true;
+	}
+
+	
 }
 
 void cs23::Render()
@@ -141,6 +155,13 @@ void cs23::Render()
 		plane->Render(*shader);
 	}
 
+	//people
+	{
+		shader->SetUniform1i("u_texture", body_texture->GetSlot());
+		people_body->SetTransPose(*shader,people_x, people_y, people_z);
+
+		people_body->Render(*shader);
+	}
 
 	//box
 	{
@@ -198,6 +219,39 @@ void cs23::door_animation()
 	if (dz > 220)
 	{
 		dz -= 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+	}
+
+}
+
+void cs23::jump_animation()
+{
+
+	if (is_down == false)
+	{
+		if (people_y < 20)
+		{
+			people_y += 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+		}
+
+		if (people_y > 20)
+		{
+			people_y = 20;
+			is_down = true;
+		}
+	}
+
+	else
+	{
+		people_y -= 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+
+		if (people_y < 0)
+		{
+			is_down = false;
+			is_jump = false;
+			people_y = 0;
+			return;
+		}
+
 	}
 
 }
