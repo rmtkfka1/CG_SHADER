@@ -220,7 +220,7 @@ void cs23::keyboard()
 	{
 		
 
-		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y / 2 +10 < box->GetCenter_y() + box->GetSize().y / 2)
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().z / 2 +10 < box->GetCenter_z() + box->GetSize().y / 2)
 		{
 
 			people_z -= 3.0f;
