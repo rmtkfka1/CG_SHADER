@@ -21,6 +21,18 @@ void cs23::Init()
 
 	plane = new SimpleModel("res/models/cs24_set.obj");
 
+
+
+	{
+		box2 = new SimpleModel("res/models/box.obj");
+		BoxCollider* ptr = new BoxCollider;
+		box2->AddComponent(ptr);
+		box2->SetCenter_x(box2->GetCenter_x() - 40);
+		box2->SetCenter_z(box2->GetCenter_z() - 40);
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
+	}
+
+
 	{
 		box = new SimpleModel("res/models/box.obj");
 		BoxCollider* ptr = new BoxCollider;
@@ -29,8 +41,18 @@ void cs23::Init()
 		GET_SINGLE(CollisionManager)->AddCollider(ptr);
 	}
 
+	{
+		box3 = new SimpleModel("res/models/box.obj");
+		BoxCollider* ptr = new BoxCollider;
+		box3->AddComponent(ptr);
+		box3->SetCenter_x(box3->GetCenter_x() + 50);
+		box3->SetCenter_z(box3->GetCenter_z() + 50);
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
+	}
 
-	door_left = new SimpleModel("res/models/door_left.obj");
+
+
+ 	door_left = new SimpleModel("res/models/door_left.obj");
 	door_left->SetCenter(glm::vec3(door_left->GetCenter().x - door_left->GetSize().x/2, door_left->GetCenter().y, door_left->GetCenter().z));
 
 
@@ -70,6 +92,17 @@ void cs23::Update()
 
 
 	keyboard();
+	if (!is_jump)
+	{
+		if (people_body->_collusion == false)
+		{
+			if (people_y > 0)
+			{
+				people_y -= 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+				people_body->SetCenter_y(people_body->GetFirstCenter_y() + people_y);
+			}
+		}
+	}
 
 	if (door_open)
 	{
@@ -83,6 +116,8 @@ void cs23::Update()
 
 	plane->Update();
 	box->Update();
+	box2->Update();
+	box3->Update();
 	door_left->Update();
 	door_right->Update();
 	hat->Update();
@@ -106,6 +141,8 @@ void cs23::keyboard()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Q))
 	{
+
+	
 		dy -= 1.0f;
 
 	}
@@ -137,33 +174,89 @@ void cs23::keyboard()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Left))
 	{
-	
+		if (people_body->GetCenter().x < plane->GetCenter().x - plane->GetSize().x/2)
+		{
+			return;
+		}
+
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y / 2+10 <= box->GetCenter_y() + box->GetSize().y / 2)
+		{
+
+			people_x += 3.0f;
+			people_body->SetCenter_x(people_body->GetCenter_x() + 3.0f);
+			return;
+		}
 	
 		people_x -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
 		people_body->SetCenter_x(people_body->GetCenter_x() - 40.0 * TimeManager::GetInstance()->GetDeltaTime());
 
+	
 
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Right))
 	{
+		if (people_body->GetCenter().x > plane->GetCenter().x + plane->GetSize().x / 2 - 17)
+		{
+			return;
+		}
+	
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y / 2 +10 <= box->GetCenter_y() + box->GetSize().y / 2)
+		{
+
+			people_x -= 3.0f;
+			people_body->SetCenter_x(people_body->GetCenter_x() - 3.0f);
+			return;
+		}
 	
 		people_x += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
 		people_body->SetCenter_x(people_body->GetCenter_x() + 40.0 * TimeManager::GetInstance()->GetDeltaTime());
+
+	
+	
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Down))
 	{
+		
+
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y / 2 +10 < box->GetCenter_y() + box->GetSize().y / 2)
+		{
+
+			people_z -= 3.0f;
+			people_body->SetCenter_z(people_body->GetCenter_z() - 3.0f);
+			return;
+		}
 
 		people_z += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
 		people_body->SetCenter_z(people_body->GetCenter_z() + 40.0 * TimeManager::GetInstance()->GetDeltaTime());
+
+
+	
+		
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Up))
 	{
+		if (people_body->GetCenter().z < -60)
+		{
+			return;
+		}
+
+
+
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y/2 +10 <= box->GetCenter_y()+box->GetSize().y/2)
+		{
+
+			people_z += 3.0f;
+			people_body->SetCenter_z(people_body->GetCenter_z() + 3.0f);
+			return;
+		}
 
 		people_z -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
 		people_body->SetCenter_z(people_body->GetCenter_z() - 40.0 * TimeManager::GetInstance()->GetDeltaTime());
+
+	
 	}
 
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::SpaceBar))
@@ -177,6 +270,7 @@ void cs23::keyboard()
 void cs23::Render()
 {
 
+
 	// set
 	{
 		shader->SetUniform1i("u_texture", plane_texture->GetSlot());
@@ -186,6 +280,7 @@ void cs23::Render()
 
 	//people
 	{
+		
 		shader->SetUniform1i("u_texture", body_texture->GetSlot());
 		auto result =people_body->GetTransPose(people_x, people_y, people_z);
 		people_body->Render(*shader, result);
@@ -197,6 +292,19 @@ void cs23::Render()
 		auto result = box->GetTransPose(20, 0, 0);
 		box->Render(*shader,result);
 	}
+	//box2
+	{
+		shader->SetUniform1i("u_texture", box_texture->GetSlot());
+		auto result = box->GetTransPose(-40, 0, -40);
+		box2->Render(*shader, result);
+	}
+	//box3
+	{
+		shader->SetUniform1i("u_texture", box_texture->GetSlot());
+		auto result = box->GetTransPose(50, 0, 50);
+		box3->Render(*shader, result);
+	}
+
 
 	//door_left
 	{
@@ -249,6 +357,12 @@ void cs23::door_animation()
 
 void cs23::jump_animation()
 {
+	if (people_body->_collusion)
+	{
+		is_down = false;
+		is_jump = false;
+		return;
+	}
 
 	if (is_down == false)
 	{

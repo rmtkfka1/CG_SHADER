@@ -38,7 +38,7 @@ void SimpleModel::Update()
 
 void SimpleModel::Render(Shader& shader, glm::mat4 tesk)
 {
-
+	
 
 	shader.SetUniform3f("contorl_color", _debug_color.x, _debug_color.y, _debug_color.z);
 	auto simple = glm::mat4(1.0f);

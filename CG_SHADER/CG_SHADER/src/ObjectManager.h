@@ -12,7 +12,11 @@ public:
 		return &OM;
 	}
 
+	void AddShader(Shader *shader);
+
+
 	vector<Shader*>& Get_Shader() { return v_shader; } //외부 CPP,헤더파일에서 벡터가져오기//
+
 
 
 private:

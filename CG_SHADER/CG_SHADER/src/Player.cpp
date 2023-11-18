@@ -59,14 +59,30 @@ void Player::Render(Shader& shader, glm::mat4 tesk)
 void Player::OnComponentBeginOverlap(Collider* collider, Collider* other)
 {
 
+
+	_collusion = true;
+
 	_debug_color.x = 0;
 	_debug_color.y = 1;
 	_debug_color.z = 0;
+
+	vector<Shader*>& shader =ObjectManager::GetInstance()->Get_Shader();
+	//반대로 밀어버리면된다?
+
+
+
+
+
 }
 
 void Player::OnComponentEndOverlap(Collider* collider, Collider* other)
 {
+	_collusion = false;
+
 	_debug_color.x = 1;
 	_debug_color.y = 0;
 	_debug_color.z = 0;
+
+
+
 }

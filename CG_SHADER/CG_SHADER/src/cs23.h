@@ -23,6 +23,8 @@ private:
 	
 	SimpleModel* plane;
 	SimpleModel* box;
+	SimpleModel* box2;
+	SimpleModel* box3;
 
 	SimpleModel* door_left;
 	SimpleModel* door_right;
