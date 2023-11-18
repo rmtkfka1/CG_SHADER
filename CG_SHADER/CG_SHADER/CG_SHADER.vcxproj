@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BoxCollider.cpp" />
+    <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\SimpleModel.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Collider.cpp" />
@@ -172,6 +174,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BoxCollider.h" />
+    <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\SimpleModel.h" />
     <ClInclude Include="src\Object.h" />
     <ClInclude Include="src\Collider.h" />
@@ -208,6 +212,8 @@
     <None Include="res\shader\mvp_new.vs" />
     <None Include="res\shader\mvp.fs" />
     <None Include="res\shader\mvp.vs" />
+    <None Include="simple.fs" />
+    <None Include="simple.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\models\K-093.png" />

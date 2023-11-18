@@ -28,6 +28,9 @@ using namespace std;
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include <set>
+#include <unordered_set>
+
 
 ///////////////////////////
 #include "Types.h"

@@ -58,9 +58,6 @@
     <Filter Include="05.Camera">
       <UniqueIdentifier>{edd6bed1-dcc5-4eb4-bdfe-0de4c2a05e49}</UniqueIdentifier>
     </Filter>
-    <Filter Include="06.Collider">
-      <UniqueIdentifier>{601b5cda-8140-4860-a889-5006e15d4eec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.Object\01.실습">
       <UniqueIdentifier>{19581f8f-db17-44f8-a059-b8287384f2e6}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,12 @@
     </Filter>
     <Filter Include="01.OPENGL\08.Light">
       <UniqueIdentifier>{4705ef9a-09eb-491a-9e64-1d67e0408fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Component">
+      <UniqueIdentifier>{601b5cda-8140-4860-a889-5006e15d4eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Component\Collider">
+      <UniqueIdentifier>{cf34f9bf-bf7c-433b-9139-0bc807df1fcb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -128,14 +131,20 @@
     <ClCompile Include="src\cs23.cpp">
       <Filter>02.Object\01.실습\23번</Filter>
     </ClCompile>
-    <ClCompile Include="src\Collider.cpp">
-      <Filter>06.Collider</Filter>
-    </ClCompile>
     <ClCompile Include="src\Object.cpp">
       <Filter>02.Object\00.Object</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleModel.cpp">
       <Filter>02.Object\00.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Component.cpp">
+      <Filter>06.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collider.cpp">
+      <Filter>06.Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BoxCollider.cpp">
+      <Filter>06.Component\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,14 +208,20 @@
     <ClInclude Include="src\cs23.h">
       <Filter>02.Object\01.실습\23번</Filter>
     </ClInclude>
-    <ClInclude Include="src\Collider.h">
-      <Filter>06.Collider</Filter>
-    </ClInclude>
     <ClInclude Include="src\Object.h">
       <Filter>02.Object\00.Object</Filter>
     </ClInclude>
     <ClInclude Include="src\SimpleModel.h">
       <Filter>02.Object\00.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Component.h">
+      <Filter>06.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Collider.h">
+      <Filter>06.Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoxCollider.h">
+      <Filter>06.Component\Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +247,12 @@
     </None>
     <None Include="res\models\11.fbx">
       <Filter>00.res\models</Filter>
+    </None>
+    <None Include="simple.vs">
+      <Filter>00.res\shader</Filter>
+    </None>
+    <None Include="simple.fs">
+      <Filter>00.res\shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

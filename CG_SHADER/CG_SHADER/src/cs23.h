@@ -48,9 +48,9 @@ private:
 	float right_door_degree2 = 0;
 
 	//»ç¶÷
-	float people_x;
-	float people_y;
-	float people_z;
+	float people_x=0;
+	float people_y=0;
+	float people_z=0;
 
 
 	bool is_jump = false;

@@ -20,6 +20,13 @@ enum class DIR
 	DOWN,
 };
 
+enum class ColliderType
+{
+	Box,
+	Sphere,
+};
+
+
 enum class KeyType
 {
 	LeftMouse = VK_LBUTTON,

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "cs23.h"
 #include "SimpleModel.h"
+#include "BoxCollider.h"
+
 cs23::cs23()
 {
 
@@ -17,11 +19,15 @@ void cs23::Init()
 	shader = new Shader("res/shader/mvp.vs", "res/shader/mvp.fs");
 
 	plane = new SimpleModel("res/models/cs24_set.obj");
-	box = new SimpleModel("res/models/box.obj");
 
+	{
+		box = new SimpleModel("res/models/box.obj");
+		BoxCollider* ptr = new BoxCollider;
+		box->AddComponent(ptr);
+		box->SetCenter_x(box->GetCenter_x() + 20);
+	}
 	door_left = new SimpleModel("res/models/door_left.obj");
 	door_left->SetCenter(glm::vec3(door_left->GetCenter().x - door_left->GetSize().x/2, door_left->GetCenter().y, door_left->GetCenter().z));
-
 
 
 	door_right = new SimpleModel("res/models/door_right.obj");
@@ -29,8 +35,13 @@ void cs23::Init()
 
 	hat = new SimpleModel("res/models/hat.obj");
 
-	people_body = new SimpleModel("res/models/people.obj");
+	{
+		people_body = new SimpleModel("res/models/people.obj");
+		BoxCollider* ptr = new BoxCollider;
+		people_body->AddComponent(ptr);
 
+
+	}
 
 	plane_texture = new Texture("res/textures/1.jpg");
 	box_texture = new Texture("res/textures/box.jpg");
@@ -44,7 +55,9 @@ void cs23::Init()
 	shader->Bind();
 	shader->SetUniformMat4f("u_proj", matrix::GetInstance()->GetProjection());
 
-	door_left->PrintInfo();
+	people_body->PrintInfo();
+	people_body->Init();
+
 
 	
 }
@@ -53,8 +66,6 @@ void cs23::Update()
 {
 
 	keyboard();
-
-
 
 	if (door_open)
 	{
@@ -66,10 +77,16 @@ void cs23::Update()
 		jump_animation();
 	}
 
+	plane->Update();
+	box->Update();
+	door_left->Update();
+	door_right->Update();
+	hat->Update();
+	people_body->Update();
+
 
 	shader->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(dx,dy,dz), glm::vec3(0, 0, 0)));
-	//cout << dx << " " << " " << dy << " " << dz << endl;
-	//cout << testing << " " << testing2 << endl;
+
 }
 
 
@@ -116,25 +133,33 @@ void cs23::keyboard()
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Left))
 	{
+	
+	
 		people_x -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
-
+		people_body->SetCenter_x(people_body->GetCenter_x() - 40.0 * TimeManager::GetInstance()->GetDeltaTime());
 
 
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Right))
 	{
+	
 		people_x += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_x(people_body->GetCenter_x() + 40.0 * TimeManager::GetInstance()->GetDeltaTime());
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Down))
 	{
+
 		people_z += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_z(people_body->GetCenter_z() + 40.0 * TimeManager::GetInstance()->GetDeltaTime());
 	}
 
 	if (KeyManager::GetInstance()->Getbutton(KeyType::Up))
 	{
+
 		people_z -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_z(people_body->GetCenter_z() - 40.0 * TimeManager::GetInstance()->GetDeltaTime());
 	}
 
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::SpaceBar))
@@ -147,54 +172,49 @@ void cs23::keyboard()
 
 void cs23::Render()
 {
-	
+
 	// set
 	{
 		shader->SetUniform1i("u_texture", plane_texture->GetSlot());
-		plane->SetSimple(*shader);
-		plane->Render(*shader);
+		auto reuslt =plane->GetTransPose(0, 0, 0);
+		plane->Render(*shader, reuslt);
 	}
 
 	//people
 	{
 		shader->SetUniform1i("u_texture", body_texture->GetSlot());
-		people_body->SetTransPose(*shader,people_x, people_y, people_z);
-
-		people_body->Render(*shader);
+		auto result =people_body->GetTransPose(people_x, people_y, people_z);
+		people_body->Render(*shader, result);
 	}
 
 	//box
 	{
 		shader->SetUniform1i("u_texture", box_texture->GetSlot());
-		auto result = box->GetScale(1.7f, 1.0f, 1.7f) * plane->GetTransPose(25, 0, 15);
-		shader->SetUniformMat4f("u_model", result);
-		box->Render(*shader);
+		auto result = box->GetTransPose(20, 0, 0);
+		box->Render(*shader,result);
 	}
 
 	//door_left
 	{
 		shader->SetUniform1i("u_texture", box_texture->GetSlot());
 		auto rotate =door_left->GetRotate(left_door_degree, 0, 1, 0);
-		shader->SetUniformMat4f("u_model", rotate);
-		door_left->Render(*shader);
+		door_left->Render(*shader, rotate);
 	}
 
 	//door_right
 	{
 		shader->SetUniform1i("u_texture", box_texture->GetSlot());
 		auto rotate = door_right->GetRotate(right_door_degree, 0, 1, 0);
-		shader->SetUniformMat4f("u_model", rotate);
-		door_right->Render(*shader);
+		door_right->Render(*shader, rotate);
 	}
 
 	//ม๖บุ
 	{
 		shader->SetUniform1i("u_texture", box_texture->GetSlot());
-		hat->SetSimple(*shader);
-		hat->Render(*shader);
+		auto result =hat->GetTransPose(0,0,0);
+		hat->Render(*shader,result);
+
 	}
-
-
 
 
 }
@@ -228,14 +248,17 @@ void cs23::jump_animation()
 
 	if (is_down == false)
 	{
-		if (people_y < 20)
+		if (people_y < 30)
 		{
 			people_y += 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+			people_body->SetCenter_y(people_body->GetCenter_y() + 100.0f * TimeManager::GetInstance()->GetDeltaTime());
+
 		}
 
-		if (people_y > 20)
+		if (people_y > 30)
 		{
-			people_y = 20;
+			people_y = 30;
+			people_body->SetCenter_y(people_body->GetFirstCenter_y() + 30);
 			is_down = true;
 		}
 	}
@@ -243,12 +266,14 @@ void cs23::jump_animation()
 	else
 	{
 		people_y -= 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_y(people_body->GetCenter_y() - 100.0f * TimeManager::GetInstance()->GetDeltaTime());
 
 		if (people_y < 0)
 		{
 			is_down = false;
 			is_jump = false;
 			people_y = 0;
+			people_body->SetCenter_y(people_body->GetFirstCenter_y() + 0);
 			return;
 		}
 
