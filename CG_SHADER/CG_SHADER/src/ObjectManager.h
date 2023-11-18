@@ -12,9 +12,6 @@ public:
 		return &OM;
 	}
 
-
-
-
 	vector<Shader*>& Get_Shader() { return v_shader; } //외부 CPP,헤더파일에서 벡터가져오기//
 
 

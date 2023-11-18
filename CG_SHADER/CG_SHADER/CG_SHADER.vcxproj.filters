@@ -146,6 +146,12 @@
     <ClCompile Include="src\BoxCollider.cpp">
       <Filter>06.Component\Collider</Filter>
     </ClCompile>
+    <ClCompile Include="src\CollisionManager.cpp">
+      <Filter>03,Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player.cpp">
+      <Filter>02.Object\00.Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -222,6 +228,12 @@
     </ClInclude>
     <ClInclude Include="src\BoxCollider.h">
       <Filter>06.Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CollisionManager.h">
+      <Filter>03,Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player.h">
+      <Filter>02.Object\00.Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

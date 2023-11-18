@@ -1,16 +1,15 @@
 #pragma once
+
 #include "Object.h"
 
-
-
-class SimpleModel :public Object
+class Player :public Object
 {
 
 	using Super = Object;
 
 public:
-	SimpleModel(const string& model_filepath);
-	~SimpleModel();
+	Player(const string& model_filepath);
+	~Player();
 
 
 	void Init() override;
@@ -20,8 +19,8 @@ public:
 	void OnComponentBeginOverlap(Collider* collider, Collider* other) override;
 	void OnComponentEndOverlap(Collider* collider, Collider* other) override;
 
-private:
-
+public:
+	
+	bool _collusion = false;
 
 };
-

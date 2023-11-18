@@ -74,9 +74,7 @@ glm::mat4 Object::GetScale(float dx,float dy ,float dz)
 
 	auto result = trans2 * resize * trans1;
 
-	_size.x *= dx;
-	_size.y *= dy;
-	_size.z *= dz;
+
 
 	return result;
 
@@ -87,7 +85,6 @@ glm::mat4 Object::GetTransPose(float dx, float dy, float dz)
 
 	auto trans = glm::translate(glm::mat4(1.0f), glm::vec3(dx, dy, dz)); // 원점으로 이동시킴
 	
-	cout << _center.x << endl;
 
 	return trans;
 
@@ -176,6 +173,8 @@ void Object::RemoveComponent(Component* component)
 
 void Object::OnComponentBeginOverlap(Collider* collider, Collider* other)
 {
+
+
 }
 
 void Object::OnComponentEndOverlap(Collider* collider, Collider* other)

@@ -32,8 +32,9 @@ protected:
 
 	ColliderType _colliderType;
 	bool _showDebug = true;
-
+	
 public:
+
 	unordered_set<Collider*> _collisionMap;
 };
 

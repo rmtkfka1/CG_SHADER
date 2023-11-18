@@ -2,7 +2,8 @@
 #include "cs23.h"
 #include "SimpleModel.h"
 #include "BoxCollider.h"
-
+#include "CollisionManager.h"
+#include "Player.h"
 cs23::cs23()
 {
 
@@ -25,7 +26,10 @@ void cs23::Init()
 		BoxCollider* ptr = new BoxCollider;
 		box->AddComponent(ptr);
 		box->SetCenter_x(box->GetCenter_x() + 20);
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
 	}
+
+
 	door_left = new SimpleModel("res/models/door_left.obj");
 	door_left->SetCenter(glm::vec3(door_left->GetCenter().x - door_left->GetSize().x/2, door_left->GetCenter().y, door_left->GetCenter().z));
 
@@ -36,11 +40,10 @@ void cs23::Init()
 	hat = new SimpleModel("res/models/hat.obj");
 
 	{
-		people_body = new SimpleModel("res/models/people.obj");
+		people_body = new Player("res/models/people.obj");
 		BoxCollider* ptr = new BoxCollider;
 		people_body->AddComponent(ptr);
-
-
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
 	}
 
 	plane_texture = new Texture("res/textures/1.jpg");
@@ -65,6 +68,7 @@ void cs23::Init()
 void cs23::Update()
 {
 
+
 	keyboard();
 
 	if (door_open)
@@ -86,7 +90,7 @@ void cs23::Update()
 
 
 	shader->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(dx,dy,dz), glm::vec3(0, 0, 0)));
-
+	CollisionManager::GetInstance()->Update();
 }
 
 

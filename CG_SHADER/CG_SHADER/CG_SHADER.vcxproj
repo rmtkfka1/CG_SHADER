@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\CollisionManager.cpp" />
     <ClCompile Include="src\BoxCollider.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\SimpleModel.cpp" />
@@ -174,6 +176,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\CollisionManager.h" />
     <ClInclude Include="src\BoxCollider.h" />
     <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\SimpleModel.h" />

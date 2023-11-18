@@ -1,9 +1,10 @@
 #include "pch.h"
-#include "SimpleModel.h"
+#include "Player.h"
+#include "Object.h"
 #include "Object.h"
 #include "Collider.h"
 
-SimpleModel::SimpleModel(const string& model_filepath)
+Player::Player(const string& model_filepath)
 {
 
 
@@ -18,25 +19,25 @@ SimpleModel::SimpleModel(const string& model_filepath)
 
 }
 
-SimpleModel::~SimpleModel()
+Player::~Player()
 {
 
 }
 
-void SimpleModel::Init()
+void Player::Init()
 {
 	Super::Init();
 
 
 }
 
-void SimpleModel::Update()
+void Player::Update()
 {
 	Super::Update();
 
 }
 
-void SimpleModel::Render(Shader& shader, glm::mat4 tesk)
+void Player::Render(Shader& shader, glm::mat4 tesk)
 {
 
 
@@ -55,14 +56,15 @@ void SimpleModel::Render(Shader& shader, glm::mat4 tesk)
 
 }
 
-void SimpleModel::OnComponentBeginOverlap(Collider* collider, Collider* other)
+void Player::OnComponentBeginOverlap(Collider* collider, Collider* other)
 {
+
 	_debug_color.x = 0;
 	_debug_color.y = 1;
 	_debug_color.z = 0;
 }
 
-void SimpleModel::OnComponentEndOverlap(Collider* collider, Collider* other)
+void Player::OnComponentEndOverlap(Collider* collider, Collider* other)
 {
 	_debug_color.x = 1;
 	_debug_color.y = 0;

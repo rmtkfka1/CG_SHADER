@@ -67,7 +67,7 @@ protected:
 	glm::vec3 _size{};
 
 
-
-
+public:
+	glm::vec3 _debug_color = { 1,0,0 };
 };
 

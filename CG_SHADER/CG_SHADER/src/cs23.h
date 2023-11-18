@@ -3,6 +3,7 @@
 class SimpleModel;
 class Shader;
 class Texture;
+class Player;
 
 class cs23
 {
@@ -28,7 +29,7 @@ private:
 
 	SimpleModel* hat;
 
-	SimpleModel* people_body;
+	Player* people_body;
 
 
 	Shader* shader;

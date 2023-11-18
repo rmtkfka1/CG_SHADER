@@ -20,7 +20,6 @@ void BoxCollider::Init()
 
 void BoxCollider::Update()
 {
- 
     _center = _owner->GetCenter();
     _size = _owner->GetSize();
 
@@ -79,5 +78,14 @@ void BoxCollider::Render(Shader& shader)
 
 bool BoxCollider::CheckCollision(Collider* other)
 {
-	return false;
+    switch (other->GetColliderType())
+    {
+    case ColliderType::Box:
+        return CheckCollisionBox2Box(this, static_cast<BoxCollider*>(other));
+    case ColliderType::Sphere:
+        return false;
+    }
+
+    return false;
+
 }
