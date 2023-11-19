@@ -338,6 +338,8 @@ void cs23::keyboard()
 	}
 
 	baby_jump_animation();
+
+	following_anim(people_body->GetCenter_x(), people_body->GetCenter_z());
 }
 
 void cs23::Render()
@@ -435,10 +437,28 @@ void cs23::Render()
 	for (int i = 0; i < v_baby.size(); ++i)
 	{
 		shader->SetUniform1i("u_texture",baby_texture->GetSlot());
-		auto result = v_baby[i]->GetTransPose(people_body->GetCenter_x()-i*10,baby_y, people_body->GetCenter_z()-i*10);
+		//auto result = v_baby[i]->GetTransPose(people_body->GetCenter_x()-i*10,baby_y, people_body->GetCenter_z()-i*10);
+		auto result = v_baby[i]->GetTransPose(baby_x-i*5, baby_y, baby_z-i*5);
 		v_baby[i]->Render(*shader, result);
 	}
 
+
+
+
+}
+
+void cs23::following_anim(float tx, float tz)
+{
+
+	 
+	for (int i = 0; i < v_baby.size(); ++i)
+	{
+	
+		float dir = atan2(tx - baby_x, tz - baby_z);
+		baby_x += 3*sinf(dir)*TimeManager::GetInstance()->GetDeltaTime();
+		baby_z += 3*cosf(dir)*TimeManager::GetInstance()->GetDeltaTime();
+
+	}
 
 
 

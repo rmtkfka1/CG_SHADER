@@ -74,7 +74,9 @@ private:
 	bool is_down = false;
 	void jump_animation();
 
-
+	void following_anim(float tx, float tz);
+	float baby_x = 0;
+	float baby_z = 0;
 	float baby_y = 0;
 	bool baby_is_jump = false;
 	bool baby_is_down = false;
