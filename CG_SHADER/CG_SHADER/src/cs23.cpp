@@ -23,12 +23,51 @@ void cs23::Init()
 
 
 
+
+
+
+	for (int i = 0; i < 4; ++i)
+	{
+		p1[i] = new SimpleModel("res/models/piilar.obj");
+		BoxCollider* ptr = new BoxCollider;
+		p1[i]->SetCenter_x(p1[i]->GetCenter_x()-i*25);
+		p1[i]->AddComponent(ptr);
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
+	}
+
+
+	{
+		hey_top = new SimpleModel("res/models/p2.obj");
+		BoxCollider* ptr = new BoxCollider;
+		hey_top->SetCenter_x(hey_top->GetCenter_x() - 25);
+		hey_top->AddComponent(ptr);
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
+	}
+
+
+
+	{
+		hey_left = new SimpleModel("res/models/p1.obj");
+		BoxCollider* ptr = new BoxCollider;
+		hey_left->SetCenter_x(hey_left->GetCenter_x() - 20);
+		hey_left->AddComponent(ptr);
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
+	}
+
+	{
+		hey_right = new SimpleModel("res/models/p1.obj");
+		BoxCollider* ptr = new BoxCollider;
+		hey_right->AddComponent(ptr);
+		GET_SINGLE(CollisionManager)->AddCollider(ptr);
+	}
+
+
 	{
 		box2 = new SimpleModel("res/models/box.obj");
 		BoxCollider* ptr = new BoxCollider;
 		box2->AddComponent(ptr);
 		box2->SetCenter_x(box2->GetCenter_x() - 40);
-		box2->SetCenter_z(box2->GetCenter_z() - 40);
+		box2->SetCenter_z(box2->GetCenter_z() + 20);
 		GET_SINGLE(CollisionManager)->AddCollider(ptr);
 	}
 
@@ -71,11 +110,12 @@ void cs23::Init()
 	plane_texture = new Texture("res/textures/1.jpg");
 	box_texture = new Texture("res/textures/box.jpg");
 	body_texture = new Texture("res/textures/ÇØ¸®.jpeg");
+	baby_texture = new Texture("res/textures/baby.jpg");
 
 	plane_texture->Bind(0);
 	box_texture->Bind(1);
 	body_texture->Bind(2);
-
+	baby_texture->Bind(3);
 
 	shader->Bind();
 	shader->SetUniformMat4f("u_proj", matrix::GetInstance()->GetProjection());
@@ -122,6 +162,17 @@ void cs23::Update()
 	door_right->Update();
 	hat->Update();
 	people_body->Update();
+	hey_left->Update();
+	hey_right->Update();
+	hey_top->Update();
+
+
+	for (int i = 0; i < 4; ++i)
+	{
+		p1[i]->Update();
+	}
+
+
 
 
 	shader->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(dx,dy,dz), glm::vec3(0, 0, 0)));
@@ -169,6 +220,12 @@ void cs23::keyboard()
 	if (KeyManager::GetInstance()->Getbutton(KeyType::D))
 	{
 		dx += 1.0f;
+
+	}
+
+	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::T))
+	{
+		makebaby();
 
 	}
 
@@ -220,7 +277,8 @@ void cs23::keyboard()
 	{
 		
 
-		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().z / 2 +10 < box->GetCenter_z() + box->GetSize().y / 2)
+
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y / 2 + 10 <= box->GetCenter_y() + box->GetSize().y / 2)
 		{
 
 			people_z -= 3.0f;
@@ -259,17 +317,57 @@ void cs23::keyboard()
 	
 	}
 
+	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::Y))
+	{
+		removebaby();
+	}
+
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::SpaceBar))
 	{
 		is_jump=true;
 	}
 
-	
+	if (KeyManager::GetInstance()->Getbutton(KeyType::R))
+	{
+		testing += 1.0f;
+	}
+
+	if (KeyManager::GetInstance()->Getbutton(KeyType::F))
+	{
+		baby_is_jump = true;
+	}
+
+	baby_jump_animation();
 }
 
 void cs23::Render()
 {
 
+
+	for (int i = 0; i < 4; ++i)
+	{
+		shader->SetUniform1i("u_texture", box_texture->GetSlot());
+		auto reuslt = p1[i]->GetTransPose(0-i*25, 0, 0);
+		p1[i]->Render(*shader, reuslt);
+	}
+
+	{
+		shader->SetUniform1i("u_texture", box_texture->GetSlot());
+		auto reuslt = hey_top->GetTransPose(-25, 0, 0);
+		hey_top->Render(*shader, reuslt);
+	}
+
+	{
+		shader->SetUniform1i("u_texture", box_texture->GetSlot());
+		auto reuslt = hey_right->GetTransPose(0, 0, 0);
+		hey_right->Render(*shader, reuslt);
+	}
+
+	{
+		shader->SetUniform1i("u_texture", box_texture->GetSlot());
+		auto reuslt = hey_left->GetTransPose(-20, 0, 0);
+		hey_left->Render(*shader, reuslt);
+	}
 
 	// set
 	{
@@ -278,24 +376,20 @@ void cs23::Render()
 		plane->Render(*shader, reuslt);
 	}
 
-	//people
-	{
-		
-		shader->SetUniform1i("u_texture", body_texture->GetSlot());
-		auto result =people_body->GetTransPose(people_x, people_y, people_z);
-		people_body->Render(*shader, result);
-	}
+
 
 	//box
 	{
 		shader->SetUniform1i("u_texture", box_texture->GetSlot());
-		auto result = box->GetTransPose(20, 0, 0);
-		box->Render(*shader,result);
+		auto trans = box->GetTransPose(20, 0, 0);
+		auto rotate = box->GetRotate(testing, 0, 1, 0);
+		auto result = rotate * trans;
+		box->Render(*shader, result);
 	}
 	//box2
 	{
 		shader->SetUniform1i("u_texture", box_texture->GetSlot());
-		auto result = box->GetTransPose(-40, 0, -40);
+		auto result = box->GetTransPose(-40, 0, 20);
 		box2->Render(*shader, result);
 	}
 	//box3
@@ -328,6 +422,59 @@ void cs23::Render()
 
 	}
 
+	//people
+	{
+
+		shader->SetUniform1i("u_texture", body_texture->GetSlot());
+		auto result = people_body->GetTransPose(people_x, people_y, people_z);
+		people_body->Render(*shader, result);
+	}
+
+
+
+	for (int i = 0; i < v_baby.size(); ++i)
+	{
+		shader->SetUniform1i("u_texture",baby_texture->GetSlot());
+		auto result = v_baby[i]->GetTransPose(people_body->GetCenter_x()-i*10,baby_y, people_body->GetCenter_z()-i*10);
+		v_baby[i]->Render(*shader, result);
+	}
+
+
+
+
+}
+
+void cs23::makebaby()
+{
+	
+
+	
+	{
+		SimpleModel *baby = new SimpleModel("res/models/baby.obj");
+
+		if (v_baby.size() == 3)
+		{
+			return;
+		}
+
+		v_baby.push_back(baby);
+	}
+
+
+
+}
+
+void cs23::removebaby()
+{
+
+	if (v_baby.size() == 0)
+	{
+		return;
+	}
+
+
+	v_baby.pop_back();
+
 
 }
 
@@ -352,6 +499,9 @@ void cs23::door_animation()
 	{
 		dz -= 100.0f * TimeManager::GetInstance()->GetDeltaTime();
 	}
+
+
+	
 
 }
 
@@ -396,5 +546,45 @@ void cs23::jump_animation()
 		}
 
 	}
+
+}
+
+void cs23::baby_jump_animation()
+{
+	if (baby_is_jump == false)
+	{
+		return;
+	}
+
+	if (baby_is_down == false)
+	{
+		if (baby_y < 30)
+		{
+			baby_y += 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+
+		}
+
+		if (baby_y > 30)
+		{
+			baby_y = 30;
+			baby_is_down = true;
+		}
+	}
+
+	else
+	{
+		baby_y -= 100.0f * TimeManager::GetInstance()->GetDeltaTime();
+	
+		if (baby_y < 0)
+		{
+			baby_is_down = false;
+			baby_is_jump = false;
+			baby_y = 0;
+			return;
+		}
+
+	}
+
+
 
 }

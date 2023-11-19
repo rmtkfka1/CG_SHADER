@@ -120,7 +120,6 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>01.OPENGL\07.Assimp</Filter>
     </ClCompile>
-    <ClCompile Include="src\소스.cpp" />
     <ClCompile Include="src\연습장.cpp" />
     <ClCompile Include="src\Camera.cpp">
       <Filter>05.Camera</Filter>
@@ -152,6 +151,7 @@
     <ClCompile Include="src\Player.cpp">
       <Filter>02.Object\00.Object</Filter>
     </ClCompile>
+    <ClCompile Include="src\소스.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">

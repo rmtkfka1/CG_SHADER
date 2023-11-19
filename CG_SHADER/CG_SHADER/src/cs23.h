@@ -33,14 +33,28 @@ private:
 
 	Player* people_body;
 
+	//
+	SimpleModel* hey_left;
+	SimpleModel* hey_right;
+	SimpleModel* hey_top;
+
+	SimpleModel* p1[4];
+
+	vector<SimpleModel*> v_baby;
 
 	Shader* shader;
 
 	Texture* body_texture;
 	Texture* box_texture;
 	Texture* plane_texture;
-
+	Texture* baby_texture;
 	/////////////////
+
+
+
+	void makebaby();
+	void removebaby();
+
 	void door_animation();
 	bool door_open = false;
 
@@ -61,6 +75,12 @@ private:
 	void jump_animation();
 
 
+	float baby_y = 0;
+	bool baby_is_jump = false;
+	bool baby_is_down = false;
+	void baby_jump_animation();
+
+
 	//testing 용 변수들
 	float dx = 0;
 	float dy = 280;
@@ -68,7 +88,9 @@ private:
 	//170 270
 
 	float testing2 = 0;
-	float testing = 28;
+	float testing = 0;
+
+
 
 
 
