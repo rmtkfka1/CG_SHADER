@@ -61,9 +61,6 @@
     <Filter Include="02.Object\01.실습">
       <UniqueIdentifier>{19581f8f-db17-44f8-a059-b8287384f2e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Object\01.실습\23번">
-      <UniqueIdentifier>{5032c993-65f2-4260-ac12-c6c9c25c670b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.OPENGL\08.Light">
       <UniqueIdentifier>{4705ef9a-09eb-491a-9e64-1d67e0408fa3}</UniqueIdentifier>
     </Filter>
@@ -72,6 +69,12 @@
     </Filter>
     <Filter Include="06.Component\Collider">
       <UniqueIdentifier>{cf34f9bf-bf7c-433b-9139-0bc807df1fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.실습\24번">
+      <UniqueIdentifier>{5032c993-65f2-4260-ac12-c6c9c25c670b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Object\01.실습\25번">
+      <UniqueIdentifier>{1482d42f-898f-41dc-86bd-074078eda616}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -128,7 +131,7 @@
       <Filter>01.OPENGL\08.Light</Filter>
     </ClCompile>
     <ClCompile Include="src\cs23.cpp">
-      <Filter>02.Object\01.실습\23번</Filter>
+      <Filter>02.Object\01.실습\24번</Filter>
     </ClCompile>
     <ClCompile Include="src\Object.cpp">
       <Filter>02.Object\00.Object</Filter>
@@ -151,7 +154,11 @@
     <ClCompile Include="src\Player.cpp">
       <Filter>02.Object\00.Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\소스.cpp" />
+    <ClCompile Include="src\실습24.cpp" />
+    <ClCompile Include="src\실습25.cpp" />
+    <ClCompile Include="src\cs25.cpp">
+      <Filter>02.Object\01.실습\25번</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core.h">
@@ -212,7 +219,7 @@
       <Filter>01.OPENGL\08.Light</Filter>
     </ClInclude>
     <ClInclude Include="src\cs23.h">
-      <Filter>02.Object\01.실습\23번</Filter>
+      <Filter>02.Object\01.실습\24번</Filter>
     </ClInclude>
     <ClInclude Include="src\Object.h">
       <Filter>02.Object\00.Object</Filter>
@@ -234,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="src\Player.h">
       <Filter>02.Object\00.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs25.h">
+      <Filter>02.Object\01.실습\25번</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

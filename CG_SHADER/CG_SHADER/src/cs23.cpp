@@ -536,25 +536,25 @@ void cs23::jump_animation()
 
 	if (is_down == false)
 	{
-		if (people_y < 30)
+		if (people_y < 50)
 		{
-			people_y += 100.0f * TimeManager::GetInstance()->GetDeltaTime();
-			people_body->SetCenter_y(people_body->GetCenter_y() + 100.0f * TimeManager::GetInstance()->GetDeltaTime());
+			people_y += 150.0f * TimeManager::GetInstance()->GetDeltaTime();
+			people_body->SetCenter_y(people_body->GetCenter_y() + 150.0f * TimeManager::GetInstance()->GetDeltaTime());
 
 		}
 
-		if (people_y > 30)
+		if (people_y > 50)
 		{
-			people_y = 30;
-			people_body->SetCenter_y(people_body->GetFirstCenter_y() + 30);
+			people_y = 50;
+			people_body->SetCenter_y(people_body->GetFirstCenter_y() + 50);
 			is_down = true;
 		}
 	}
 
 	else
 	{
-		people_y -= 100.0f * TimeManager::GetInstance()->GetDeltaTime();
-		people_body->SetCenter_y(people_body->GetCenter_y() - 100.0f * TimeManager::GetInstance()->GetDeltaTime());
+		people_y -= 150.0f * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_y(people_body->GetCenter_y() - 150.0f * TimeManager::GetInstance()->GetDeltaTime());
 
 		if (people_y < 0)
 		{

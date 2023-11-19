@@ -41,13 +41,13 @@ void Player::Render(Shader& shader, glm::mat4 tesk)
 {
 
 
-	shader.SetUniform3f("contorl_color", _debug_color.x, _debug_color.y, _debug_color.z);
+	shader.SetUniform3f("control_color", _debug_color.x, _debug_color.y, _debug_color.z);
 	auto simple = glm::mat4(1.0f);
 	shader.SetUniformMat4f("u_model", simple);
 	Super::Render(shader, simple);
 
 
-	shader.SetUniform3f("contorl_color", 0, 0, 0);
+	shader.SetUniform3f("control_color", 0, 0, 0);
 	shader.SetUniformMat4f("u_model", tesk);
 	_model->RenderModel(shader);
 

@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\cs25.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\CollisionManager.cpp" />
     <ClCompile Include="src\BoxCollider.cpp" />
@@ -168,14 +169,18 @@
     </ClCompile>
     <ClCompile Include="src\TimeManager.cpp" />
     <ClCompile Include="src\Texture.cpp" />
-    <ClCompile Include="src\소스.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    <ClCompile Include="src\실습24.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\연습장.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\실습25.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\cs25.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\CollisionManager.h" />
     <ClInclude Include="src\BoxCollider.h" />

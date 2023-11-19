@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Camera.h"
 #include "Light.h"
-#include "cs23.h"
-cs23 p;
+#include "cs25.h"
+cs25 p;
 
 void draw()
 {
-	glClearColor(0, 0, 0, 1.0f);
+	glClearColor(0,0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	p.Render();
@@ -15,13 +15,12 @@ void draw()
 
 };
 
-
 int main(int argc, char** argv)
 {
 
 
 
-	Core::GetInstance()->Init(argc, argv,800,800);
+	Core::GetInstance()->Init(argc, argv, 800, 800);
 	Core::GetInstance()->Render(draw);
 
 
