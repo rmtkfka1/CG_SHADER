@@ -127,9 +127,6 @@
       <Filter>01.OPENGL\07.Assimp</Filter>
     </ClCompile>
     <ClCompile Include="src\연습장.cpp" />
-    <ClCompile Include="src\Camera.cpp">
-      <Filter>05.Camera</Filter>
-    </ClCompile>
     <ClCompile Include="src\Light.cpp">
       <Filter>01.OPENGL\08.Light</Filter>
     </ClCompile>
@@ -221,9 +218,6 @@
     </ClInclude>
     <ClInclude Include="src\Model.h">
       <Filter>01.OPENGL\07.Assimp</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Camera.h">
-      <Filter>05.Camera</Filter>
     </ClInclude>
     <ClInclude Include="src\Light.h">
       <Filter>01.OPENGL\08.Light</Filter>

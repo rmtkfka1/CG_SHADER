@@ -5,7 +5,7 @@ class SimpleModel;
 class Texture;
 class Shader;
 class Light;
-class Camera;
+class Camera2;
 
 
 class cs26
@@ -32,7 +32,7 @@ private:
 	Texture* texture;
 	Light* light;
 
-	Camera* camera;
+	//Camera2* camera;
 
 
 	float testing;

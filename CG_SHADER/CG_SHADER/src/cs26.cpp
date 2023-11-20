@@ -4,7 +4,7 @@
 #include "SimpleModel.h"
 #include "Light.h"
 #include "Camera.h"
-
+#include "Camera2.h"
 void cs26::Init()
 {
 	{
@@ -44,12 +44,22 @@ void cs26::Init()
 
 	}
 
+	//camera = new Camera2();
+
 }
 
 void cs26::Update()
 {
 	circle1->Update();
-	KeyUpdate();
+
+	//camera->KeyUpdate();
+	//camera->MouseUpdate(MouseManager::GetInstance()->GetMousePos().x, MouseManager::GetInstance()->GetMousePos().y);
+	//shader->SetUniformMat4f("u_view",camera->GetMatrix());
+
+	Camera2::GetInstance()->KeyUpdate();
+	Camera2::GetInstance()->MouseUpdate(MouseManager::GetInstance()->GetMousePos().x, MouseManager::GetInstance()->GetMousePos().y);
+	shader->SetUniformMat4f("u_view", Camera2::GetInstance()->GetMatrix());
+	//KeyUpdate();
 	Rotate();
 
 
