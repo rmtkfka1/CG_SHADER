@@ -33,22 +33,22 @@ void main()
 	//¾Úºñ¾ðÆ®
 	vec3 lightAmbient = u_light.lightColor * u_light.ambientIntensity;
 
+
+
+	vec3 lightDir = normalize(-u_light.direction);
 	//µðÇ»Áî
 
-
-	float diffuseFactor = max(dot(normalize(v_Normal), -u_light.direction), 0.0);
+	float diffuseFactor = max(dot(normalize(v_Normal), lightDir), 0.0);
 	vec3 lightDiffuse = u_light.lightColor * u_light.diffuseIntensity * diffuseFactor;
 
-	// -u_light.direction : ³»·Á ÂØ´Â°Å
-	// u_light.direction : 
+
 
 	//½ºÆåÅ§·¯
-	vec3 lightDir = normalize(u_light.direction);
 	vec3 fragToEye = normalize(u_eyePosition - v_worldPosition);
 	vec3 rVec = 2.0 * v_Normal * dot(v_Normal, lightDir) - lightDir; //r vector °è»ê
 	vec3 lightSpecular = pow(max(dot(rVec, fragToEye), 0.0), u_light.shinIness) * u_light.lightColor * u_light.specularIntensity;
 
-	color = texture(u_texture, v_TexCoord)* vec4(lightAmbient+lightDiffuse+lightSpecular,1.0) + vec4(control_color,1);
+	color = texture(u_texture, v_TexCoord)* vec4(lightAmbient+lightDiffuse +lightSpecular ,1.0) + vec4(control_color,1);
 
 
 };

@@ -84,7 +84,7 @@ void Camera::Update()
 {
 	//마우스 입력에 따른 Front 벡터의 변화 계산 (구면 좌표 -> 카르테시안 좌표)
 	m_Front.x = cos(glm::radians(m_Yaw)) * cos(glm::radians(m_Pitch));
-	m_Front.y = sin(glm::radians(m_Pitch));
+	m_Front.y = sin(glm::radians(m_Pitch)); 
 	m_Front.z = sin(glm::radians(m_Yaw)) * cos(glm::radians(m_Pitch));
 	m_Front = glm::normalize(m_Front);
 

@@ -76,6 +76,9 @@
     <Filter Include="02.Object\01.실습\25번">
       <UniqueIdentifier>{1482d42f-898f-41dc-86bd-074078eda616}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\01.실습\26번">
+      <UniqueIdentifier>{af26b181-c57b-4785-af9a-a243a524a837}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -158,6 +161,13 @@
     <ClCompile Include="src\실습25.cpp" />
     <ClCompile Include="src\cs25.cpp">
       <Filter>02.Object\01.실습\25번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cs26.cpp">
+      <Filter>02.Object\01.실습\26번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습26.cpp" />
+    <ClCompile Include="src\Camera2.cpp">
+      <Filter>05.Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +254,12 @@
     </ClInclude>
     <ClInclude Include="src\cs25.h">
       <Filter>02.Object\01.실습\25번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs26.h">
+      <Filter>02.Object\01.실습\26번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera2.h">
+      <Filter>05.Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

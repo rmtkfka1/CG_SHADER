@@ -42,10 +42,10 @@ void cs25::Init()
 
 	shader->SetUniformMat4f("u_view",
 		matrix::GetInstance()->GetCamera(glm::vec3(0, 30.0f, 30.0f), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)));
+
 	shader->SetUniform3f("u_eyePosition", 0, 30, 30);
 
-	light->SetShinIness(1.0f);
-	light->SetLvector(glm::vec3(0, 30.0f, 0));
+	light->SetLvector(glm::vec3(0, 30.0f, 30.0f));
 
 }
 
@@ -99,8 +99,8 @@ void cs25::ChangeLight()
 	
 		light->SetAmbientIntensity(0.4f);
 		light->SetDiffuseIntensity(1.0f);
-		light->SetSpecularIntensity(5.0f);
-		light->SetShinIness(30.0f);
+		light->SetSpecularIntensity(0.1f);
+		light->SetShinIness(0.1f);
 	}
 
 	else
@@ -175,8 +175,8 @@ void cs25::KeyUpdate()
 
 		shader->SetUniformMat4f("u_view", view);
 
-		light->SetAmbientIntensity(0.2f);
-		light->SetDiffuseIntensity(1.0f);
+		shader->SetUniform3f("u_eyePosition", x, 30, z);
+	
 
 
 		camera_radius -= 10.0f *TimeManager::GetInstance()->GetDeltaTime();
@@ -199,10 +199,13 @@ void cs25::KeyUpdate()
 
 
 
+		shader->SetUniform3f("u_eyePosition", x, 30, z);
+
+
+
 		shader->SetUniformMat4f("u_view", view);
 
-		light->SetAmbientIntensity(0.2f);
-		light->SetDiffuseIntensity(1.0f);
+
 	
 
 	
@@ -230,18 +233,6 @@ void cs25::KeyUpdate()
 			count++;
 			return;
 		}
-	}
-
-	if(KeyManager::GetInstance()->GetbuttonDown(KeyType::SpaceBar))
-	{
-		testing += 5.0f;
-		light->SetSpecularIntensity(testing);
-	}
-
-	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::Z))
-	{
-		testing2 += 30.0f;
-		light->SetDiffuseIntensity(testing2);
 	}
 
 

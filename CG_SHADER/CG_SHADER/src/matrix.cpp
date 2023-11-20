@@ -73,7 +73,9 @@ glm::mat4 matrix::GetRotateCamera(float dy)
 glm::mat4 matrix::GetProjection()
 {
 	glm::mat4 projection = glm::mat4(1.0f);
-	projection = glm::perspective(glm::radians(50.0f), 1.0f, 0.1f, 500.0f); //--- 투영 공간 설정: fovy, aspect, near, far
+	float screenWidth = glutGet(GLUT_SCREEN_WIDTH); // 모니터의 가로 해상도 가져오기
+	float screenHeight = glutGet(GLUT_SCREEN_HEIGHT); // 모니터의 세로 해상도 가져오기
+	projection = glm::perspective(glm::radians(50.0f), screenWidth/ screenHeight, 0.1f, 500.0f); //--- 투영 공간 설정: fovy, aspect, near, far
 
 	return projection;
 }
@@ -81,6 +83,8 @@ glm::mat4 matrix::GetProjection()
 glm::mat4 matrix::GetProjection(float _fovy, float _aspect, float _near, float _far)
 {
 	glm::mat4 projection = glm::mat4(1.0f);
+
+
 	projection = glm::perspective(glm::radians(_fovy), _aspect, _near, _far); //--- 투영 공간 설정: fovy, aspect, near, far
 
 	return projection;

@@ -15,7 +15,7 @@ uniform mat4 u_proj; //CPU에서 전달될 (glm 라이브러리를 통해 생성된) 투영 행렬
 
 void main()
 {
-	gl_Position = u_proj * u_view * u_model * vec4(position,1.0); // 정점 위치를 투영 행렬과 곱
+	gl_Position = u_proj * u_view * u_model * vec4(position,1.0f); // 정점 위치를 투영 행렬과 곱
 	v_TexCoord = texCoord; //vertex 변환에 따라 바뀌지 않으므로 그대로 넘겨주면 됨
 	v_Normal = normal;
 };

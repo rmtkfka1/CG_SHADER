@@ -11,7 +11,7 @@ Light::Light()
 
 
 	_specularIntensity = 1.0f;
-	_shinIness = 1.0f;
+	_shinIness =1.0f;
 
 }
 
@@ -23,7 +23,7 @@ Light::~Light()
 
 void Light::SetLvector(glm::vec3 lvector)
 {
-	_lvector = lvector;
+	_lvector = glm::normalize(lvector);
 }
 
 
@@ -46,6 +46,11 @@ void Light::SetSpecularIntensity(float specularIntensity)
 void Light::SetShinIness(float shinelness)
 {
 	_shinIness = shinelness;
+}
+
+void Light::SetLightColor(glm::vec3 lightcolor)
+{
+	_lightColor = lightcolor;
 }
 
 void Light::UseLight(Shader& shader)

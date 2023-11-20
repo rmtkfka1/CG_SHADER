@@ -14,7 +14,7 @@ public:
 
 	void SetSpecularIntensity(float specularIntensity);
 	void SetShinIness(float shinelness);
-
+	void SetLightColor(glm::vec3 lightcolor);
 	void UseLight(Shader& shader);
 
 private:
