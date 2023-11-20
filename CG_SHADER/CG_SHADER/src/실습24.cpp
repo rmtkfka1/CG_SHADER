@@ -38,8 +38,14 @@ int main(int argc, char** argv)
 	{
 		KeyManager::GetInstance()->Update();
 		TimeManager::GetInstance()->Update();
-
 		p.Update();
+	
+		//RECT rtRect{0,0, glutGet(GLUT_WINDOW_WIDTH),glutGet(GLUT_WINDOW_HEIGHT)};
+
+		//GetClientRect(GetForegroundWindow(),&rtRect); // 마우스 못나가게 할 영역 reRect로 설정
+		//MapWindowPoints(GetForegroundWindow(), nullptr, reinterpret_cast<LPPOINT>(&rtRect), 2);
+		//ClipCursor(&rtRect);
+
 
 		glutPostRedisplay();
 		glutMainLoopEvent();

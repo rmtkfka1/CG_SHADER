@@ -54,12 +54,12 @@ void MouseManager::MousemoveCallBack2(int x, int y)
 {
 
 
-
-
-
 	MouseManager::GetInstance()->m_pos.x = x;
 	MouseManager::GetInstance()->m_pos.y = y;
 
+	
+
+	
 
 	
 	
