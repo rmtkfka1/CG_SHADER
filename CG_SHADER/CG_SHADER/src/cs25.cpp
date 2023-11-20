@@ -11,8 +11,6 @@ cs25::cs25()
 cs25::~cs25()
 {
 	delete rect;
-	delete circle;
-
 }
 
 void cs25::Init()
@@ -44,13 +42,11 @@ void cs25::Init()
 
 	shader->SetUniformMat4f("u_view",
 		matrix::GetInstance()->GetCamera(glm::vec3(0, 30.0f, 30.0f), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)));
+	shader->SetUniform3f("u_eyePosition", 0, 30, 30);
 
-	light->SetAmbientIntensity(0.2f);
-	light->SetDiffuseIntensity(1.0f);
+	light->SetShinIness(1.0f);
+	light->SetLvector(glm::vec3(0, 30.0f, 0));
 
-	light->SetLvector(glm::vec3(0, 30.0f, 30.0f));
-
-	camera->PrintInfo();
 }
 
 void cs25::Update()
@@ -66,24 +62,27 @@ void cs25::Render()
 {
 	
 
+	{
+		light->SetDiffuseIntensity(1.0f);
+		light->UseLight(*shader);
+		auto trans = matrix::GetInstance()->GetTranslation(0, 5, 20);
+		auto rotate = matrix::GetInstance()->GetRotate(degree, 0, 1, 0);
+		texture->Bind(0);
+		shader->SetUniform1i("u_texture", 1);
+		camera->Render(*shader, rotate * trans);
+	}
+
 
 
 	{
 		
 		light->UseLight(*shader);
 		auto result = rect->GetRotate(rect_degree, 0, 1, 0);
+		texture2->Bind(1);
 		shader->SetUniform1i("u_texture", 0);
 		rect->Render(*shader, result);
 	}
 
-	{
-		light->SetDiffuseIntensity(1.0f);
-		light->UseLight(*shader);
-		auto trans = matrix::GetInstance()->GetTranslation(0,5,20);
-		auto rotate = matrix::GetInstance()->GetRotate(degree,0,1,0);
-		shader->SetUniform1i("u_texture", 1);
-		camera->Render(*shader, rotate*trans);
-	}
 
 	
 
@@ -98,14 +97,17 @@ void cs25::ChangeLight()
 	if (light_on)
 	{
 	
+		light->SetAmbientIntensity(0.4f);
 		light->SetDiffuseIntensity(1.0f);
-
-
+		light->SetSpecularIntensity(5.0f);
+		light->SetShinIness(30.0f);
 	}
 
 	else
 	{
+		light->SetAmbientIntensity(0.2f);
 		light->SetDiffuseIntensity(0);
+		light->SetSpecularIntensity(0);
 	}
 
 
@@ -132,7 +134,7 @@ void cs25::KeyUpdate()
 		 x = sinf(angle) * camera_radius;
 		 z = cosf(angle) * camera_radius;
 
-		 cout << x << z << endl;
+
 		glm::mat4 view = glm::mat4(1.0f);
 		glm::vec3 cameraPos = glm::vec3(x, 30, z); //--- 카메라 위치
 		glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, 0.0f); //--- 카메라 바라보는 방향
@@ -143,12 +145,10 @@ void cs25::KeyUpdate()
 
 
 		shader->SetUniformMat4f("u_view", view);
-
-		light->SetAmbientIntensity(0.2f);
-		light->SetDiffuseIntensity(1.0f);
-		light->SetLvector(glm::vec3(x,30, z));
-		
+		shader->SetUniform3f("u_eyePosition", x, 30, z);
 		degree += 28.5f *TimeManager::GetInstance()->GetDeltaTime();
+
+		
 
 	}
 
@@ -166,7 +166,7 @@ void cs25::KeyUpdate()
 		x = sinf(angle) * camera_radius;
 		z = cosf(angle) * camera_radius;
 
-		cout << x << z << endl;
+	
 		glm::mat4 view = glm::mat4(1.0f);
 		glm::vec3 cameraPos = glm::vec3(x, 30, z); //--- 카메라 위치
 		glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, 0.0f); //--- 카메라 바라보는 방향
@@ -177,7 +177,7 @@ void cs25::KeyUpdate()
 
 		light->SetAmbientIntensity(0.2f);
 		light->SetDiffuseIntensity(1.0f);
-		light->SetLvector(glm::vec3(x, 30, z));
+
 
 		camera_radius -= 10.0f *TimeManager::GetInstance()->GetDeltaTime();
 	}
@@ -191,7 +191,6 @@ void cs25::KeyUpdate()
 		x = sinf(angle) * camera_radius;
 		z = cosf(angle) * camera_radius;
 
-		cout << x << z << endl;
 		glm::mat4 view = glm::mat4(1.0f);
 		glm::vec3 cameraPos = glm::vec3(x, 30, z); //--- 카메라 위치
 		glm::vec3 cameraDirection = glm::vec3(0.0f, 0.0f, 0.0f); //--- 카메라 바라보는 방향
@@ -204,11 +203,49 @@ void cs25::KeyUpdate()
 
 		light->SetAmbientIntensity(0.2f);
 		light->SetDiffuseIntensity(1.0f);
-		light->SetLvector(glm::vec3(x, 30, z));
+	
 
 	
 		camera_radius += 10.0f * TimeManager::GetInstance()->GetDeltaTime();
 	}
+
+	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::N))
+	{
+		static int count = 0;
+
+		if (count % 2 == 0)
+		{
+			delete rect;
+			rect = new SimpleModel("res/models/cs25_pyramid.obj");
+
+			count++;
+			return;
+		}
+
+		else
+		{
+			delete rect;
+			rect = new SimpleModel("res/models/cs25_rect.obj");
+
+			count++;
+			return;
+		}
+	}
+
+	if(KeyManager::GetInstance()->GetbuttonDown(KeyType::SpaceBar))
+	{
+		testing += 5.0f;
+		light->SetSpecularIntensity(testing);
+	}
+
+	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::Z))
+	{
+		testing2 += 30.0f;
+		light->SetDiffuseIntensity(testing2);
+	}
+
+
+
 
 
 }

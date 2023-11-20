@@ -28,7 +28,7 @@ private:
 	Shader* shader;
 
 	SimpleModel* rect;
-	SimpleModel* circle;
+
 	SimpleModel* camera;
 
 
@@ -36,6 +36,9 @@ private:
 	Texture* texture2;
 
 	Light *light;
+
+	bool draw_rect = true;
+
 	//Camera* camera;
 
 
@@ -50,7 +53,10 @@ private:
 	float degree = 0;
 
 	bool light_on = true;
+
 	float testing=0;
+	float testing2 = 0;
+
 	float camera_speed = 0;
 
 	float x = 0;

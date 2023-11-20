@@ -9,6 +9,10 @@ Light::Light()
 	_lvector = glm::vec3(0, 0, 0);
 	_diffuseIntensity = 1.0f;
 
+
+	_specularIntensity = 1.0f;
+	_shinIness = 1.0f;
+
 }
 
 Light::~Light()
@@ -34,6 +38,16 @@ void Light::SetDiffuseIntensity(float diffuseIntensity)
 }
 
 
+void Light::SetSpecularIntensity(float specularIntensity)
+{
+	_specularIntensity = specularIntensity;
+}
+
+void Light::SetShinIness(float shinelness)
+{
+	_shinIness = shinelness;
+}
+
 void Light::UseLight(Shader& shader)
 {
 
@@ -44,6 +58,8 @@ void Light::UseLight(Shader& shader)
 	shader.SetUniform3f("u_light.direction", _lvector.x, _lvector.y, _lvector.z);
 	shader.SetUniform1f("u_light.diffuseIntensity", _diffuseIntensity);
 
+	shader.SetUniform1f("u_light.specularIntensity", _specularIntensity);
+	shader.SetUniform1f("u_light.shinIness", _shinIness);
 
 
 }

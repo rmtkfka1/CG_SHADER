@@ -20,7 +20,7 @@ SimpleModel::SimpleModel(const string& model_filepath)
 
 SimpleModel::~SimpleModel()
 {
-
+	delete _model;
 }
 
 void SimpleModel::Init()

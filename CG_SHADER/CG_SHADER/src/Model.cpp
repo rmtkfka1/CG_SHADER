@@ -8,22 +8,22 @@ Model::Model()
 
 Model::~Model()
 {
-	for (int i = 0; i < VAOs.size(); i++)
-	{
-		delete VAOs[i];
-	}
-	for (int i = 0; i < VBOs.size(); i++)
-	{
-		delete VBOs[i];
-	}
-	for (int i = 0; i < IBOs.size(); i++)
-	{
-		delete IBOs[i];
-	}
-	for (int i = 0; i < m_TextureList.size(); i++)
-	{
-		delete m_TextureList[i];
-	}
+	//for (int i = 0; i < VAOs.size(); i++)
+	//{
+	//	delete VAOs[i];
+	//}
+	//for (int i = 0; i < VBOs.size(); i++)
+	//{
+	//	delete VBOs[i];
+	//}
+	//for (int i = 0; i < IBOs.size(); i++)
+	//{
+	//	delete IBOs[i];
+	//}
+	//for (int i = 0; i < m_TextureList.size(); i++)
+	//{
+	//	delete m_TextureList[i];
+	//}
 
 }
 
