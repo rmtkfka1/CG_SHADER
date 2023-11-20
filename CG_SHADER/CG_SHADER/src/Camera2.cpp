@@ -10,15 +10,26 @@ void Camera2::KeyUpdate()
 
 	float dt = TimeManager::GetInstance()->GetDeltaTime();
 
-	float cameraSpeed = 10.0f;
+	float cameraSpeed = 100.0f;
 
 	if(KeyManager::GetInstance()->Getbutton(KeyType::W))
 	{
 		m_cameraPos += cameraSpeed * m_cameraFront *dt;
+
+		if (m_cameraPos.y > 20.0f)
+		{
+			m_cameraPos.y = 20.0f;
+		}
 	}
 	if (KeyManager::GetInstance()->Getbutton(KeyType::S))
 	{
 		m_cameraPos -= cameraSpeed * m_cameraFront * dt;
+
+
+		if (m_cameraPos.y > 20.0f)
+		{
+			m_cameraPos.y = 20.0f;
+		}
 	}
 
 
@@ -65,7 +76,7 @@ void Camera2::MouseUpdate(float x, float y)
 	auto pos = glm::vec2(x, y);
 	auto deltaPos = pos - m_prevMousePos;
 
-	const float cameraSpeed = 20.0f;
+	const float cameraSpeed = 10.0f;
 
 	m_cameraYaw -= deltaPos.x * cameraSpeed * dt;
 	m_cameraPitch -= deltaPos.y * cameraSpeed * dt;
