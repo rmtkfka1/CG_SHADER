@@ -5,7 +5,7 @@
 class Model
 {
 public:
-	Model();
+	Model(const std::string& fileName);
 	~Model();
 
 	void LoadModel(const std::string& fileName);
@@ -14,7 +14,7 @@ public:
 	void RenderModel(Shader& shader);
 
 	void PrintInfo(); // 중심점 , 사이즈 출력 하는 함수
-	glm::vec3 GetCenter() {return _center;} 
+	glm::vec3 GetCenter() { return _center; }
 	glm::vec3 GetSize() { return _size; }
 
 

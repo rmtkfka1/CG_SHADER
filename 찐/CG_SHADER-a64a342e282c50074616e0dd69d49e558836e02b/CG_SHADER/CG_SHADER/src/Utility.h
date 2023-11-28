@@ -11,3 +11,5 @@
 
 void GLClearError();
 bool GLLogCall(const char* function, const char* file, int line);
+glm::vec3 GetAttenuationCoeff(float distance);
+

@@ -31,14 +31,13 @@ void MouseManager::MouseCallBack(int button, int state, int x, int y)
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
 	{
 	
-		Camera2::GetInstance()->m_cameraControl = false;
+		
 
 	}
 
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_UP)
 	{
-		Camera2::GetInstance()->m_prevMousePos = glm::vec2(x, y);
-		Camera2::GetInstance()->m_cameraControl = true;
+	
 
 	}
 }

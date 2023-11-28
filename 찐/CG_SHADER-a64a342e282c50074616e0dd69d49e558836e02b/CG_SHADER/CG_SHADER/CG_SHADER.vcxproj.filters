@@ -79,6 +79,9 @@
     <Filter Include="02.Object\01.실습\26번">
       <UniqueIdentifier>{af26b181-c57b-4785-af9a-a243a524a837}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\01.실습\27번">
+      <UniqueIdentifier>{5d49a5bd-ba8c-4de8-bdd0-bb72a4e8d0c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -130,15 +133,6 @@
     <ClCompile Include="src\Light.cpp">
       <Filter>01.OPENGL\08.Light</Filter>
     </ClCompile>
-    <ClCompile Include="src\cs23.cpp">
-      <Filter>02.Object\01.실습\24번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Object.cpp">
-      <Filter>02.Object\00.Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleModel.cpp">
-      <Filter>02.Object\00.Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\Component.cpp">
       <Filter>06.Component</Filter>
     </ClCompile>
@@ -151,20 +145,18 @@
     <ClCompile Include="src\CollisionManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\Player.cpp">
-      <Filter>02.Object\00.Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\실습24.cpp" />
     <ClCompile Include="src\실습25.cpp" />
-    <ClCompile Include="src\cs25.cpp">
-      <Filter>02.Object\01.실습\25번</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cs26.cpp">
-      <Filter>02.Object\01.실습\26번</Filter>
-    </ClCompile>
     <ClCompile Include="src\실습26.cpp" />
     <ClCompile Include="src\Camera2.cpp">
       <Filter>05.Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Light2.cpp">
+      <Filter>01.OPENGL\08.Light</Filter>
+    </ClCompile>
+    <ClCompile Include="src\실습27.cpp" />
+    <ClCompile Include="src\cs27.cpp">
+      <Filter>02.Object\01.실습\27번</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -222,15 +214,6 @@
     <ClInclude Include="src\Light.h">
       <Filter>01.OPENGL\08.Light</Filter>
     </ClInclude>
-    <ClInclude Include="src\cs23.h">
-      <Filter>02.Object\01.실습\24번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Object.h">
-      <Filter>02.Object\00.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleModel.h">
-      <Filter>02.Object\00.Object</Filter>
-    </ClInclude>
     <ClInclude Include="src\Component.h">
       <Filter>06.Component</Filter>
     </ClInclude>
@@ -243,17 +226,14 @@
     <ClInclude Include="src\CollisionManager.h">
       <Filter>03,Manager</Filter>
     </ClInclude>
-    <ClInclude Include="src\Player.h">
-      <Filter>02.Object\00.Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cs25.h">
-      <Filter>02.Object\01.실습\25번</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cs26.h">
-      <Filter>02.Object\01.실습\26번</Filter>
-    </ClInclude>
     <ClInclude Include="src\Camera2.h">
       <Filter>05.Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Light2.h">
+      <Filter>01.OPENGL\08.Light</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs27.h">
+      <Filter>02.Object\01.실습\27번</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -280,10 +260,10 @@
     <None Include="res\models\11.fbx">
       <Filter>00.res\models</Filter>
     </None>
-    <None Include="simple.vs">
+    <None Include="res\shader\simple.vs">
       <Filter>00.res\shader</Filter>
     </None>
-    <None Include="simple.fs">
+    <None Include="res\shader\simple.fs">
       <Filter>00.res\shader</Filter>
     </None>
   </ItemGroup>

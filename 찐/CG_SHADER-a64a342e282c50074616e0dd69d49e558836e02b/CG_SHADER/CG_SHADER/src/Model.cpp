@@ -2,8 +2,9 @@
 #include "Model.h"
 #include "Shader.h"
 #include "Utility.h"
-Model::Model()
+Model::Model(const std::string& fileName)
 {
+	LoadModel(fileName);
 }
 
 Model::~Model()

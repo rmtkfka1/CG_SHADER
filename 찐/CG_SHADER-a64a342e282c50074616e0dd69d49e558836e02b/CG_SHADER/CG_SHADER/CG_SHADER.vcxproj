@@ -135,17 +135,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\cs27.cpp" />
     <ClCompile Include="src\Camera2.cpp" />
-    <ClCompile Include="src\cs26.cpp" />
-    <ClCompile Include="src\cs25.cpp" />
-    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Light2.cpp" />
     <ClCompile Include="src\CollisionManager.cpp" />
     <ClCompile Include="src\BoxCollider.cpp" />
     <ClCompile Include="src\Component.cpp" />
-    <ClCompile Include="src\SimpleModel.cpp" />
-    <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Collider.cpp" />
-    <ClCompile Include="src\cs23.cpp" />
     <ClCompile Include="src\Light.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\matrix.cpp" />
@@ -171,7 +167,7 @@
     <ClCompile Include="src\TimeManager.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\실습24.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\연습장.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -182,19 +178,16 @@
     <ClCompile Include="src\실습26.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\실습27.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\cs27.h" />
     <ClInclude Include="src\Camera2.h" />
-    <ClInclude Include="src\cs26.h" />
-    <ClInclude Include="src\cs25.h" />
-    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Light2.h" />
     <ClInclude Include="src\CollisionManager.h" />
     <ClInclude Include="src\BoxCollider.h" />
     <ClInclude Include="src\Component.h" />
-    <ClInclude Include="src\SimpleModel.h" />
-    <ClInclude Include="src\Object.h" />
     <ClInclude Include="src\Collider.h" />
-    <ClInclude Include="src\cs23.h" />
     <ClInclude Include="src\Light.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\matrix.h" />
@@ -226,8 +219,8 @@
     <None Include="res\shader\mvp_new.vs" />
     <None Include="res\shader\mvp.fs" />
     <None Include="res\shader\mvp.vs" />
-    <None Include="simple.fs" />
-    <None Include="simple.vs" />
+    <None Include="res\shader\simple.fs" />
+    <None Include="res\shader\simple.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\models\K-093.png" />

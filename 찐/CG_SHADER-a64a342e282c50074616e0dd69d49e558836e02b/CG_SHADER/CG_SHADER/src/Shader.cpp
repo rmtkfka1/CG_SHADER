@@ -123,6 +123,12 @@ void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& matrix)
 		glm::value_ptr(matrix))); //첫 인자의 주소값 전달
 }
 
+void Shader::SetUniform2fv(const std::string& name, const glm::vec2& value)
+{
+	auto loc = glGetUniformLocation(m_RendererID, name.c_str());
+	glUniform2fv(loc, 1, glm::value_ptr(value));
+}
+
 unsigned int Shader::Getid()
 {
 	return m_RendererID;
