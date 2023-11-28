@@ -82,6 +82,9 @@
     <Filter Include="02.Object\01.실습\27번">
       <UniqueIdentifier>{5d49a5bd-ba8c-4de8-bdd0-bb72a4e8d0c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Object\01.실습\28번">
+      <UniqueIdentifier>{f098de73-bd36-4627-8c55-8b3346cdc70d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp">
@@ -155,8 +158,12 @@
       <Filter>01.OPENGL\08.Light</Filter>
     </ClCompile>
     <ClCompile Include="src\실습27.cpp" />
+    <ClCompile Include="src\실습28.cpp" />
     <ClCompile Include="src\cs27.cpp">
       <Filter>02.Object\01.실습\27번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cs28.cpp">
+      <Filter>02.Object\01.실습\28번</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="src\cs27.h">
       <Filter>02.Object\01.실습\27번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs28.h">
+      <Filter>02.Object\01.실습\28번</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

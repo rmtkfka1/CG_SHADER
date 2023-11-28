@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\cs28.cpp" />
     <ClCompile Include="src\cs27.cpp" />
     <ClCompile Include="src\Camera2.cpp" />
     <ClCompile Include="src\Light2.cpp" />
@@ -178,9 +179,13 @@
     <ClCompile Include="src\실습26.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\실습27.cpp" />
+    <ClCompile Include="src\실습27.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\실습28.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\cs28.h" />
     <ClInclude Include="src\cs27.h" />
     <ClInclude Include="src\Camera2.h" />
     <ClInclude Include="src\Light2.h" />

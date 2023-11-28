@@ -17,15 +17,15 @@ Light2::Light2()
 	Spot_light.diffuse = glm::vec3(1.0f, 1.0f, 1.0f);
 	Spot_light.specular = glm::vec3(0.1f, 0.1f, 0.1f);
 
-	material.shininess = 1000.0f;
+	material.shininess = 50.0f;
 	material.specular = glm::vec3(0.1f, 0.1f, 0.1f);
 
 
 	//포인트 라이트 작업
 
-	point_light.position = glm::vec3(0, 20.0f, 0);
-	point_light.distance =30.0f;
-	point_light.diffuse = glm::vec3(1.0f, 1.0f, 1.0f);
+	point_light.position = glm::vec3(0, 50.0f, 0);
+	point_light.distance =500.0f;
+	point_light.diffuse = glm::vec3(0.5f,0.5f, 0);
 	point_light.ambient = glm::vec3(0, 0, 0);
 	point_light.specular = glm::vec3(0, 0, 0);
 
@@ -52,10 +52,6 @@ void Light2::UseSpotLight(Shader& shader)
 
 	shader.SetUniform3f("spot_light.diffuse", Spot_light.diffuse.r , Spot_light.diffuse.g ,Spot_light.diffuse.b );
 	shader.SetUniform3f("spot_light.specular", Spot_light.specular.r, Spot_light.specular.g, Spot_light.specular.b);
-
-
-
-
 
 
 	//테스트해보자

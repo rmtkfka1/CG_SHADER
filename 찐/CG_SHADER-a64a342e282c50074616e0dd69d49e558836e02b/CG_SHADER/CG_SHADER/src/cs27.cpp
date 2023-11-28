@@ -137,4 +137,25 @@ void cs27::keyupdate()
 
 
 	}
+
+	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::M))
+	{
+		static int count = 0;
+
+
+		if (count % 2 == 0)
+		{
+
+			light->point_light.distance = 0.1f;
+		}
+		else
+		{
+
+			light->point_light.distance = 500.0f;
+		}
+
+		count++;
+
+
+	}
 }
