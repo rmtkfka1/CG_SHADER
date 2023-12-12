@@ -26,6 +26,7 @@ public:
 	Model* model5;
 	Model* mdoel6;
 
+	Model* bg;
 
 	Model* tri;
 	Model* tri2;
@@ -40,6 +41,7 @@ public:
 	Texture* texture4;
 	Texture* texture5;
 	Texture* texture6;
+	Texture* texture7;
 
 	Light2* light;
 

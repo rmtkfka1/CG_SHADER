@@ -18,6 +18,8 @@ void cs28::init()
 	 model4 = new Model("res/models/box_left.obj");
 	model5 = new Model("res/models/box_bottom.obj");
 	mdoel6 = new Model("res/models/box_top.obj");
+	bg = new Model("res/models/bg.obj");
+
 
 	tri = new Model("res/models/tri_front.obj");
 	tri2 = new Model("res/models/tri_back.obj");
@@ -34,6 +36,7 @@ void cs28::init()
 	texture4 = new Texture("res/textures/earth.jpg");
 	texture5 = new Texture("res/textures/people_color.jpg");
 	texture6 = new Texture("res/textures/zz.jpg");
+	texture7= new Texture("res/textures/bg.jpg");
 
 	texture->Bind(0);
 	texture2->Bind(1);
@@ -41,7 +44,7 @@ void cs28::init()
 	texture4->Bind(3);
 	texture5->Bind(4);
 	texture6->Bind(5);
-
+	texture7->Bind(6);
 
 	texture->Bind(0);
 }
@@ -50,21 +53,36 @@ void cs28::update()
 {
 	keyupdate();
 
-	shader->SetUniform3f("u_viewpos", CameraManager::GetInstance()->m_cameraPos.x, CameraManager::GetInstance()->m_cameraPos.y, CameraManager::GetInstance()->m_cameraPos.z);
-	shader->SetUniformMat4f("u_view", CameraManager::GetInstance()->GetMatrix());
+
 
 	light->Spot_light.position = CameraManager::GetInstance()->m_cameraPos;
 	light->Spot_light.direction = CameraManager::GetInstance()->m_cameraFront;
 
-	CameraManager::GetInstance()->KeyUpdate();
-	CameraManager::GetInstance()->MouseUpdate(MouseManager::GetInstance()->GetMousePos().x, MouseManager::GetInstance()->GetMousePos().y);
-	shader->SetUniformMat4f("u_view", CameraManager::GetInstance()->GetMatrix());
 
 }
 
 void cs28::render()
 {
 	light->UseSpotLight(*shader);
+
+	glDisable(GL_DEPTH_TEST);
+
+	shader->SetUniform1i("u_texture", 6);
+	shader->SetUniformMat4f("u_model", glm::mat4(1.0f));
+	glm::mat4 projection = glm::mat4(1.0f);
+	shader->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(0, 0, 1.0f), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)));
+	projection = glm::ortho(-10.0F, 10.0F, 0.0F, 20.0f, -0.1f, 500.0f);
+	shader->SetUniformMat4f("u_proj", projection);
+	bg->RenderModel(*shader);
+
+
+	glEnable(GL_DEPTH_TEST);
+	shader->SetUniformMat4f("u_proj", matrix::GetInstance()->GetProjection());
+	shader->SetUniform3f("u_viewpos", CameraManager::GetInstance()->m_cameraPos.x, CameraManager::GetInstance()->m_cameraPos.y, CameraManager::GetInstance()->m_cameraPos.z);
+	shader->SetUniformMat4f("u_view", CameraManager::GetInstance()->GetMatrix());
+	CameraManager::GetInstance()->KeyUpdate();
+	CameraManager::GetInstance()->MouseUpdate(MouseManager::GetInstance()->GetMousePos().x, MouseManager::GetInstance()->GetMousePos().y);
+	shader->SetUniformMat4f("u_view", CameraManager::GetInstance()->GetMatrix());
 
 	if (a)
 	{
@@ -77,7 +95,6 @@ void cs28::render()
 	if (six)
 	{
 	
-
 
 		shader->SetUniform1i("u_texture", 0);
 		model->RenderModel(*shader);

@@ -148,7 +148,7 @@
     <ClCompile Include="src\CollisionManager.cpp">
       <Filter>03,Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\실습24.cpp" />
+    <ClCompile Include="src\실습33.cpp" />
     <ClCompile Include="src\실습25.cpp" />
     <ClCompile Include="src\실습26.cpp" />
     <ClCompile Include="src\Camera2.cpp">
@@ -158,12 +158,15 @@
       <Filter>01.OPENGL\08.Light</Filter>
     </ClCompile>
     <ClCompile Include="src\실습27.cpp" />
-    <ClCompile Include="src\실습28.cpp" />
+    <ClCompile Include="src\실습32.cpp" />
     <ClCompile Include="src\cs27.cpp">
       <Filter>02.Object\01.실습\27번</Filter>
     </ClCompile>
     <ClCompile Include="src\cs28.cpp">
       <Filter>02.Object\01.실습\28번</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cs23.cpp">
+      <Filter>02.Object\01.실습\24번</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="src\cs28.h">
       <Filter>02.Object\01.실습\28번</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cs23.h">
+      <Filter>02.Object\01.실습\24번</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

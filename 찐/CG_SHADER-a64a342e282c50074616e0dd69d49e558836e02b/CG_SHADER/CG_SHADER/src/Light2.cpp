@@ -26,7 +26,7 @@ Light2::Light2()
 	point_light.position = glm::vec3(0, 50.0f, 0);
 	point_light.distance =500.0f;
 	point_light.diffuse = glm::vec3(0.5f,0.5f, 0);
-	point_light.ambient = glm::vec3(0, 0, 0);
+	point_light.ambient = glm::vec3(1.0f, 1.0f, 1.0f);
 	point_light.specular = glm::vec3(0, 0, 0);
 
 

@@ -4,7 +4,6 @@
 #include "BoxCollider.h"
 #include "CollisionManager.h"
 #include "Player.h"
-#include "Camera2.h"
 cs23::cs23()
 {
 
@@ -21,6 +20,9 @@ void cs23::Init()
 	shader = new Shader("res/shader/mvp.vs", "res/shader/mvp.fs");
 
 	plane = new SimpleModel("res/models/cs24_set.obj");
+
+
+
 
 
 
@@ -121,9 +123,7 @@ void cs23::Init()
 	people_body->PrintInfo();
 	people_body->Init();
 
-	people_x = Camera2::GetInstance()->m_cameraPos.x;
-	people_x = Camera2::GetInstance()->m_cameraPos.y-10;
-	people_x = Camera2::GetInstance()->m_cameraPos.z;
+
 	
 }
 
@@ -174,12 +174,8 @@ void cs23::Update()
 
 
 
-	Camera2::GetInstance()->KeyUpdate();
-	Camera2::GetInstance()->MouseUpdate(MouseManager::GetInstance()->GetMousePos().x, MouseManager::GetInstance()->GetMousePos().y);
-	auto reulst = Camera2::GetInstance()->GetMatrix();
-	shader->SetUniformMat4f("u_view", reulst);
 
-
+	shader->SetUniformMat4f("u_view", matrix::GetInstance()->GetCamera(glm::vec3(dx,dy,dz), glm::vec3(0, 0, 0)));
 	CollisionManager::GetInstance()->Update();
 }
 
@@ -194,50 +190,70 @@ void cs23::keyboard()
 	}
 
 
+	if (KeyManager::GetInstance()->Getbutton(KeyType::Q))
+	{
+
+	
+		dy -= 1.0f;
+
+	}
+
+	if (KeyManager::GetInstance()->Getbutton(KeyType::W))
+	{
+		dz -= 1.0f;
+
+	}
+
+	if (KeyManager::GetInstance()->Getbutton(KeyType::S))
+	{
+		dz += 1.0f;
+
+	}
+
+
+	if (KeyManager::GetInstance()->Getbutton(KeyType::A))
+	{
+		dx -= 1.0f;
+
+	}
+
+	if (KeyManager::GetInstance()->Getbutton(KeyType::D))
+	{
+		dx += 1.0f;
+
+	}
+
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::T))
 	{
 		makebaby();
 
 	}
 
-	if (KeyManager::GetInstance()->Getbutton(KeyType::W))
+	if (KeyManager::GetInstance()->Getbutton(KeyType::Left))
 	{
-		float cameraSpeed = 10.0f;
-		
-		people_x = Camera2::GetInstance()->m_cameraPos.x;
-		people_z = Camera2::GetInstance()->m_cameraPos.z;
+		if (people_body->GetCenter().x < plane->GetCenter().x - plane->GetSize().x/2)
+		{
+			return;
+		}
 
-	}
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y / 2+10 <= box->GetCenter_y() + box->GetSize().y / 2)
+		{
 
-
-	if (KeyManager::GetInstance()->Getbutton(KeyType::S))
-	{
-
-
-
-		people_x = Camera2::GetInstance()->m_cameraPos.x;
-		people_z = Camera2::GetInstance()->m_cameraPos.z;
-
-
-
-
-	}
-
+			people_x += 3.0f;
+			people_body->SetCenter_x(people_body->GetCenter_x() + 3.0f);
+			return;
+		}
 	
+		people_x -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_x(people_body->GetCenter_x() - 40.0 * TimeManager::GetInstance()->GetDeltaTime());
 
-
-
-	if (KeyManager::GetInstance()->Getbutton(KeyType::A))
-	{
-		people_x = Camera2::GetInstance()->m_cameraPos.x;
-		people_z = Camera2::GetInstance()->m_cameraPos.z;
 	
 
 	}
 
-	if (KeyManager::GetInstance()->Getbutton(KeyType::D))
+	if (KeyManager::GetInstance()->Getbutton(KeyType::Right))
 	{
-	/*	if (people_body->GetCenter().x > plane->GetCenter().x + plane->GetSize().x / 2 - 17)
+		if (people_body->GetCenter().x > plane->GetCenter().x + plane->GetSize().x / 2 - 17)
 		{
 			return;
 		}
@@ -251,12 +267,55 @@ void cs23::keyboard()
 		}
 	
 		people_x += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
-		people_body->SetCenter_x(people_body->GetCenter_x() + 40.0 * TimeManager::GetInstance()->GetDeltaTime());*/
+		people_body->SetCenter_x(people_body->GetCenter_x() + 40.0 * TimeManager::GetInstance()->GetDeltaTime());
 
 	
 	
 	}
 
+	if (KeyManager::GetInstance()->Getbutton(KeyType::Down))
+	{
+		
+
+
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y / 2 + 10 <= box->GetCenter_y() + box->GetSize().y / 2)
+		{
+
+			people_z -= 3.0f;
+			people_body->SetCenter_z(people_body->GetCenter_z() - 3.0f);
+			return;
+		}
+
+		people_z += 40.0 * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_z(people_body->GetCenter_z() + 40.0 * TimeManager::GetInstance()->GetDeltaTime());
+
+
+	
+		
+	}
+
+	if (KeyManager::GetInstance()->Getbutton(KeyType::Up))
+	{
+		if (people_body->GetCenter().z < -60)
+		{
+			return;
+		}
+
+
+
+		if (people_body->_collusion && people_body->GetCenter_y() - people_body->GetSize().y/2 +10 <= box->GetCenter_y()+box->GetSize().y/2)
+		{
+
+			people_z += 3.0f;
+			people_body->SetCenter_z(people_body->GetCenter_z() + 3.0f);
+			return;
+		}
+
+		people_z -= 40.0 * TimeManager::GetInstance()->GetDeltaTime();
+		people_body->SetCenter_z(people_body->GetCenter_z() - 40.0 * TimeManager::GetInstance()->GetDeltaTime());
+
+	
+	}
 
 	if (KeyManager::GetInstance()->GetbuttonDown(KeyType::Y))
 	{
